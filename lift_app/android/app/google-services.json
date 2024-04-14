@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "978918952541",
+    "project_id": "lift-fe535",
+    "storage_bucket": "lift-fe535.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:978918952541:android:e55bf7d0922b3197d2c7b4",
+        "android_client_info": {
+          "package_name": "com.example.lift_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkyEm4CWDJgBIudKBrgV5lp-6elIzdarg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

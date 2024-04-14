@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async{
   runApp(const MyApp());
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+);
 }
 
 class MyApp extends StatelessWidget {
@@ -45,8 +50,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Container(
-          width: MediaQuery.of(context).size.width * 0.7,
-          height: MediaQuery.of(context).size.height * 0.6,
+          width: MediaQuery.of(context).size.width * 0.8,
+          height: MediaQuery.of(context).size.height * 0.55,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(20.0),
@@ -69,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       'Bienvenido De Vuelta!',
                       style: TextStyle(fontSize: 20),
                     ),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 5),
                     Form(
                       key: formKey,
                       child: Column(
@@ -78,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             controller: usuarioController,
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'El campo email es obligatorio';
+                                return 'El campo Usuario es obligatorio';
                               }
                               return null;
                             },
@@ -87,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             prefixIcon: const Icon(Icons.person),
                             bordes: const OutlineInputBorder(),
                           ),
-                          const SizedBox(height: 30),
+                          const SizedBox(height: 5,),
                           CustomInput(
                             controller: passwordController,
                             validator: (value) {
@@ -102,16 +107,14 @@ class _MyHomePageState extends State<MyHomePage> {
                             suffixIcon: const Icon(Icons.visibility),
                             bordes: const OutlineInputBorder(),
                           ),
-                          const SizedBox(height: 15),
-                          const Row(
+                           Row(
                             children: [
-                              Text(
-                                'Olvidaste tu contraseña?',
-                                style: TextStyle(fontSize: 12),
-                              )
+                              TextButton(
+                              onPressed: () {}
+                              , 
+                              child: const  Text('Olvidaste tu contraseña?', style: TextStyle(fontSize: 13),))
                             ],
                           ),
-                          const SizedBox(height: 30),
                           ElevatedButton(
                             onPressed: () {
                               final email = usuarioController.text;
@@ -123,15 +126,24 @@ class _MyHomePageState extends State<MyHomePage> {
                                   // Hacer algo si las credenciales son correctas
                                 } else {
                                   ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(content: Text('El email o la contraseña son incorrectos')),
+                                    const SnackBar(content: Text('El Usuario o la contraseña son incorrectos')),
                                   );
                                 }
                               }
                             },
                             child: const Text('Iniciar sesión'),
                           ),
+                          Row(
+                          children: [
+                              const Text('No tienes una cuenta?',style: TextStyle(fontSize: 13),),
+                              TextButton(
+                                onPressed: () {} , 
+                                child: const Text('Registrate', style: TextStyle(fontSize: 13),),
+                                )
                         ],
                       ),
+                      ]
+                     )
                     )
                   ],
                 ),
