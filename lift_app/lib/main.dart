@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'Routes/router.dart';
+import 'Routes/my_routes.dart';
 
 void main() async{
   runApp(const MyApp());
@@ -33,184 +35,48 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final usuarioController = TextEditingController();
-  final passwordController = TextEditingController();
-  final formKey = GlobalKey<FormState>();
+
+  @override
+  Widget build(BuildContext context) {
+      return MaterialApp(
+        title: 'Material app',
+        initialRoute: MyRoutes.login.name,
+        routes: routes,
+        onGenerateRoute: (settings) {
+          return MaterialPageRoute(
+          builder: (context) => PageNotFound(name: settings.name),
+        );
+      },
+     );
+    }
+}
+
+
+class PageNotFound extends StatelessWidget {
+  const PageNotFound({super.key, required this.name});
+
+  final String? name;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Iniciar Sesión',
-          style: TextStyle(color: Colors.white),
-        ),
-        centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 83, 72, 122),
-      ),
       body: Center(
-        child: Container(
-          width: MediaQuery.of(context).size.width * 0.8,
-          height: MediaQuery.of(context).size.height * 0.55,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(20.0),
-            boxShadow: const [
-              BoxShadow(
-                color: Colors.grey,
-                spreadRadius: 5,
-                blurRadius: 7,
-                offset: Offset(3, 3), // Cambia la sombra si lo deseas
-              ),
-            ],
-          ),
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            children: [
-              SingleChildScrollView(
-                child: Column(
-                  children: [
-                    const Text(
-                      'Bienvenido De Vuelta!',
-                      style: TextStyle(fontSize: 20),
-                    ),
-                    const SizedBox(height: 5),
-                    Form(
-                      key: formKey,
-                      child: Column(
-                        children: [
-                          CustomInput(
-                            controller: usuarioController,
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return 'El campo Usuario es obligatorio';
-                              }
-                              return null;
-                            },
-                            obscureText: false,
-                            labelText: 'Usuario',
-                            prefixIcon: const Icon(Icons.person),
-                            bordes: const OutlineInputBorder(),
-                          ),
-                          const SizedBox(height: 5,),
-                          CustomInput(
-                            controller: passwordController,
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return 'El campo contraseña es obligatorio';
-                              }
-                              return null;
-                            },
-                            obscureText: true,
-                            labelText: 'Contraseña',
-                            prefixIcon: const Icon(Icons.lock),
-                            suffixIcon: const Icon(Icons.visibility),
-                            bordes: const OutlineInputBorder(),
-                          ),
-                           Row(
-                            children: [
-                              TextButton(
-                              onPressed: () {}
-                              , 
-                              child: const  Text('Olvidaste tu contraseña?', style: TextStyle(fontSize: 13),))
-                            ],
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                              final email = usuarioController.text;
-                              final password = passwordController.text;
-
-                              if (formKey.currentState!.validate()) {
-                                if ((email == 'wyhernandezr@unah.hn' && password == '20222001369') ||
-                                    (email == 'cdmontoyaa@unah.hn' && password == '20222001250')) {
-                                  // Hacer algo si las credenciales son correctas
-                                } else {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(content: Text('El Usuario o la contraseña son incorrectos')),
-                                  );
-                                }
-                              }
-                            },
-                            child: const Text('Iniciar sesión'),
-                          ),
-                          Row(
-                          children: [
-                              const Text('No tienes una cuenta?',style: TextStyle(fontSize: 13),),
-                              TextButton(
-                                onPressed: () {} , 
-                                child: const Text('Registrate', style: TextStyle(fontSize: 13),),
-                                )
-                        ],
-                      ),
-                      ]
-                     )
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text('La ruta $name no existe'),
+            ElevatedButton(
+              onPressed: () {
+               
+                Navigator.pushReplacementNamed(context, MyRoutes.login.name);
+                
+              },
+              child: const Text('Ir a la página principal'),
+            ),
+          ],
         ),
       ),
     );
   }
 }
 
-typedef Validator = String? Function(String?);
-
-class CustomInput extends StatefulWidget {
-   CustomInput({
-    Key? key,
-    required this.controller,
-    required this.validator,
-    required this.obscureText,
-    required this.labelText,
-    required this.prefixIcon,
-    this.suffixIcon,
-    this.tamMax,
-    this.bordes,
-
-  }) : super(key: key);
-
-  final TextEditingController controller;
-  bool obscureText;
-  final String labelText;
-  final Widget prefixIcon;
-  final Widget? suffixIcon;
-  final Validator validator;
-  final int? tamMax;
-  final InputBorder? bordes;
-
-  @override
-  State<CustomInput> createState() => _CustomInputState();
-}
-
-class _CustomInputState extends State<CustomInput> {
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      controller: widget.controller,
-      keyboardType: TextInputType.text,
-      obscureText: widget.obscureText,
-      validator: widget.validator,
-      maxLength: widget.tamMax,
-      decoration: InputDecoration(
-        labelText: widget.labelText,
-        prefixIcon: widget.prefixIcon,
-        suffixIcon: widget.suffixIcon != null
-            ? IconButton(
-                onPressed: () {
-                  setState(() {
-                    widget.obscureText = !widget.obscureText;
-                  });
-                },
-                icon: widget.obscureText
-                    ? const Icon(Icons.visibility)
-                    : const Icon(Icons.visibility_off),
-              )
-            : null,
-        border: widget.bordes,
-      ),
-    );
-  }
-}
