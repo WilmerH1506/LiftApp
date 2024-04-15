@@ -11,14 +11,14 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 2, 153, 153),
+      backgroundColor: const Color.fromARGB(255, 82, 71, 123),
       appBar: AppBar(
         title: const Text(
           'Iniciar Sesión',
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 2, 153, 153),
+        backgroundColor: const Color.fromARGB(255, 82, 71, 123),
       ),
       body: SingleChildScrollView( // Solución al desbordamiento
         child: Center(

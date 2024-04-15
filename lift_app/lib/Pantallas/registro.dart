@@ -14,7 +14,7 @@ class Registro extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 2, 153, 153),
+      backgroundColor: const Color.fromARGB(255, 95, 84, 135),
       appBar: AppBar(
         title: const Text(
           'Registro',
@@ -28,7 +28,7 @@ class Registro extends StatelessWidget {
           icon: const Icon(Icons.exit_to_app),
         ),
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 2, 153, 153),
+        backgroundColor: const Color.fromARGB(255, 95, 84, 135),
       ),
       body: SingleChildScrollView(
         child: Container(
