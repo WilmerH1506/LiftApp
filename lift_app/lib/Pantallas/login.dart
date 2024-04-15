@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:lift_app/Routes/my_routes.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
+// ignore: must_be_immutable
 class Login extends StatelessWidget {
   Login({Key? key}) : super(key: key);
 
   final TextEditingController usuarioController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  FirebaseFirestore bds = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class Login extends StatelessWidget {
         centerTitle: true,
         backgroundColor: const Color.fromARGB(255, 82, 71, 123),
       ),
-      body: SingleChildScrollView( // Solución al desbordamiento
+      body: SingleChildScrollView( 
         child: Center(
           child: Container(
             width: MediaQuery.of(context).size.width * 0.75,
@@ -90,19 +93,25 @@ class Login extends StatelessWidget {
                               ],
                             ),
                             ElevatedButton(
-                              onPressed: () {
-                                final email = usuarioController.text;
-                                final password = passwordController.text;
+                              onPressed: () async {
+                                final usuario = usuarioController.text.trim();
+                                final password = passwordController.text.trim();
 
-                                if (formKey.currentState!.validate()) {
-                                  if ((email == 'wyhernandezr@unah.hn' && password == '20222001369') ||
-                                      (email == 'cdmontoyaa@unah.hn' && password == '20222001250')) {
-                                    // Hacer algo si las credenciales son correctas
-                                  } else {
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(content: Text('El email o la contraseña son incorrectos')),
-                                    );
-                                  }
+                                if (formKey.currentState!.validate()) 
+                                {
+                                   final queryUser = await bds.collection('Usuarios').where('usuario', isEqualTo: usuario).get();
+                                   final queryPass = await bds.collection('Usuarios').where('password', isEqualTo: password).get();
+
+                                   if (queryUser.docs.isNotEmpty && queryPass.docs.isNotEmpty)
+                                   {
+                                       Navigator.pushReplacementNamed(context, MyRoutes.inicio.name);
+                                   }
+                                   else
+                                   {
+                                      ScaffoldMessenger.of(context).showSnackBar(
+                                            const SnackBar(content: Text('Las credenciales ingresadas son incorrectas'))
+                                      );
+                                   }
                                 }
                               },
                               child: const Text('Iniciar sesión'),

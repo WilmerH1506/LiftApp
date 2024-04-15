@@ -5,10 +5,9 @@ import 'Routes/router.dart';
 import 'Routes/my_routes.dart';
 
 void main() async{
+   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-);
 }
 
 class MyApp extends StatelessWidget {
