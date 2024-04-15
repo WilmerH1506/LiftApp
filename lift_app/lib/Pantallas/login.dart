@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lift_app/Routes/my_routes.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:lift_app/Widgets/custom_input.dart';
 
 // ignore: must_be_immutable
 class Login extends StatelessWidget {
@@ -62,6 +63,15 @@ class Login extends StatelessWidget {
                                 if (value!.isEmpty) {
                                   return 'El campo email es obligatorio';
                                 }
+                                if (!value.contains('@')) {
+                                  return 'El email no es válido';
+                                }
+                                if (value.length < 6) {
+                                  return 'El email debe tener al menos 6 caracteres';
+                                }
+                                if (!value.contains('.')) {
+                                  return 'El email no es válido';
+                                }
                                 return null;
                               },
                               obscureText: false,
@@ -75,6 +85,9 @@ class Login extends StatelessWidget {
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return 'El campo contraseña es obligatorio';
+                                }
+                                if (value.length < 6) {
+                                  return 'La contraseña debe tener al menos 6 caracteres';
                                 }
                                 return null;
                               },
@@ -146,62 +159,4 @@ class Login extends StatelessWidget {
   }
 }
 
-typedef Validator = String? Function(String?);
 
-
-// ignore: must_be_immutable
-class CustomInput extends StatefulWidget {
-  CustomInput({
-    Key? key,
-    required this.controller,
-    required this.validator,
-    required this.obscureText,
-    required this.labelText,
-    required this.prefixIcon,
-    this.suffixIcon,
-    this.tamMax,
-    this.bordes,
-  }) : super(key: key);
-
-  final TextEditingController controller;
-  bool obscureText;
-  final String labelText;
-  final Widget prefixIcon;
-  final Widget? suffixIcon;
-  final Validator validator;
-  final int? tamMax;
-  final InputBorder? bordes;
-
-  @override
-  State<CustomInput> createState() => _CustomInputState();
-}
-
-class _CustomInputState extends State<CustomInput> {
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      controller: widget.controller,
-      keyboardType: TextInputType.text,
-      obscureText: widget.obscureText,
-      validator: widget.validator,
-      maxLength: widget.tamMax,
-      decoration: InputDecoration(
-        labelText: widget.labelText,
-        prefixIcon: widget.prefixIcon,
-        suffixIcon: widget.suffixIcon != null
-            ? IconButton(
-                onPressed: () {
-                  setState(() {
-                    widget.obscureText = !widget.obscureText;
-                  });
-                },
-                icon: widget.obscureText
-                    ? const Icon(Icons.visibility)
-                    : const Icon(Icons.visibility_off),
-              )
-            : null,
-        border: widget.bordes,
-      ),
-    );
-  }
-}
