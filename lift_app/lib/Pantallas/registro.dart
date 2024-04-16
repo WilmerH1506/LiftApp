@@ -1,20 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:lift_app/Routes/my_routes.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:lift_app/Validaciones/validaciones_registro.dart';
 import 'package:lift_app/Widgets/custom_input.dart';
 
 // ignore: must_be_immutable
 class Registro extends StatelessWidget {
-  Registro({Key? key}) : super(key: key);
-
-  final usuarioController = TextEditingController();
-  final nombreController = TextEditingController();
-  final apellidoController = TextEditingController();
-  final passwordController = TextEditingController();
-  final confirmPasswordController = TextEditingController();
-  final emailController = TextEditingController();
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  FirebaseFirestore bds = FirebaseFirestore.instance;
+const  Registro({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -69,12 +60,7 @@ class Registro extends StatelessWidget {
                         children: [
                           CustomInput(
                             controller: usuarioController,
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return 'El campo Usuario es obligatorio';
-                              }
-                              return null;
-                            },
+                            validator: usuarioValidator,
                             obscureText: false,
                             labelText: 'Nombre Usuario',
                             prefixIcon: const Icon(Icons.person),
@@ -83,12 +69,7 @@ class Registro extends StatelessWidget {
                           const SizedBox(height: 10,),
                           CustomInput(
                             controller: nombreController,
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return 'El campo Nombres es obligatorio';
-                              }
-                              return null;
-                            },
+                            validator: nombreValidator,
                             obscureText: false,
                             labelText: 'Nombres',
                             prefixIcon: const Icon(Icons.person),
@@ -97,20 +78,7 @@ class Registro extends StatelessWidget {
                           const SizedBox(height: 10,),
                           CustomInput(
                             controller: emailController,
-                            validator: (value) {
-                              if (value!.isEmpty) 
-                              {
-                                return 'El campo Email es obligatorio';
-                              }
-                             if (!value.contains('@') || !value.contains('.')) 
-                            {
-                              return 'El formato del correo electrónico es incorrecto';
-                            }
-                            if (value.length < 6){
-                              return 'El correo debe tener al menos 6 caracteres';
-                            }
-                              return null;
-                            },
+                            validator: emailValidator,
                             obscureText: false,
                             labelText: 'Email',
                             prefixIcon: const Icon(Icons.email),
@@ -119,12 +87,7 @@ class Registro extends StatelessWidget {
                           const SizedBox(height: 10),
                           CustomInput(
                             controller: passwordController,
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return 'El campo contraseña es obligatorio';
-                              }
-                              return null;
-                            },
+                            validator: passwordValidator,
                             obscureText: true,
                             labelText: 'Contraseña',
                             prefixIcon: const Icon(Icons.lock),
@@ -134,13 +97,7 @@ class Registro extends StatelessWidget {
                           const SizedBox(height: 10),
                           CustomInput(
                             controller: confirmPasswordController,
-                            validator: (value) {
-                              if (value!.isEmpty) 
-                              {
-                                return 'El campo contraseña es obligatorio';
-                              }
-                              return null;
-                            },
+                            validator: confirmPasswordValidator,
                             obscureText: true,
                             labelText: 'Confirmar',
                             prefixIcon: const Icon(Icons.lock),
@@ -150,54 +107,7 @@ class Registro extends StatelessWidget {
                           const SizedBox(height: 15),
                           ElevatedButton(
                             onPressed: () async {
-                              final usuario = usuarioController.text.trim();
-                              final password = passwordController.text.trim();
-                              final comparar = confirmPasswordController.text.trim();
-                              final nombre = nombreController.text.trim();
-                              final email = emailController.text.trim();
-
-                      
-                              if (formKey.currentState!.validate()) 
-                              {
-                                
-                                if (comparar == password)
-                                {
-                                       final query = await bds.collection('Usuarios').where('usuario', isEqualTo: usuario)
-                                       .get();
-                                       
-                                       if (query.docs.isNotEmpty)
-                                       {
-                                            ScaffoldMessenger.of(context).showSnackBar(
-                                            const SnackBar(content: Text('El nombre de usuario ya está en uso')),
-                                             );
-                                       }
-                                      else
-                                      {
-                                               final data = 
-                                              {
-                                                  'usuario': usuario,
-                                                  'nombre': nombre,
-                                                  'correo': email,
-                                                  'password': password
-                                              };
-                                      await bds.collection('Usuarios').add(data);
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                             const SnackBar(content:Text('Usuario Registrado'))
-                                       );
-                                       usuarioController.clear();
-                                       passwordController.clear();
-                                       confirmPasswordController.clear();
-                                       emailController.clear();
-                                       nombreController.clear();
-                                      }
-                                }
-                                else
-                                {
-                                   ScaffoldMessenger.of(context).showSnackBar(
-                                             const SnackBar(content:Text('Las contraseñas no coinciden'))
-                                       );
-                                }    
-                              }
+                              await onPressedRegistro(context);
                             },
                             child: const Text('Registrarte'),
                           ),

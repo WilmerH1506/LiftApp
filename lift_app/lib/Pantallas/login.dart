@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:lift_app/Routes/my_routes.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:lift_app/Validaciones/validaciones_login.dart';
 import 'package:lift_app/Widgets/custom_input.dart';
 
 // ignore: must_be_immutable
 class Login extends StatelessWidget {
-  Login({Key? key}) : super(key: key);
-
-  final TextEditingController usuarioController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  FirebaseFirestore bds = FirebaseFirestore.instance;
-
+ const Login({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,21 +53,7 @@ class Login extends StatelessWidget {
                           children: [
                             CustomInput(
                               controller: usuarioController,
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'El campo email es obligatorio';
-                                }
-                                if (!value.contains('@')) {
-                                  return 'El email no es válido';
-                                }
-                                if (value.length < 6) {
-                                  return 'El email debe tener al menos 6 caracteres';
-                                }
-                                if (!value.contains('.')) {
-                                  return 'El email no es válido';
-                                }
-                                return null;
-                              },
+                              validator: usuarioValidator,
                               obscureText: false,
                               labelText: 'Usuario',
                               prefixIcon: const Icon(Icons.person),
@@ -82,15 +62,7 @@ class Login extends StatelessWidget {
                             const SizedBox(height: 15),
                             CustomInput(
                               controller: passwordController,
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'El campo contraseña es obligatorio';
-                                }
-                                if (value.length < 6) {
-                                  return 'La contraseña debe tener al menos 6 caracteres';
-                                }
-                                return null;
-                              },
+                              validator: passwordValidator,
                               obscureText: true,
                               labelText: 'Contraseña',
                               prefixIcon: const Icon(Icons.lock),
@@ -107,25 +79,7 @@ class Login extends StatelessWidget {
                             ),
                             ElevatedButton(
                               onPressed: () async {
-                                final usuario = usuarioController.text.trim();
-                                final password = passwordController.text.trim();
-
-                                if (formKey.currentState!.validate()) 
-                                {
-                                   final queryUser = await bds.collection('Usuarios').where('usuario', isEqualTo: usuario).get();
-                                   final queryPass = await bds.collection('Usuarios').where('password', isEqualTo: password).get();
-
-                                   if (queryUser.docs.isNotEmpty && queryPass.docs.isNotEmpty)
-                                   {
-                                       Navigator.pushReplacementNamed(context, MyRoutes.inicio.name);
-                                   }
-                                   else
-                                   {
-                                      ScaffoldMessenger.of(context).showSnackBar(
-                                            const SnackBar(content: Text('Las credenciales ingresadas son incorrectas'))
-                                      );
-                                   }
-                                }
+                                await onPressedLogin(context);
                               },
                               child: const Text('Iniciar sesión'),
                             ),
