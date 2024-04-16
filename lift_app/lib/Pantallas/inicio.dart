@@ -1,13 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lift_app/Routes/my_routes.dart';
 
-void main() {
-  runApp(const MaterialApp(
-    home: Inicio(),
-  ));
-}
-
-
 class Inicio extends StatelessWidget {
   const Inicio({super.key});
 
