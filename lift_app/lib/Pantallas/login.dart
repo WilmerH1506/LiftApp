@@ -104,7 +104,7 @@ class Login extends StatelessWidget {
 
                                    if (queryUser.docs.isNotEmpty && queryPass.docs.isNotEmpty)
                                    {
-                                       Navigator.pushReplacementNamed(context, MyRoutes.inicio.name);
+                                       
                                    }
                                    else
                                    {
