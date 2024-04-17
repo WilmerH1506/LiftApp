@@ -93,22 +93,8 @@ class _LoginState extends State<Login> {
                                       _isLoading = true;
                                     });
 
-                                    final usuario = usuarioController.text.trim();
-                                    final password = passwordController.text.trim();
-
-                                    if (formKey.currentState!.validate()) {
-                                      final queryUser = await bds.collection('Usuarios').where('usuario', isEqualTo: usuario).get();
-                                      final queryPass = await bds.collection('Usuarios').where('password', isEqualTo: password).get();
-
-                                      if (queryUser.docs.isNotEmpty && queryPass.docs.isNotEmpty) {
-                                        await onPressedLogin(context);
-                                      } else {
-                                        ScaffoldMessenger.of(context).showSnackBar(
-                                          const SnackBar(content: Text('Las credenciales ingresadas son incorrectas')),
-                                        );
-                                      }
-                                    }
-
+                                    onPressedLogin(context);
+  
                                     setState(() {
                                       _isLoading = false;
                                     });
@@ -153,3 +139,24 @@ class _LoginState extends State<Login> {
     );
   }
 }
+
+
+ void credencialesIncorrectas(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('Error de Log in'),
+        content: const Text('Las credenciales ingresadas so incorrectas'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text('Aceptar'),
+          ),
+        ],
+      );
+    },
+  );
+} 

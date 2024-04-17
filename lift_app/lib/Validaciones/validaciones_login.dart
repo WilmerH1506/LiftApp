@@ -45,9 +45,28 @@ final TextEditingController usuarioController = TextEditingController();
        }
        else
        {
-          ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(content: Text('Las credenciales ingresadas no son incorrectas'))
-          );
+          credencialesIncorrectas(context);
        }
     }
   }
+
+  
+ void credencialesIncorrectas(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('Error de Log in'),
+        content: const Text('Las credenciales ingresadas son incorrectas'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text('Aceptar'),
+          ),
+        ],
+      );
+    },
+  );
+} 

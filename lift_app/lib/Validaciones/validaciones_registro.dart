@@ -84,9 +84,7 @@ Future<void> onPressedRegistro(BuildContext context) async {    //validacion del
              
              if (query.docs.isNotEmpty)
              {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('El nombre de usuario ya está en uso')),
-                   );
+                 usuarioExistente(context);
              }
             else
             {
@@ -98,9 +96,7 @@ Future<void> onPressedRegistro(BuildContext context) async {    //validacion del
                         'password': password
                     };
             await bds.collection('Usuarios').add(data);
-          ScaffoldMessenger.of(context).showSnackBar(
-                   const SnackBar(content:Text('Usuario Registrado'))
-             );
+            usuarioAgregado(context);
              usuarioController.clear();
              passwordController.clear();
              confirmPasswordController.clear();
@@ -110,9 +106,70 @@ Future<void> onPressedRegistro(BuildContext context) async {    //validacion del
       }
       else
       {
-         ScaffoldMessenger.of(context).showSnackBar(
-                   const SnackBar(content:Text('Las contraseñas no coinciden'))
-             );
+         contrasenaNo(context);
       }    
     }
   }                      
+
+
+
+ void usuarioExistente(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('Error de Registro'),
+        content: const Text('El usuario ya existe. Por favor, elige otro nombre de usuario.'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text('Aceptar'),
+          ),
+        ],
+      );
+    },
+  );
+} 
+
+
+ void usuarioAgregado(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('Informacion'),
+        content: const Text('Usuario Agregado con exito.'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text('Aceptar'),
+          ),
+        ],
+      );
+    },
+  );
+} 
+
+void contrasenaNo(BuildContext context) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: const Text('Error'),
+        content: const Text('Las contraseñas no concuerdan'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text('Aceptar'),
+          ),
+        ],
+      );
+    },
+  );
+} 
