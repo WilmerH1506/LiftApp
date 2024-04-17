@@ -1,60 +1,86 @@
 import 'package:flutter/material.dart';
-import 'package:lift_app/Routes/my_routes.dart';
 
-class Inicio extends StatelessWidget {
-  const Inicio({super.key});
+class CrearRutinasPage extends StatelessWidget {
+  const CrearRutinasPage({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return const Scaffold(
+      backgroundColor: Colors.black,
+      body: Center(
+        child: Text('Crear Rutinas', style: TextStyle(color: Colors.white)),
+      ),
+    );
+  }
+}
+
+class PerfilPage extends StatelessWidget {
+  const PerfilPage({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Center(
+        child: Text('Perfil', style: TextStyle(color: Colors.white)),
+      ),
+    );
+  }
+}
+
+// ignore: must_be_immutable
+class Inicio extends StatefulWidget {
+  Inicio({Key? key, this.currentIndex = 0}) : super(key: key);
+
+  int currentIndex;
+  @override
+  State<Inicio> createState() => _InicioState();
+}
+
+class _InicioState extends State<Inicio> {
+  final pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Gracias por elegir nuestra app'),
-        leading: 
-          IconButton(
-            onPressed: () {
-              Navigator.pushReplacementNamed(context, MyRoutes.login.name);
-            },
-            icon: const Icon(Icons.exit_to_app),
-          ),
+      backgroundColor: Colors.black,
+      body: PageView(
+        controller: pageController,
+        physics: const NeverScrollableScrollPhysics(),
+        onPageChanged: (value) {
+          widget.currentIndex = value;
+          setState(() {});
+        },
+        children: const [
+          CrearRutinasPage(),
+          PerfilPage(),
+        ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(
-              Icons.check_circle,
-              color: Colors.green,
-              size: 100,
-            ),
-            const SizedBox(height: 20),
-            const Text(
-              '¡Bienvenido de nuevo!',
-              style: TextStyle(fontSize: 24),
-            ),
-             
-            const SizedBox(height: 10),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: widget.currentIndex,
+        onTap: (index) {
+          widget.currentIndex = index;
 
-           
-
-            const Text(
-              'Has iniciado sesión exitosamente.',
-              style: TextStyle(fontSize: 16),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                // Acción al presionar el botón
-              },
-              child: const Text('Comenzar'),
-              style: ElevatedButton.styleFrom(
-                padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-              ),
-            ),
-          ],
-        ),
+          pageController.animateToPage(
+            index,
+            curve: Curves.easeIn,
+            duration: const Duration(milliseconds: 300),
+          );
+          setState(() {});
+        },
+        items: [
+          BottomNavigationBarItem(
+            icon: Image.asset('Assets/pesa.png', width: 35, height: 35),
+            label: 'Mis rutinas',
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset('Assets/mas.png', width: 35, height: 35),
+            label: 'Crear Rutinas',
+          ),
+          BottomNavigationBarItem(
+            icon: Image.asset('Assets/usuario.png', width: 35, height: 35),
+            label: 'Perfil',
+          ),
+        ],
+        selectedItemColor: const Color.fromARGB(255, 255, 255, 255),
       ),
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 typedef Validator = String? Function(String?);
 
+// ignore: must_be_immutable
 class CustomInput extends StatefulWidget {
   CustomInput({
     Key? key,

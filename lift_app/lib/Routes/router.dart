@@ -8,5 +8,5 @@ import 'package:lift_app/Pantallas/inicio.dart';
 final Map<String, Widget Function(BuildContext)> routes = {
   MyRoutes.login.name: (context) => Login(),
   MyRoutes.registro.name: (context) => Registro(),
-  MyRoutes.inicio.name: (context) => const Inicio(),
+  MyRoutes.inicio.name: (context) => Inicio(),
 };

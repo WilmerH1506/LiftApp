@@ -12,17 +12,9 @@ final TextEditingController usuarioController = TextEditingController();
    String? usuarioValidator(value) //validacion del campo de texto del usuario
    {
      if (value!.isEmpty) {
-       return 'El campo email es obligatorio';
+       return 'El campo Usuario es obligatorio';
      }
-     if (!value.contains('@')) {
-       return 'El email no es válido';
-     }
-     if (value.length < 6) {
-      return 'El email debe tener al menos 6 caracteres';
-     }
-     if (!value.contains('.')) {
-      return 'El email no es válido';
-     }
+    
       return null;
    }
   

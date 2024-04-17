@@ -79,7 +79,7 @@ class Login extends StatelessWidget {
                             ),
                             ElevatedButton(
                               onPressed: () async {
-<<<<<<< HEAD
+
                                 final usuario = usuarioController.text.trim();
                                 final password = passwordController.text.trim();
 
@@ -90,7 +90,7 @@ class Login extends StatelessWidget {
 
                                    if (queryUser.docs.isNotEmpty && queryPass.docs.isNotEmpty)
                                    {
-                                       
+                                       await onPressedLogin(context);
                                    }
                                    else
                                    {
@@ -99,9 +99,6 @@ class Login extends StatelessWidget {
                                       );
                                    }
                                 }
-=======
-                                await onPressedLogin(context);
->>>>>>> 20791fcb5b265c519cc4c94d81e24429d1ab27d5
                               },
                               child: const Text('Iniciar sesión'),
                             ),

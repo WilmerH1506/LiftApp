@@ -11,9 +11,14 @@ import 'package:flutter/material.dart';
   FirebaseFirestore bds = FirebaseFirestore.instance;
   
   
-  String? usuarioValidator(value) {   //Validacion del campo de texto del usuario
+  String? usuarioValidator(value) 
+                         {   //Validacion del campo de texto del usuario
                             if (value!.isEmpty) {
                               return 'El campo Usuario es obligatorio';
+                            }
+
+                            if (value.length < 4) {
+                              return 'El Usuario debe tener al menos 4 caracteres';
                             }
                             
                             return null;
@@ -44,6 +49,11 @@ import 'package:flutter/material.dart';
   String? passwordValidator(value) {    //Validacion del campo de texto de la contraseña
                             if (value!.isEmpty) {
                               return 'El campo contraseña es obligatorio';
+                            }
+
+                            if (value.length < 6)
+                            {
+                              return 'Su contraseña debe contener 6 caracteres';
                             }
                             return null;
                           }
