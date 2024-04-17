@@ -1,32 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:lift_app/Pantallas/crear_rutinas.dart';
+import 'package:lift_app/Pantallas/perfil.dart';
+import 'package:lift_app/Pantallas/rutinas.dart';
 
-class CrearRutinasPage extends StatelessWidget {
-  const CrearRutinasPage({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.black,
-      body: Center(
-        child: Text('Crear Rutinas', style: TextStyle(color: Colors.white)),
-      ),
-    );
-  }
-}
-
-class PerfilPage extends StatelessWidget {
-  const PerfilPage({Key? key}) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.black,
-      body: Center(
-        child: Text('Perfil', style: TextStyle(color: Colors.white)),
-      ),
-    );
-  }
-}
-
-// ignore: must_be_immutable
 class Inicio extends StatefulWidget {
   Inicio({Key? key, this.currentIndex = 0}) : super(key: key);
 
@@ -36,7 +12,7 @@ class Inicio extends StatefulWidget {
 }
 
 class _InicioState extends State<Inicio> {
-  final pageController = PageController();
+  final PageController pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
@@ -44,12 +20,13 @@ class _InicioState extends State<Inicio> {
       backgroundColor: Colors.black,
       body: PageView(
         controller: pageController,
-        physics: const NeverScrollableScrollPhysics(),
         onPageChanged: (value) {
-          widget.currentIndex = value;
-          setState(() {});
+          setState(() {
+            widget.currentIndex = value;
+          });
         },
         children: const [
+          RutinasPage(),
           CrearRutinasPage(),
           PerfilPage(),
         ],
@@ -57,14 +34,15 @@ class _InicioState extends State<Inicio> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: widget.currentIndex,
         onTap: (index) {
-          widget.currentIndex = index;
+          setState(() {
+            widget.currentIndex = index;
+          });
 
           pageController.animateToPage(
             index,
-            curve: Curves.easeIn,
             duration: const Duration(milliseconds: 300),
+            curve: Curves.ease,
           );
-          setState(() {});
         },
         items: [
           BottomNavigationBarItem(
@@ -80,7 +58,8 @@ class _InicioState extends State<Inicio> {
             label: 'Perfil',
           ),
         ],
-        selectedItemColor: const Color.fromARGB(255, 255, 255, 255),
+        selectedItemColor: const Color.fromARGB(255, 255, 251, 251),
+        backgroundColor: const Color.fromARGB(255, 46, 46, 46),
       ),
     );
   }
