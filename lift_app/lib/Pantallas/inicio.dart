@@ -46,15 +46,15 @@ class _InicioState extends State<Inicio> {
         },
         items: [
           BottomNavigationBarItem(
-            icon: Image.asset('Assets/pesa.png', width: 35, height: 35),
-            label: 'Mis rutinas',
+            icon: Image.asset('Assets/pesa.png', width: 33, height: 33),
+            label: '  Mis rutinas',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset('Assets/mas.png', width: 35, height: 35),
+            icon: Image.asset('Assets/mas.png', width: 32, height: 32),
             label: 'Crear Rutinas',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset('Assets/usuario.png', width: 35, height: 35),
+            icon: Image.asset('Assets/usuario.png', width: 31, height: 31),
             label: 'Perfil',
           ),
         ],
