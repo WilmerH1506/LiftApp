@@ -93,7 +93,7 @@ class _LoginState extends State<Login> {
                                       _isLoading = true;
                                     });
 
-                                    onPressedLogin(context);
+                                    await onPressedLogin(context);
   
                                     setState(() {
                                       _isLoading = false;
