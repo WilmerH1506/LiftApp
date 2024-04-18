@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:lift_app/Pantallas/crear_rutinas.dart';
 import 'package:lift_app/Pantallas/perfil.dart';
 import 'package:lift_app/Pantallas/rutinas.dart';
+import 'package:lift_app/Validaciones/validaciones_login.dart';
 
 class Inicio extends StatefulWidget {
   Inicio({Key? key, this.currentIndex = 0}) : super(key: key);
@@ -13,11 +15,15 @@ class Inicio extends StatefulWidget {
 
 class _InicioState extends State<Inicio> {
   final PageController pageController = PageController();
+FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
+    final usernameid = firestore.collection('Usuarios').snapshots();
+
     return Scaffold(
       backgroundColor: Colors.black,
+  
       body: PageView(
         controller: pageController,
         onPageChanged: (value) {
