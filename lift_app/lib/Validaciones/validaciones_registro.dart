@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:lift_app/Routes/my_routes.dart';
+
 
  final usuarioController = TextEditingController();
   final nombreController = TextEditingController();
@@ -102,6 +104,7 @@ Future<void> onPressedRegistro(BuildContext context) async {    //validacion del
              confirmPasswordController.clear();
              emailController.clear();
              nombreController.clear();
+            Navigator.pushReplacementNamed(context, MyRoutes.inicio.name);
             }
       }
       else

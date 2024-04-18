@@ -118,7 +118,7 @@ class _RegistroState extends State<Registro> {
                                       setState(() {
                                         _isLoading = true;
                                       });
-
+                                        
                                       await onPressedRegistro(context);
 
                                       setState(() {
