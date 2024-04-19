@@ -99,12 +99,13 @@ Future<void> onPressedRegistro(BuildContext context) async {    //validacion del
                     };
             await bds.collection('Usuarios').add(data);
             usuarioAgregado(context);
+           
+            Navigator.pushReplacementNamed(context, MyRoutes.inicio.name,arguments: usuarioController.text);
              usuarioController.clear();
              passwordController.clear();
              confirmPasswordController.clear();
              emailController.clear();
              nombreController.clear();
-            Navigator.pushReplacementNamed(context, MyRoutes.inicio.name);
             }
       }
       else

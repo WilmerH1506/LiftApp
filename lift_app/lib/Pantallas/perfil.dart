@@ -1,37 +1,32 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:lift_app/Routes/my_routes.dart';
 
 class PerfilPage extends StatelessWidget {
   const PerfilPage({Key? key}) : super(key: key);
   
   @override
   Widget build(BuildContext context) {
-    FirebaseFirestore firestore = FirebaseFirestore.instance;
+    final  user = ModalRoute.of(context)!.settings.arguments as String;
+
     return Scaffold(
       backgroundColor: Colors.black,
-    appBar: AppBar(
-        backgroundColor: Colors.redAccent,
-        title: StreamBuilder<QuerySnapshot>(
-          stream: firestore.collection('Usuarios').snapshots(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Text('Cargando...');
-            }
-            if (snapshot.hasError) {
-              return Text('Error: ${snapshot.error}');
-            }
-            // Extraer datos del snapshot
-            final datos = snapshot.data!.docs;
-            // Por ejemplo, asumimos que solo hay un documento y que contiene un campo 'usuario'
-            final usuario = datos.isNotEmpty ? datos[0]['usuario'] : '';
-            return Text(usuario,style: const TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold
-            ),);
-          },
-        ),
+      appBar: AppBar(
+       title: Text(user,style: const TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold
+          ),),
+          actions: [IconButton(
+            onPressed: () {
+            Navigator.pushReplacementNamed(context,MyRoutes.login.name);
+            },
+            icon: const Icon(Icons.logout),
+            
+          )],
+       backgroundColor: Colors.redAccent,
       ),
-      body: Center(
+    
+      body: const Center(
         child: Text('Contenido de la página de perfil', style: TextStyle(color: Colors.white)),
       ),
     );
