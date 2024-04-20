@@ -1,5 +1,8 @@
 enum MyRoutes {
   login,
   registro,
-  inicio
+  inicio,
+  abdominales,
+  crear_rutinas,
+  rutinas
 }

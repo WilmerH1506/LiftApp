@@ -19,7 +19,6 @@ FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   @override
   Widget build(BuildContext context) {
-    final usernameid = firestore.collection('Usuarios').snapshots();
 
     return Scaffold(
       backgroundColor: Colors.black,

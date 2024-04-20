@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lift_app/Routes/my_routes.dart';
 import 'package:lift_app/Widgets/board.dart';
 
 class CrearRutinasPage extends StatelessWidget {
@@ -7,6 +8,8 @@ class CrearRutinasPage extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+        final  user = ModalRoute.of(context)!.settings.arguments as String;
+
     return  Scaffold(
       appBar: AppBar(
         title: const Text('Crear Rutinas'),
@@ -26,7 +29,9 @@ class CrearRutinasPage extends StatelessWidget {
             ),
             Board(
                titulo: "Adominales",
-                ontap: (){}
+                ontap: (){
+                  Navigator.pushReplacementNamed(context, MyRoutes.abdominales.name , arguments: user);
+                }
                ),
             const Padding(padding:  EdgeInsets.only(top: 20),
             ),
