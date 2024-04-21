@@ -1,12 +1,12 @@
-
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:lift_app/Routes/my_routes.dart';
 
 
-class JalonPecho extends StatelessWidget {
-    const JalonPecho({Key? key}) : super(key: key);
+class Myabs extends StatelessWidget {
+    const Myabs({Key? key}) : super(key: key);
    
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class JalonPecho extends StatelessWidget {
         appBar: AppBar(
           title: const Row(
             children: [
-               Text('Jalon Al Pecho',style: TextStyle(
+               Text('Abdominales',style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold
           ),),
@@ -26,7 +26,7 @@ class JalonPecho extends StatelessWidget {
           ),
           backgroundColor: Colors.redAccent,
           actions: [IconButton(onPressed: () {
-            Navigator.pushReplacementNamed(context, MyRoutes.menu_espalda.name,arguments: user);
+            Navigator.pushReplacementNamed(context, MyRoutes.crear_rutinas.name,arguments: user);
           },
           icon: const Icon(Icons.logout),
           )],
@@ -57,7 +57,7 @@ class JalonPecho extends StatelessWidget {
            const  SizedBox(height: 25,),
          const Row(
             children: [
-            Text(' Jalon Al Pecho',style: TextStyle(
+            Text(' Abdonimales',style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
               fontSize: 25
@@ -68,7 +68,7 @@ class JalonPecho extends StatelessWidget {
            const  Row(
               children: [
                 SizedBox(width: 10,),
-            Text('Primario: Dorsal Ancho',style: TextStyle(
+            Text('Primario: Abdomen',style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
               fontSize: 17
@@ -80,7 +80,7 @@ class JalonPecho extends StatelessWidget {
           const  Row(
               children: [
                 SizedBox(width: 10,),
-            Text('Secundario: Trapecio, Biceps, Romboides',style: TextStyle(
+            Text('Secundario: -----',style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w600,
               fontSize: 17
@@ -129,7 +129,7 @@ class JalonPecho extends StatelessWidget {
                 children: [
                   SizedBox(width: 1,),
                   Column(children: [
-                    Text('      4 Sets',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
+                    Text('      3 Sets',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
                     SizedBox(height: 5,),
                     Text('      10 - 15',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
                     SizedBox(height: 5,),
@@ -149,7 +149,7 @@ class JalonPecho extends StatelessWidget {
                   Column(children: [
                     Text('   4 Sets',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
                     SizedBox(height: 5,),
-                    Text('   6 - 10',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
+                    Text('   8 - 10',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
                     SizedBox(height: 5,),
                     Text('   Repeticiones',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
 

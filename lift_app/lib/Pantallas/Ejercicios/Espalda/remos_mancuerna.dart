@@ -1,12 +1,12 @@
-import 'dart:ui';
+
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:lift_app/Routes/my_routes.dart';
 
 
-class Myabs extends StatelessWidget {
-    const Myabs({Key? key}) : super(key: key);
+class RemosMancuerna extends StatelessWidget {
+    const RemosMancuerna({Key? key}) : super(key: key);
    
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class Myabs extends StatelessWidget {
         appBar: AppBar(
           title: const Row(
             children: [
-               Text('Abdominales',style: TextStyle(
+               Text('Remo Con Mancuerna',style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold
           ),),
@@ -26,7 +26,7 @@ class Myabs extends StatelessWidget {
           ),
           backgroundColor: Colors.redAccent,
           actions: [IconButton(onPressed: () {
-            Navigator.pushReplacementNamed(context, MyRoutes.inicio.name,arguments: user);
+            Navigator.pushReplacementNamed(context, MyRoutes.menu_espalda.name,arguments: user);
           },
           icon: const Icon(Icons.logout),
           )],
@@ -57,7 +57,7 @@ class Myabs extends StatelessWidget {
            const  SizedBox(height: 25,),
          const Row(
             children: [
-            Text(' Abdonimales',style: TextStyle(
+            Text(' Remos Con Mancuerna',style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
               fontSize: 25
@@ -68,7 +68,7 @@ class Myabs extends StatelessWidget {
            const  Row(
               children: [
                 SizedBox(width: 10,),
-            Text('Primario: Abdomen',style: TextStyle(
+            Text('Primario: Dorsales, Deltoides, Espalda Baja',style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
               fontSize: 17
@@ -80,7 +80,7 @@ class Myabs extends StatelessWidget {
           const  Row(
               children: [
                 SizedBox(width: 10,),
-            Text('Secundario: -----',style: TextStyle(
+            Text('Secundario: Trapecio, Biceps, Romboides',style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.w600,
               fontSize: 17
@@ -129,7 +129,7 @@ class Myabs extends StatelessWidget {
                 children: [
                   SizedBox(width: 1,),
                   Column(children: [
-                    Text('      3 Sets',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
+                    Text('      4 Sets',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
                     SizedBox(height: 5,),
                     Text('      10 - 15',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
                     SizedBox(height: 5,),
@@ -149,7 +149,7 @@ class Myabs extends StatelessWidget {
                   Column(children: [
                     Text('   4 Sets',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
                     SizedBox(height: 5,),
-                    Text('   8 - 10',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
+                    Text('   6 - 10',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
                     SizedBox(height: 5,),
                     Text('   Repeticiones',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
 

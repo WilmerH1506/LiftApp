@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lift_app/Routes/my_routes.dart';
 import 'package:lift_app/Widgets/board.dart';
 
-class CrearRutinasPage extends StatelessWidget {
-  const CrearRutinasPage({Key? key}) : super(key: key);
+class MenuBiceps extends StatelessWidget {
+  const MenuBiceps({Key? key}) : super(key: key);
 
   
   @override
@@ -11,10 +11,10 @@ class CrearRutinasPage extends StatelessWidget {
         final  user = ModalRoute.of(context)!.settings.arguments as String;
 
     return  Scaffold(
-       appBar: AppBar(
+    appBar: AppBar(
           title: const Row(
             children: [
-               Text('Crear Rutinas',style: TextStyle(
+               Text('Menu De Biceps',style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold
           ),),
@@ -23,7 +23,7 @@ class CrearRutinasPage extends StatelessWidget {
           ),
           backgroundColor: Colors.redAccent,
           actions: [IconButton(onPressed: () {
-            Navigator.pushReplacementNamed(context, MyRoutes.inicio.name,arguments: user);
+            Navigator.pushReplacementNamed(context, MyRoutes.menu_torso.name,arguments: user);
           },
           icon: const Icon(Icons.logout),
           )],
@@ -36,36 +36,37 @@ class CrearRutinasPage extends StatelessWidget {
               padding:  EdgeInsets.only(top: 20),
             ),
             Board(
-              titulo: "Tren Superior",
+              titulo: "Curl De Biceps",
                ontap: (){
-                Navigator.pushReplacementNamed(context, MyRoutes.menu_torso.name , arguments: user);
-
+                Navigator.pushReplacementNamed(context, MyRoutes.curl.name,arguments: user);
                },),
            const  Padding(
               padding:  EdgeInsets.only(top: 20),
             ),
             Board(
-               titulo: "Adominales",
+               titulo: "Predicador",
                 ontap: (){
-                  Navigator.pushReplacementNamed(context, MyRoutes.abdominales.name , arguments: user);
+                  Navigator.pushReplacementNamed(context, MyRoutes.predicador.name , arguments: user);
                 }
                ),
             const Padding(padding:  EdgeInsets.only(top: 20),
             ),
             Board(
-            titulo: "Tren inferior",
+            titulo: "Martillo",
             ontap: (){
-              Navigator.pushReplacementNamed(context, MyRoutes.menu_inferior.name,arguments: user);
+            Navigator.pushReplacementNamed(context, MyRoutes.martillo.name , arguments: user);
+
             }
             ),
             const Padding(padding:  EdgeInsets.only(top: 20),
             ),
             Board(
-              titulo: "Espalda",
-              ontap: (){
-              Navigator.pushReplacementNamed(context, MyRoutes.menu_espalda.name , arguments: user);
-              }
-              ),
+            titulo: "Antebrazo",
+            ontap: (){
+            Navigator.pushReplacementNamed(context, MyRoutes.antebrazo.name , arguments: user);
+
+            }
+            ),
               
           ],
         ),

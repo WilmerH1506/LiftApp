@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lift_app/Routes/my_routes.dart';
 import 'package:lift_app/Widgets/board.dart';
 
-class CrearRutinasPage extends StatelessWidget {
-  const CrearRutinasPage({Key? key}) : super(key: key);
+class MenuEspalda extends StatelessWidget {
+  const MenuEspalda({Key? key}) : super(key: key);
 
   
   @override
@@ -11,10 +11,10 @@ class CrearRutinasPage extends StatelessWidget {
         final  user = ModalRoute.of(context)!.settings.arguments as String;
 
     return  Scaffold(
-       appBar: AppBar(
+    appBar: AppBar(
           title: const Row(
             children: [
-               Text('Crear Rutinas',style: TextStyle(
+               Text('Menu Espalda',style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold
           ),),
@@ -36,37 +36,46 @@ class CrearRutinasPage extends StatelessWidget {
               padding:  EdgeInsets.only(top: 20),
             ),
             Board(
-              titulo: "Tren Superior",
+              titulo: "Jalon Al Pecho",
                ontap: (){
-                Navigator.pushReplacementNamed(context, MyRoutes.menu_torso.name , arguments: user);
-
+                Navigator.pushReplacementNamed(context, MyRoutes.jalon_pecho.name, arguments: user );
                },),
            const  Padding(
               padding:  EdgeInsets.only(top: 20),
             ),
             Board(
-               titulo: "Adominales",
+               titulo: "Remos Con Barra",
                 ontap: (){
-                  Navigator.pushReplacementNamed(context, MyRoutes.abdominales.name , arguments: user);
+                  Navigator.pushReplacementNamed(context, MyRoutes.remos.name , arguments: user);
                 }
                ),
             const Padding(padding:  EdgeInsets.only(top: 20),
             ),
             Board(
-            titulo: "Tren inferior",
+            titulo: "Pull-Ups (Dominadas)",
             ontap: (){
-              Navigator.pushReplacementNamed(context, MyRoutes.menu_inferior.name,arguments: user);
+            Navigator.pushReplacementNamed(context, MyRoutes.pullups.name , arguments: user);
+
             }
             ),
             const Padding(padding:  EdgeInsets.only(top: 20),
             ),
             Board(
-              titulo: "Espalda",
+              titulo: "Face-Pulls (Jalones A La Cabeza)",
               ontap: (){
-              Navigator.pushReplacementNamed(context, MyRoutes.menu_espalda.name , arguments: user);
+              Navigator.pushReplacementNamed(context, MyRoutes.face_pulls.name , arguments: user);
+
               }
               ),
-              
+               const Padding(padding:  EdgeInsets.only(top: 20),
+            ),
+            Board(
+              titulo: "Remos Con Mancuerna",
+              ontap: (){
+              Navigator.pushReplacementNamed(context, MyRoutes.remos_mancuerna.name , arguments: user);
+
+              }
+              )
           ],
         ),
       ),

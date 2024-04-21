@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:lift_app/Pantallas/crear_rutinas.dart';
 import 'package:lift_app/Pantallas/perfil.dart';
 import 'package:lift_app/Pantallas/rutinas.dart';
-import 'package:lift_app/Validaciones/validaciones_login.dart';
 
 class Inicio extends StatefulWidget {
   Inicio({Key? key, this.currentIndex = 0}) : super(key: key);
@@ -31,8 +30,8 @@ FirebaseFirestore firestore = FirebaseFirestore.instance;
           });
         },
         children: const [
-          RutinasPage(),
           CrearRutinasPage(),
+          RutinasPage(),
           PerfilPage(),
         ],
       ),
@@ -50,13 +49,13 @@ FirebaseFirestore firestore = FirebaseFirestore.instance;
           );
         },
         items: [
+             BottomNavigationBarItem(
+            icon: Image.asset('Assets/mas.png', width: 32, height: 32),
+            label: 'Crear Rutinas',
+          ),
           BottomNavigationBarItem(
             icon: Image.asset('Assets/pesa.png', width: 33, height: 33),
             label: '  Mis rutinas',
-          ),
-          BottomNavigationBarItem(
-            icon: Image.asset('Assets/mas.png', width: 32, height: 32),
-            label: 'Crear Rutinas',
           ),
           BottomNavigationBarItem(
             icon: Image.asset('Assets/usuario.png', width: 31, height: 31),

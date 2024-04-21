@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:lift_app/Routes/my_routes.dart';
 import 'package:lift_app/Widgets/board.dart';
 
-class CrearRutinasPage extends StatelessWidget {
-  const CrearRutinasPage({Key? key}) : super(key: key);
+class TrenSuperior extends StatelessWidget {
+  const TrenSuperior({Key? key}) : super(key: key);
 
   
   @override
@@ -11,10 +11,10 @@ class CrearRutinasPage extends StatelessWidget {
         final  user = ModalRoute.of(context)!.settings.arguments as String;
 
     return  Scaffold(
-       appBar: AppBar(
+    appBar: AppBar(
           title: const Row(
             children: [
-               Text('Crear Rutinas',style: TextStyle(
+               Text('Menu Tren Superior',style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold
           ),),
@@ -23,7 +23,7 @@ class CrearRutinasPage extends StatelessWidget {
           ),
           backgroundColor: Colors.redAccent,
           actions: [IconButton(onPressed: () {
-            Navigator.pushReplacementNamed(context, MyRoutes.inicio.name,arguments: user);
+            Navigator.pushReplacementNamed(context, MyRoutes.menu_torso.name,arguments: user);
           },
           icon: const Icon(Icons.logout),
           )],
@@ -36,34 +36,42 @@ class CrearRutinasPage extends StatelessWidget {
               padding:  EdgeInsets.only(top: 20),
             ),
             Board(
-              titulo: "Tren Superior",
+              titulo: "Fondos",
                ontap: (){
-                Navigator.pushReplacementNamed(context, MyRoutes.menu_torso.name , arguments: user);
-
+                Navigator.pushReplacementNamed(context, MyRoutes.fondos.name,arguments: user);
                },),
            const  Padding(
               padding:  EdgeInsets.only(top: 20),
             ),
             Board(
-               titulo: "Adominales",
+               titulo: "Extension De Triceps Con Polea",
                 ontap: (){
-                  Navigator.pushReplacementNamed(context, MyRoutes.abdominales.name , arguments: user);
+                  Navigator.pushReplacementNamed(context, MyRoutes.extension_polea.name , arguments: user);
                 }
                ),
             const Padding(padding:  EdgeInsets.only(top: 20),
             ),
             Board(
-            titulo: "Tren inferior",
+            titulo: "Extension De Triceps Con Barra",
             ontap: (){
-              Navigator.pushReplacementNamed(context, MyRoutes.menu_inferior.name,arguments: user);
+            Navigator.pushReplacementNamed(context, MyRoutes.extension_barra.name , arguments: user);
+
             }
             ),
             const Padding(padding:  EdgeInsets.only(top: 20),
             ),
             Board(
-              titulo: "Espalda",
+              titulo: "Press Frances",
               ontap: (){
-              Navigator.pushReplacementNamed(context, MyRoutes.menu_espalda.name , arguments: user);
+              Navigator.pushReplacementNamed(context, MyRoutes.press_frances.name , arguments: user);
+              }
+              ),
+              const Padding(padding:  EdgeInsets.only(top: 20),
+            ),
+            Board(
+              titulo: "Extension De Triceps Sobre La Cabeza",
+              ontap: (){
+              Navigator.pushReplacementNamed(context, MyRoutes.sobrecabeza.name , arguments: user);
               }
               ),
               
