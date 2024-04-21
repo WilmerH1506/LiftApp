@@ -17,7 +17,7 @@ class SobreCabeza extends StatelessWidget {
         appBar: AppBar(
           title: const Row(
             children: [
-               Text('Extensiones Sobre Cabeza',style: TextStyle(
+               Text('Extension Sobre Cabeza',style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold
           ),),
@@ -90,7 +90,7 @@ class SobreCabeza extends StatelessWidget {
              const SizedBox(height: 28,),
              //Niveles
              const Row(children: [
-              SizedBox(width: 20,),
+              SizedBox(width: 1,),
               Text('Principiante',style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -112,7 +112,7 @@ class SobreCabeza extends StatelessWidget {
              //Estrellas
             const SizedBox(height: 5,),
             const Row(children: [
-             SizedBox(width: 71,),
+             SizedBox(width: 53,),
              Icon(Icons.star,color: Colors.yellow,),
               SizedBox(width: 83,),
               Icon(Icons.star,color: Colors.yellow,),
@@ -129,29 +129,29 @@ class SobreCabeza extends StatelessWidget {
                 children: [
                   SizedBox(width: 1,),
                   Column(children: [
-                    Text('      4 Sets',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
+                    Text('    4 Sets',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
                     SizedBox(height: 5,),
-                    Text('      10 - 15',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
+                    Text('    10 - 15',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
                     SizedBox(height: 5,),
-                    Text('        Repeticiones',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
+                    Text('      Repeticiones',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
 
                   ],),
-                  SizedBox(width: 14,),
+                  SizedBox(width: 5,),
                   Column(children: [
-                    Text('      4 Sets',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
+                    Text('   4 Sets',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
                     SizedBox(height: 5,),
-                    Text('      8 - 12',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
+                    Text('   8 - 12',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
                     SizedBox(height: 5,),
-                    Text('        Repeticiones',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
+                    Text('     Repeticiones',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
 
                   ],),
                   SizedBox(width: 17,),
                   Column(children: [
-                    Text('   4 Sets',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
+                    Text(' 4 Sets',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
                     SizedBox(height: 5,),
-                    Text('   6 - 10',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
+                    Text(' 6 - 10',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
                     SizedBox(height: 5,),
-                    Text('   Repeticiones',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
+                    Text(' Repeticiones',style: TextStyle(color: Colors.white,fontWeight: FontWeight.w500,fontSize: 15),),
 
                   ],),
                 ],),
@@ -159,11 +159,11 @@ class SobreCabeza extends StatelessWidget {
                 const Row(children: [
                   Column(children: [
                     Text('**Nota: Debe elegir un peso el cual se sienta comodo realizandolo',
-                    style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w400,fontSize: 12),),
+                    style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w400,fontSize: 11),),
                     Text('El peso debe ser el maximo posible que le permita realizar',
-                    style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w400,fontSize: 12),),
+                    style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w400,fontSize: 11),),
                       Text('Con la mejor tecnica para mejores resultados',
-                    style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w400,fontSize: 12),),
+                    style: TextStyle(color: Colors.grey,fontWeight: FontWeight.w400,fontSize: 11),),
                   ],)
                 ],),
                const  SizedBox(height: 40,),
