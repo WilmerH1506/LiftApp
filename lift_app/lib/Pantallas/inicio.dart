@@ -29,7 +29,7 @@ FirebaseFirestore firestore = FirebaseFirestore.instance;
             widget.currentIndex = value;
           });
         },
-        children: const [
+        children: const  [
           CrearRutinasPage(),
           RutinasPage(),
           PerfilPage(),

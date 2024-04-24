@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:lift_app/Routes/my_routes.dart';
+import 'package:lift_app/Widgets/adddatebar.dart';
+import 'package:lift_app/Widgets/addrutinesbar.dart';
+
 
 class PerfilPage extends StatelessWidget {
-  const PerfilPage({Key? key}) : super(key: key);
+ const  PerfilPage({Key? key}) : super(key: key);
   
   @override
   Widget build(BuildContext context) {
@@ -25,9 +28,14 @@ class PerfilPage extends StatelessWidget {
        backgroundColor: Colors.redAccent,
       ),
     
-      body: const Center(
-        child: Text('Contenido de la página de perfil', style: TextStyle(color: Colors.white)),
-      ),
-    );
+      body: Column(
+        children: [
+          addRutinebar(context),
+          addDatebar(),
+        ],
+        )
+      );
   }
 }
+
+

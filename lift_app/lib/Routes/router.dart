@@ -57,6 +57,7 @@ import 'package:lift_app/Pantallas/Ejercicios/tren_superior.dart/Triceps/press_f
 import 'package:lift_app/Pantallas/Ejercicios/tren_superior.dart/Triceps/sobrecabeza.dart';
 import 'package:lift_app/Pantallas/Ejercicios/abdominales.dart';
 import 'package:lift_app/Pantallas/Ejercicios/tren_superior.dart/menu_torso.dart';
+import 'package:lift_app/Pantallas/addrutinascalendar_page.dart';
 import 'package:lift_app/Pantallas/crear_rutinas.dart';
 import 'package:lift_app/Pantallas/registro.dart';
 import 'package:lift_app/Pantallas/rutinas.dart';
@@ -116,5 +117,6 @@ final Map<String, Widget Function(BuildContext)> routes = {
   MyRoutes.sumo.name: (context) => Sumo(),
   MyRoutes.menu_pantorillas.name: (context) => MenuPantorillas(),
   MyRoutes.elevaciones_parado.name: (context) => ElevacionesParado(),
-  MyRoutes.elevaciones_sentado.name: (context) => ElevacionesSentado()
+  MyRoutes.elevaciones_sentado.name: (context) =>  ElevacionesSentado(),
+  MyRoutes.addrutineCalendar.name: (context) => AddRuntineCalendar(),
 };

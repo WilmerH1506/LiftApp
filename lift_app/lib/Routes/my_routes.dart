@@ -49,6 +49,6 @@ enum MyRoutes {
  sumo,
  menu_pantorillas,
  elevaciones_parado,
- elevaciones_sentado
-
+ elevaciones_sentado,
+ addrutineCalendar
 }
