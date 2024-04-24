@@ -39,7 +39,9 @@ class MenuCuadriceps extends StatelessWidget {
               titulo: "Sentadilla",
                ontap: (){
                 Navigator.pushReplacementNamed(context, MyRoutes.sentadilla.name,arguments: user);
-               },),
+               },
+               imagen: Image.asset('Assets/Sentadilla.png'),
+               ),
            const  Padding(
               padding:  EdgeInsets.only(top: 20),
             ),
@@ -47,7 +49,8 @@ class MenuCuadriceps extends StatelessWidget {
                titulo: "Extensiones",
                 ontap: (){
                   Navigator.pushReplacementNamed(context, MyRoutes.extensiones.name , arguments: user);
-                }
+                },
+                imagen: Image.asset('Assets/Extensiones.png'),
                ),
             const Padding(padding:  EdgeInsets.only(top: 20),
             ),
@@ -55,8 +58,8 @@ class MenuCuadriceps extends StatelessWidget {
             titulo: "Prensa",
             ontap: (){
             Navigator.pushReplacementNamed(context, MyRoutes.prensa.name , arguments: user);
-
-            }
+            },
+            imagen: Image.asset('Assets/Prensa.png'),
             ),
             const Padding(padding:  EdgeInsets.only(top: 20),
             ),
@@ -64,8 +67,8 @@ class MenuCuadriceps extends StatelessWidget {
             titulo: "Bulgaras",
             ontap: (){
             Navigator.pushReplacementNamed(context, MyRoutes.bulgaras.name , arguments: user);
-
-            }
+            },
+            imagen: Image.asset('Assets/Bulgaras.png'),
             ),
              const Padding(padding:  EdgeInsets.only(top: 20),
             ),
@@ -73,8 +76,8 @@ class MenuCuadriceps extends StatelessWidget {
             titulo: "Zancadas",
             ontap: (){
             Navigator.pushReplacementNamed(context, MyRoutes.zancadas.name , arguments: user);
-
-            }
+            },
+            imagen: Image.asset('Assets/Zancadas.png'),
             ),
               
           ],

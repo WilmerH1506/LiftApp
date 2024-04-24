@@ -39,7 +39,9 @@ class MenuGluteo extends StatelessWidget {
               titulo: "Sentadilla Sumo",
                ontap: (){
                 Navigator.pushReplacementNamed(context, MyRoutes.sumo.name,arguments: user);
-               },),
+               },
+               imagen: Image.asset('Assets/Sumo.png'),
+               ),
            const  Padding(
               padding:  EdgeInsets.only(top: 20),
             ),
@@ -47,7 +49,8 @@ class MenuGluteo extends StatelessWidget {
                titulo: "Patada De Gluteo",
                 ontap: (){
                   Navigator.pushReplacementNamed(context, MyRoutes.patada.name , arguments: user);
-                }
+                },
+                imagen: Image.asset('Assets/Patada.png'),
                ),
             const Padding(padding:  EdgeInsets.only(top: 20),
             ),
@@ -55,8 +58,8 @@ class MenuGluteo extends StatelessWidget {
             titulo: "Hip Thrust",
             ontap: (){
             Navigator.pushReplacementNamed(context, MyRoutes.hip_thrust.name , arguments: user);
-
-            }
+            },
+            imagen: Image.asset('Assets/HipTrust.png'),
             ),
             
               

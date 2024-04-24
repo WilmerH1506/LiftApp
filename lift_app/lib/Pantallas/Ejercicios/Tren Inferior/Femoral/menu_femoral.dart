@@ -36,18 +36,21 @@ class MenuFemoral extends StatelessWidget {
               padding:  EdgeInsets.only(top: 20),
             ),
             Board(
-              titulo: "Femoral Maquina Acostado",
+              titulo: "Femoral Acostado",
                ontap: (){
                 Navigator.pushReplacementNamed(context, MyRoutes.femoral_acostado.name,arguments: user);
-               },),
+               },
+               imagen: Image.asset('Assets/FemoralAcos.png'),
+               ),
            const  Padding(
               padding:  EdgeInsets.only(top: 20),
             ),
             Board(
-               titulo: "Femoral Maquina Sentado",
+               titulo: "Femoral Sentado",
                 ontap: (){
                   Navigator.pushReplacementNamed(context, MyRoutes.femoral_sentado.name , arguments: user);
-                }
+                },
+                imagen: Image.asset('Assets/FemoralSent.png'),
                ),
             const Padding(padding:  EdgeInsets.only(top: 20),
             ),
@@ -55,11 +58,9 @@ class MenuFemoral extends StatelessWidget {
             titulo: "Peso Muerto",
             ontap: (){
             Navigator.pushReplacementNamed(context, MyRoutes.pesomuerto.name , arguments: user);
-
-            }
+            },
+            imagen: Image.asset('Assets/Pesomuerto.png'),
             ),
-            
-              
           ],
         ),
       ),
