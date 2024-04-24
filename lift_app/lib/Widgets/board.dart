@@ -12,12 +12,12 @@ class Board extends StatelessWidget {
       child: Container(
          decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Colors.blueGrey,
+                color: Colors.redAccent,
               ),
-              height: 180,
+              height: 90,
               alignment: Alignment.center,
               margin: const EdgeInsets.only(right: 20, left: 20),
-              child: Text(titulo),
+              child: Text(titulo, style: const TextStyle(fontWeight: FontWeight.bold),),
       ),
     );
   }

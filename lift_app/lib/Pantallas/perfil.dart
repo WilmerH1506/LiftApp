@@ -12,7 +12,7 @@ class PerfilPage extends StatelessWidget {
       backgroundColor: Colors.black,
       appBar: AppBar(
        title: Text(user,style: const TextStyle(
-            color: Colors.white,
+            color: Colors.black,
             fontWeight: FontWeight.bold
           ),),
           actions: [IconButton(

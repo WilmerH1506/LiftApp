@@ -22,11 +22,7 @@ class CrearRutinasPage extends StatelessWidget {
             ],
           ),
           backgroundColor: Colors.redAccent,
-          actions: [IconButton(onPressed: () {
-            Navigator.pushReplacementNamed(context, MyRoutes.inicio.name,arguments: user);
-          },
-          icon: const Icon(Icons.logout),
-          )],
+         
         ),
       backgroundColor: Colors.black,
       body:  SingleChildScrollView(
