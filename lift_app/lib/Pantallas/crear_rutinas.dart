@@ -36,15 +36,18 @@ class CrearRutinasPage extends StatelessWidget {
                ontap: (){
                 Navigator.pushReplacementNamed(context, MyRoutes.menu_torso.name , arguments: user);
 
-               },),
+               },
+               imagen: Image.asset('Assets/Superior.png'),
+               ),
            const  Padding(
               padding:  EdgeInsets.only(top: 20),
             ),
             Board(
-               titulo: "Adominales",
+               titulo: "Abdominales",
                 ontap: (){
                   Navigator.pushReplacementNamed(context, MyRoutes.abdominales.name , arguments: user);
-                }
+                },
+                imagen: Image.asset('Assets/Abs.png'),
                ),
             const Padding(padding:  EdgeInsets.only(top: 20),
             ),
@@ -52,7 +55,8 @@ class CrearRutinasPage extends StatelessWidget {
             titulo: "Tren inferior",
             ontap: (){
               Navigator.pushReplacementNamed(context, MyRoutes.menu_inferior.name,arguments: user);
-            }
+            },
+            imagen: Image.asset('Assets/Inferior.png'),
             ),
             const Padding(padding:  EdgeInsets.only(top: 20),
             ),
@@ -60,7 +64,8 @@ class CrearRutinasPage extends StatelessWidget {
               titulo: "Espalda",
               ontap: (){
               Navigator.pushReplacementNamed(context, MyRoutes.menu_espalda.name , arguments: user);
-              }
+              },
+              imagen: Image.asset('Assets/Espalda.png'),
               ),
               
           ],

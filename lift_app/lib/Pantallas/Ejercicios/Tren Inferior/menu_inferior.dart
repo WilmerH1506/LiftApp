@@ -39,7 +39,9 @@ class MenuPierna extends StatelessWidget {
               titulo: "Cuadriceps",
                ontap: (){
                 Navigator.pushReplacementNamed(context, MyRoutes.menu_cuadriceps.name,arguments: user);
-               },),
+               },
+               imagen: Image.asset('Assets/Cuadriceps.png'),
+               ),
            const  Padding(
               padding:  EdgeInsets.only(top: 20),
             ),
@@ -47,7 +49,8 @@ class MenuPierna extends StatelessWidget {
                titulo: "Femorales",
                 ontap: (){
                   Navigator.pushReplacementNamed(context, MyRoutes.menu_femoral.name , arguments: user);
-                }
+                },
+                imagen: Image.asset('Assets/Femorales.png'),
                ),
             const Padding(padding:  EdgeInsets.only(top: 20),
             ),
@@ -55,8 +58,8 @@ class MenuPierna extends StatelessWidget {
             titulo: "Abductores",
             ontap: (){
             Navigator.pushReplacementNamed(context, MyRoutes.abductores.name , arguments: user);
-
-            }
+            },
+            imagen: Image.asset('Assets/Abductores.png'),
             ),
             const Padding(padding:  EdgeInsets.only(top: 20),
             ),
@@ -64,7 +67,8 @@ class MenuPierna extends StatelessWidget {
               titulo: "Gluteos",
               ontap: (){
               Navigator.pushReplacementNamed(context, MyRoutes.menu_gluteo.name , arguments: user);
-              }
+              },
+              imagen: Image.asset('Assets/Gluteos.png'),
               ),
               const Padding(padding:  EdgeInsets.only(top: 20),
             ),
@@ -72,7 +76,8 @@ class MenuPierna extends StatelessWidget {
               titulo: "Pantorillas",
               ontap: (){
               Navigator.pushReplacementNamed(context, MyRoutes.menu_pantorillas.name , arguments: user);
-              }
+              },
+              imagen: Image.asset('Assets/Pantorillas.png'),
               ),          
           ],
         ),

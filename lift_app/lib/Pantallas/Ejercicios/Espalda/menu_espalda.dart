@@ -39,7 +39,9 @@ class MenuEspalda extends StatelessWidget {
               titulo: "Jalon Al Pecho",
                ontap: (){
                 Navigator.pushReplacementNamed(context, MyRoutes.jalon_pecho.name, arguments: user );
-               },),
+               },
+               imagen: Image.asset('Assets/JalonEsp.png'),
+               ),
            const  Padding(
               padding:  EdgeInsets.only(top: 20),
             ),
@@ -47,7 +49,8 @@ class MenuEspalda extends StatelessWidget {
                titulo: "Remos Con Barra",
                 ontap: (){
                   Navigator.pushReplacementNamed(context, MyRoutes.remos.name , arguments: user);
-                }
+                },
+                imagen: Image.asset('Assets/Remos.png'),
                ),
             const Padding(padding:  EdgeInsets.only(top: 20),
             ),
@@ -55,17 +58,17 @@ class MenuEspalda extends StatelessWidget {
             titulo: "Pull-Ups (Dominadas)",
             ontap: (){
             Navigator.pushReplacementNamed(context, MyRoutes.pullups.name , arguments: user);
-
-            }
+            },
+            imagen: Image.asset('Assets/Pullups.png'),
             ),
             const Padding(padding:  EdgeInsets.only(top: 20),
             ),
             Board(
-              titulo: "Face-Pulls (Jalones A La Cabeza)",
+              titulo: "Face-Pulls",
               ontap: (){
               Navigator.pushReplacementNamed(context, MyRoutes.face_pulls.name , arguments: user);
-
-              }
+              },
+              imagen: Image.asset('Assets/Jalones.png'),
               ),
                const Padding(padding:  EdgeInsets.only(top: 20),
             ),
@@ -73,8 +76,8 @@ class MenuEspalda extends StatelessWidget {
               titulo: "Remos Con Mancuerna",
               ontap: (){
               Navigator.pushReplacementNamed(context, MyRoutes.remos_mancuerna.name , arguments: user);
-
-              }
+              },
+              imagen: Image.asset('Assets/Remos2.png'),
               )
           ],
         ),

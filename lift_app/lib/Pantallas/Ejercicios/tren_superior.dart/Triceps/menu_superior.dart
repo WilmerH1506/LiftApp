@@ -44,7 +44,7 @@ class TrenSuperior extends StatelessWidget {
               padding:  EdgeInsets.only(top: 20),
             ),
             Board(
-               titulo: "Extension De Triceps Con Polea",
+               titulo: "Extension con Polea",
                 ontap: (){
                   Navigator.pushReplacementNamed(context, MyRoutes.extension_polea.name , arguments: user);
                 }
@@ -52,7 +52,7 @@ class TrenSuperior extends StatelessWidget {
             const Padding(padding:  EdgeInsets.only(top: 20),
             ),
             Board(
-            titulo: "Extension De Triceps Con Barra",
+            titulo: "Extension con Barra",
             ontap: (){
             Navigator.pushReplacementNamed(context, MyRoutes.extension_barra.name , arguments: user);
 
@@ -69,7 +69,7 @@ class TrenSuperior extends StatelessWidget {
               const Padding(padding:  EdgeInsets.only(top: 20),
             ),
             Board(
-              titulo: "Extension De Triceps Sobre La Cabeza",
+              titulo: "Extension Sobre La Cabeza",
               ontap: (){
               Navigator.pushReplacementNamed(context, MyRoutes.sobrecabeza.name , arguments: user);
               }
