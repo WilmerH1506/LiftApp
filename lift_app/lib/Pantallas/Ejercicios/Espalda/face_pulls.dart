@@ -68,7 +68,7 @@ class FacePulls extends StatelessWidget {
            const  Row(
               children: [
                 SizedBox(width: 10,),
-            Text('Primario: Espalda Alta,Deltoides Posteriores',style: TextStyle(
+            Text('Primario: Espalda Alta,Deltoides',style: TextStyle(
               color: Colors.white,
               fontWeight: FontWeight.bold,
               fontSize: 17
