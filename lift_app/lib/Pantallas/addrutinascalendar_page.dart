@@ -1,8 +1,9 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
+import 'package:lift_app/Temas/temas.dart';
 import 'package:lift_app/Widgets/custom_add.dart';
+import 'package:lift_app/Widgets/mybutton.dart';
 
 class AddRuntineCalendar extends StatefulWidget {
   const AddRuntineCalendar({super.key});
@@ -15,6 +16,9 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
   DateTime selectedDate = DateTime.now();
   String endTime = "9:30 PM";
   String startTime = DateFormat("hh:mm a").format(DateTime.now()).toString();
+  int selectedRemind = 5;
+  List<int> remindList = [5, 10, 15, 20, 25, 30];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,11 +73,41 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
                   ),
                 ],
               ),
+              const SizedBox(
+                height: 10,
+              ),
+              DropdownButtonFormField<int>(
+                value: selectedRemind,
+                items: remindList
+                    .map((e) => DropdownMenuItem(
+                          child: Text("$e minutos antes"),
+                          value: e,
+                        ))
+                    .toList(),
+                onChanged: (value) {
+                  if (value != null) {
+                    setState(() {
+                      selectedRemind = value;
+                    });
+                  }
+                },
+                decoration: const InputDecoration(
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              ElevatedButton(
+                onPressed: () {},
+                child: const Text("Agregar rutina",
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+              )
             ],
           ),
         ),
       ),
-      
     );
   }
 
@@ -92,36 +126,32 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
       return;
     }
   }
-  
-      void showPickerStart(){
-        showTimePicker(
-          context: context,
-          initialTime: TimeOfDay.now()
-        ).then((value) {
-          if(value != null){
-            final now = DateTime.now();
-            var selectedTime = DateTime(now.year, now.month, now.day, value.hour, value.minute);
 
-              if( selectedDate != DateTime.now()){
-                setState(() {
-                startTime = DateFormat("hh:mm a").format(selectedTime).toString();
-              });
-              }
-              else if(selectedTime.isAfter(DateTime.now())){
-              setState(() {
-                startTime = DateFormat("hh:mm a").format(selectedTime).toString();
-              });
-            }else{
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text("Selecciona una hora válida"),
-                  backgroundColor: Colors.redAccent,
-                )
-              );
-            }
-          }
-        });
+  void showPickerStart() {
+    showTimePicker(context: context, initialTime: TimeOfDay.now())
+        .then((value) {
+      if (value != null) {
+        final now = DateTime.now();
+        var selectedTime =
+            DateTime(now.year, now.month, now.day, value.hour, value.minute);
+
+        if (selectedDate != DateTime.now()) {
+          setState(() {
+            startTime = DateFormat("hh:mm a").format(selectedTime).toString();
+          });
+        } else if (selectedTime.isAfter(DateTime.now())) {
+          setState(() {
+            startTime = DateFormat("hh:mm a").format(selectedTime).toString();
+          });
+        } else {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text("Selecciona una hora válida"),
+            backgroundColor: Colors.redAccent,
+          ));
+        }
       }
+    });
+  }
 
   void showPickerend() {
     showTimePicker(
@@ -130,7 +160,8 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
     ).then((value) {
       if (value != null) {
         final now = DateTime.now();
-        var selectedTime = DateTime(now.year, now.month, now.day, value.hour, value.minute);
+        var selectedTime =
+            DateTime(now.year, now.month, now.day, value.hour, value.minute);
 
         if (selectedDate != DateTime.now()) {
           setState(() {
@@ -151,5 +182,4 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
       }
     });
   }
-
 }
