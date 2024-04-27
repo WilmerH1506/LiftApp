@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:get/get.dart';
 import 'package:lift_app/Routes/my_routes.dart';
 import 'package:lift_app/Widgets/adddatebar.dart';
 import 'package:lift_app/Widgets/addrutinesbar.dart';
@@ -62,7 +63,7 @@ class PerfilPage extends StatelessWidget {
                 child: FadeInAnimation(
                   child:GestureDetector(
                     onTap: () {
-                      
+                      showBottomSheet(context , rutina);
                     },
                     child: Container(
                       alignment: Alignment.center,
@@ -100,8 +101,50 @@ class PerfilPage extends StatelessWidget {
     );
   }
 
-  showBottomSheet(BuildContext context) {
-    
+  showBottomSheet(BuildContext context, rutina) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          height: MediaQuery.of(context).size.height * 0.24,
+          width: double.infinity,
+          color: Colors.white,
+          child: Column(
+            children: [
+              Container(
+                width: 120,
+                height: 5,
+                decoration: BoxDecoration(
+                  color: Colors.grey[300],
+                  borderRadius: BorderRadius.circular(10),
+                ),
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  
+                }, 
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.purple[300],
+                ),
+                child: const Text('     Rutina Completa     '),
+               
+              ),
+               const SizedBox(height: 20),
+              ElevatedButton(
+                onPressed: () {
+                  
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.red[300],
+                ),
+                child: const Text('      Eliminar Rutina      '),
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }
 
