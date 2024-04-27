@@ -11,9 +11,11 @@ import 'package:lift_app/Widgets/getgatefromuser.dart';
 addDatebar(){
   DateTime selectedDate = DateTime.now();
   final micontroller = Get.put(MiController());
+  DatePickerController? controllerDate;
   return Container(
             margin: const EdgeInsets.only(top: 20,left: 20),
             child: DatePicker(
+              controller: controllerDate.obs.value,
               DateTime.now(),
               height: 100,
               width: 80,
@@ -46,8 +48,7 @@ addDatebar(){
                 print(micontroller.selectedDate1 );
                 setState(() {
                   selectedDate = date;
-                });
-                
+                }); 
               },
             ),
     );

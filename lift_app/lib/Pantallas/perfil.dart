@@ -47,13 +47,15 @@ class _PerfilPageState extends State<PerfilPage> {
        backgroundColor: Colors.redAccent,
       ),
     
-      body: Column(
+      body:
+       Column(
         children: [
           addRutinebar(context),
           addDatebar(),
           showAgenda(),
         ],
         )
+        
         
       );
   }
