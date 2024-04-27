@@ -29,9 +29,9 @@ FirebaseFirestore firestore = FirebaseFirestore.instance;
             widget.currentIndex = value;
           });
         },
-        children: const  [
-          CrearRutinasPage(),
-          RutinasPage(),
+        children:   [
+         const CrearRutinasPage(),
+         const RutinasPage(),
           PerfilPage(),
         ],
       ),

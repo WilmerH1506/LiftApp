@@ -1,11 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:lift_app/Routes/my_routes.dart';
 import 'package:lift_app/Widgets/adddatebar.dart';
 import 'package:lift_app/Widgets/addrutinesbar.dart';
 
 
 class PerfilPage extends StatelessWidget {
- const  PerfilPage({Key? key}) : super(key: key);
+  PerfilPage({Key? key}) : super(key: key);
+  FirebaseFirestore instance = FirebaseFirestore.instance;
   
   @override
   Widget build(BuildContext context) {
@@ -32,9 +35,73 @@ class PerfilPage extends StatelessWidget {
         children: [
           addRutinebar(context),
           addDatebar(),
+          showAgenda(),
         ],
         )
+        
       );
+  }
+
+  showAgenda(){
+     final rutina = instance.collection('Rutinas').snapshots();
+    return StreamBuilder(
+      stream: rutina,
+      builder: (BuildContext context, AsyncSnapshot snapshot) {
+        if (snapshot.hasData) {
+              final listarutina = snapshot.data!.docs;
+
+        return Expanded(
+        child: ListView.builder(
+          itemCount: listarutina.length,
+          itemBuilder: (BuildContext context, int index) {
+            final rutina = listarutina[index];
+            return AnimationConfiguration.staggeredList(
+              position: index,
+              duration: const Duration(milliseconds: 375),
+               child: SlideAnimation(
+                child: FadeInAnimation(
+                  child:GestureDetector(
+                    onTap: () {
+                      
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      width: MediaQuery.of(context).size.width * 0.9,
+                      padding: const EdgeInsets.all(10),
+                      margin: const EdgeInsets.only(top: 20,left: 20,right: 20),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                  
+                      child: Column(
+                        children: [
+                        //  Text(rutina['date'],style: const TextStyle(
+                        //    fontWeight: FontWeight.bold
+                        //  ),),
+                          Text(rutina['startTime']),
+                          Text(rutina['endTime']),
+                        //  Text(rutina['remind'].toString()),
+                        ],
+                      ),
+                    ),
+                  ) ,)
+                   ,)
+                   ) ;
+          },
+        )
+      );
+      } else {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      }
+      },
+    );
+  }
+
+  showBottomSheet(BuildContext context) {
+    
   }
 }
 

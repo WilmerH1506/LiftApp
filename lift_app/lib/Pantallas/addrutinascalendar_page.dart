@@ -104,7 +104,7 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
               ElevatedButton(
                 onPressed: () async{
                   final data = {
-                    "date": selectedDate,
+                    "date": DateFormat.yMd().format(selectedDate),
                     "startTime": startTime,
                     "endTime": endTime,
                     "remind": selectedRemind,
