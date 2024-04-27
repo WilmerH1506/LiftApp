@@ -1,12 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:intl/intl.dart';
+import 'package:lift_app/Variables_Globales/var_seleddate.dart';
 import 'package:lift_app/Widgets/custom_add.dart';
+//importar glovaldate
 
 class AddRuntineCalendar extends StatefulWidget {
   const AddRuntineCalendar({super.key});
-
+  
   @override
   State<AddRuntineCalendar> createState() => _AddRuntineCalendarState();
 }
@@ -120,7 +123,7 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
                     return;
                   }
 
-                 final respuesta = await instance.collection("Rutinas").add(data);
+                 final respuesta = await instance.collection("Agenda").add(data);
 
                  confirmTextdate = "";
                  confirmTextstartTime = "";
@@ -147,7 +150,7 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
       lastDate: DateTime(DateTime.now().year + 10),
     );
     if (date != null) {
-      setState(() {
+        setState(() {
         selectedDate = date;
       });
     } else {

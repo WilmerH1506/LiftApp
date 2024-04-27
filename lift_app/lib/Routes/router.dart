@@ -59,6 +59,7 @@ import 'package:lift_app/Pantallas/Ejercicios/abdominales.dart';
 import 'package:lift_app/Pantallas/Ejercicios/tren_superior.dart/menu_torso.dart';
 import 'package:lift_app/Pantallas/addrutinascalendar_page.dart';
 import 'package:lift_app/Pantallas/crear_rutinas.dart';
+import 'package:lift_app/Pantallas/perfil.dart';
 import 'package:lift_app/Pantallas/registro.dart';
 import 'package:lift_app/Pantallas/rutinas.dart';
 import 'my_routes.dart';
