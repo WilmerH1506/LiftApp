@@ -38,7 +38,7 @@ class _CustomInputState extends State<Customadd> {
             //controller: widget.controller,
             keyboardType: TextInputType.text,
             decoration: InputDecoration(
-              hintText: widget.hint,
+              hintText: widget.hint ,
               border: widget.bordes,
             ),
           ),

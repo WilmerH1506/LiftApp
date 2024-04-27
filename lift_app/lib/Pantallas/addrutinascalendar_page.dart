@@ -1,9 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
-import 'package:lift_app/Temas/temas.dart';
 import 'package:lift_app/Widgets/custom_add.dart';
-import 'package:lift_app/Widgets/mybutton.dart';
 
 class AddRuntineCalendar extends StatefulWidget {
   const AddRuntineCalendar({super.key});
@@ -18,7 +17,11 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
   String startTime = DateFormat("hh:mm a").format(DateTime.now()).toString();
   int selectedRemind = 5;
   List<int> remindList = [5, 10, 15, 20, 25, 30];
-
+   final instance = FirebaseFirestore.instance;
+   String? confirmTextdate= "";
+   String? confirmTextendTime= "";
+   String? confirmTextstartTime= "";
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,7 +102,32 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
                 height: 20,
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () async{
+                  final data = {
+                    "date": selectedDate,
+                    "startTime": startTime,
+                    "endTime": endTime,
+                    "remind": selectedRemind,
+                  };
+
+                  if(confirmTextdate !="Confirmar"|| confirmTextstartTime !="Confirmar" || confirmTextendTime !="Confirmar"){
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text("Todos los campos son obligatorios"),
+                        backgroundColor: Colors.redAccent,
+                      ),
+                    );
+                    return;
+                  }
+
+                 final respuesta = await instance.collection("Rutinas").add(data);
+
+                 confirmTextdate = "";
+                 confirmTextstartTime = "";
+                 confirmTextendTime = "";
+
+                print(respuesta);
+                },
                 child: const Text("Agregar rutina",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
@@ -125,11 +153,14 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
     } else {
       return;
     }
+    confirmTextdate = "Confirmar";
+    print(confirmTextdate);
   }
 
   void showPickerStart() {
     showTimePicker(context: context, initialTime: TimeOfDay.now())
         .then((value) {
+
       if (value != null) {
         final now = DateTime.now();
         var selectedTime =
@@ -150,6 +181,8 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
           ));
         }
       }
+       confirmTextstartTime = "Confirmar";
+       print(confirmTextstartTime);
     });
   }
 
@@ -181,5 +214,7 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
         }
       }
     });
+     confirmTextendTime = "Confirmar";
+     print(confirmTextendTime);
   }
 }
