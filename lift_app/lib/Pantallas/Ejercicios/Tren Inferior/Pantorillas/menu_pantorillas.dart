@@ -39,7 +39,9 @@ class MenuPantorillas extends StatelessWidget {
               titulo: "Elevaciones De Pie",
                ontap: (){
                 Navigator.pushReplacementNamed(context, MyRoutes.elevaciones_parado.name,arguments: user);
-               },),
+               },
+               imagen: Image.asset('Assets/Parado.png'),
+               ),
            const  Padding(
               padding:  EdgeInsets.only(top: 20),
             ),
@@ -47,7 +49,8 @@ class MenuPantorillas extends StatelessWidget {
                titulo: "Elevaciones Sentado",
                 ontap: (){
                   Navigator.pushReplacementNamed(context, MyRoutes.elevaciones_sentado.name , arguments: user);
-                }
+                },
+                imagen: Image.asset('Assets/Sentado.png'),
                ),            
           ],
         ),

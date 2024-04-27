@@ -1,9 +1,6 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:lift_app/Routes/my_routes.dart';
-
+import 'package:lift_app/Widgets/agregargif.dart';
 
 class Curl extends StatelessWidget {
     const Curl({Key? key}) : super(key: key);
@@ -39,7 +36,7 @@ class Curl extends StatelessWidget {
               
             child: Container(
               width: 500,
-              height: 200,
+              height: 300,
               decoration:  BoxDecoration(
                 color: Colors.deepOrange,
                 borderRadius: BorderRadius.circular(15),
@@ -48,10 +45,20 @@ class Curl extends StatelessWidget {
                   width: 5
                 ),               
               ),
-             child: const Text('Texto de ejemplo',style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold
-             ),),
+             child:FutureBuilder<Widget>(
+                                        future: AggGif('Videos/curl bicep.gif').getGifWidget(),
+                                        builder: (context, snapshot) 
+                                        {
+                                            if (snapshot.connectionState == ConnectionState.waiting) 
+                                            {
+                                                return const Center(child: CircularProgressIndicator());
+                                            }  
+                                            else 
+                                            {
+                                                return snapshot.data!;
+                                            }
+                                        },
+                                    ),
             ),           
             ),
            const  SizedBox(height: 25,),

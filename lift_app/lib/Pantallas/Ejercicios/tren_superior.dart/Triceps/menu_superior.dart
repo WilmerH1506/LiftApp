@@ -14,7 +14,7 @@ class TrenSuperior extends StatelessWidget {
     appBar: AppBar(
           title: const Row(
             children: [
-               Text('Menu Tren Superior',style: TextStyle(
+               Text('Menu Triceps',style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.bold
           ),),
@@ -39,7 +39,9 @@ class TrenSuperior extends StatelessWidget {
               titulo: "Fondos",
                ontap: (){
                 Navigator.pushReplacementNamed(context, MyRoutes.fondos.name,arguments: user);
-               },),
+               },
+               imagen: Image.asset('Assets/Fondos.png'),
+               ),
            const  Padding(
               padding:  EdgeInsets.only(top: 20),
             ),
@@ -47,7 +49,8 @@ class TrenSuperior extends StatelessWidget {
                titulo: "Extension con Polea",
                 ontap: (){
                   Navigator.pushReplacementNamed(context, MyRoutes.extension_polea.name , arguments: user);
-                }
+                },
+                imagen: Image.asset('Assets/Polea.png'),
                ),
             const Padding(padding:  EdgeInsets.only(top: 20),
             ),
@@ -55,8 +58,8 @@ class TrenSuperior extends StatelessWidget {
             titulo: "Extension con Barra",
             ontap: (){
             Navigator.pushReplacementNamed(context, MyRoutes.extension_barra.name , arguments: user);
-
-            }
+            },
+            imagen: Image.asset('Assets/Barra.png'),
             ),
             const Padding(padding:  EdgeInsets.only(top: 20),
             ),
@@ -64,15 +67,17 @@ class TrenSuperior extends StatelessWidget {
               titulo: "Press Frances",
               ontap: (){
               Navigator.pushReplacementNamed(context, MyRoutes.press_frances.name , arguments: user);
-              }
+              },
+              imagen: Image.asset('Assets/Frances.png'),
               ),
               const Padding(padding:  EdgeInsets.only(top: 20),
             ),
             Board(
-              titulo: "Extension Sobre La Cabeza",
+              titulo: "Extension Sobre Cabeza",
               ontap: (){
               Navigator.pushReplacementNamed(context, MyRoutes.sobrecabeza.name , arguments: user);
-              }
+              },
+              imagen: Image.asset('Assets/SobreC.png'),
               ),
               
           ],

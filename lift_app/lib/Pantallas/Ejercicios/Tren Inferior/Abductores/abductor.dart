@@ -1,9 +1,6 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:lift_app/Routes/my_routes.dart';
-
+import 'package:lift_app/Widgets/agregargif.dart';
 
 class Abductores extends StatelessWidget {
     const Abductores({Key? key}) : super(key: key);
@@ -48,10 +45,20 @@ class Abductores extends StatelessWidget {
                   width: 5
                 ),               
               ),
-             child: const Text('Texto de ejemplo',style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold
-             ),),
+             child: FutureBuilder<Widget>(
+                                        future: AggGif('Videos/abductor.gif').getGifWidget(),
+                                        builder: (context, snapshot) 
+                                        {
+                                            if (snapshot.connectionState == ConnectionState.waiting) 
+                                            {
+                                                return const Center(child: CircularProgressIndicator());
+                                            }  
+                                            else 
+                                            {
+                                                return snapshot.data!;
+                                            }
+                                        },
+                                    ),
             ),           
             ),
            const  SizedBox(height: 25,),

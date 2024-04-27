@@ -39,7 +39,9 @@ class MenuPecho extends StatelessWidget {
               titulo: "Press Inclinado",
                ontap: (){
                 Navigator.pushReplacementNamed(context, MyRoutes.pecho_superior.name,arguments: user);
-               },),
+               },
+               imagen: Image.asset('Assets/Inclinado.png'),
+               ),
            const  Padding(
               padding:  EdgeInsets.only(top: 20),
             ),
@@ -47,7 +49,8 @@ class MenuPecho extends StatelessWidget {
                titulo: "Press Plano",
                 ontap: (){
                   Navigator.pushReplacementNamed(context, MyRoutes.pecho_plano.name , arguments: user);
-                }
+                },
+                imagen: Image.asset('Assets/Plano.png'),
                ),
             const Padding(padding:  EdgeInsets.only(top: 20),
             ),
@@ -55,8 +58,8 @@ class MenuPecho extends StatelessWidget {
             titulo: "Press Declinado",
             ontap: (){
             Navigator.pushReplacementNamed(context, MyRoutes.pecho_inferior.name , arguments: user);
-
-            }
+            },
+            imagen: Image.asset('Assets/Declinado.png'),
             ),
            
               

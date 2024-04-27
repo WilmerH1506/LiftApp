@@ -39,7 +39,9 @@ class MenuHombro extends StatelessWidget {
               titulo: "Press Militar",
                ontap: (){
                 Navigator.pushReplacementNamed(context, MyRoutes.press_militar.name,arguments: user);
-               },),
+               },
+               imagen: Image.asset('Assets/Militar.png'),
+               ),
            const  Padding(
               padding:  EdgeInsets.only(top: 20),
             ),
@@ -47,7 +49,8 @@ class MenuHombro extends StatelessWidget {
                titulo: "Vuelos Laterales",
                 ontap: (){
                   Navigator.pushReplacementNamed(context, MyRoutes.laterales.name , arguments: user);
-                }
+                },
+                imagen: Image.asset('Assets/VuelosL.png'),
                ),
             const Padding(padding:  EdgeInsets.only(top: 20),
             ),
@@ -55,8 +58,8 @@ class MenuHombro extends StatelessWidget {
             titulo: "Vuelos Posteriores",
             ontap: (){
             Navigator.pushReplacementNamed(context, MyRoutes.vuelos_posteriores.name , arguments: user);
-
-            }
+            },
+            imagen: Image.asset('Assets/Posteriores.png'),
             ),
             
               

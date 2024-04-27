@@ -39,7 +39,9 @@ class MenuBiceps extends StatelessWidget {
               titulo: "Curl De Biceps",
                ontap: (){
                 Navigator.pushReplacementNamed(context, MyRoutes.curl.name,arguments: user);
-               },),
+               },
+               imagen: Image.asset('Assets/CurlB.png'),
+               ),
            const  Padding(
               padding:  EdgeInsets.only(top: 20),
             ),
@@ -47,7 +49,8 @@ class MenuBiceps extends StatelessWidget {
                titulo: "Predicador",
                 ontap: (){
                   Navigator.pushReplacementNamed(context, MyRoutes.predicador.name , arguments: user);
-                }
+                },
+                imagen: Image.asset('Assets/Predicador.png'),
                ),
             const Padding(padding:  EdgeInsets.only(top: 20),
             ),
@@ -55,8 +58,8 @@ class MenuBiceps extends StatelessWidget {
             titulo: "Martillo",
             ontap: (){
             Navigator.pushReplacementNamed(context, MyRoutes.martillo.name , arguments: user);
-
-            }
+            },
+            imagen: Image.asset('Assets/Martillo.png'),
             ),
             const Padding(padding:  EdgeInsets.only(top: 20),
             ),
@@ -64,8 +67,8 @@ class MenuBiceps extends StatelessWidget {
             titulo: "Antebrazo",
             ontap: (){
             Navigator.pushReplacementNamed(context, MyRoutes.antebrazo.name , arguments: user);
-
-            }
+            },
+            imagen: Image.asset('Assets/Antebrazo.png'),
             ),
               
           ],

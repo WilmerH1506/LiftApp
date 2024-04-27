@@ -39,7 +39,9 @@ class MenuTorso extends StatelessWidget {
               titulo: "Triceps",
                ontap: (){
                 Navigator.pushReplacementNamed(context, MyRoutes.menu_superior.name,arguments: user);
-               },),
+               },
+               imagen: Image.asset('Assets/Triceps.png'),
+               ),
            const  Padding(
               padding:  EdgeInsets.only(top: 20),
             ),
@@ -47,7 +49,8 @@ class MenuTorso extends StatelessWidget {
                titulo: "Pecho",
                 ontap: (){
                   Navigator.pushReplacementNamed(context, MyRoutes.menu_pecho.name , arguments: user);
-                }
+                },
+                imagen: Image.asset('Assets/Superior.png'),
                ),
             const Padding(padding:  EdgeInsets.only(top: 20),
             ),
@@ -55,8 +58,8 @@ class MenuTorso extends StatelessWidget {
             titulo: "Biceps",
             ontap: (){
             Navigator.pushReplacementNamed(context, MyRoutes.menu_biceps.name , arguments: user);
-
-            }
+            },
+            imagen: Image.asset('Assets/Biceps.png'),
             ),
             const Padding(padding:  EdgeInsets.only(top: 20),
             ),
@@ -64,9 +67,9 @@ class MenuTorso extends StatelessWidget {
               titulo: "Hombro",
               ontap: (){
               Navigator.pushReplacementNamed(context, MyRoutes.menu_hombros.name , arguments: user);
-              }
-              ),
-                           
+              },
+              imagen: Image.asset('Assets/Hombros.png'),
+              ),           
           ],
         ),
       ),

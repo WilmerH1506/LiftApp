@@ -1,7 +1,5 @@
-
-
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
+import 'package:lift_app/Widgets/agregargif.dart';
 import 'package:lift_app/Routes/my_routes.dart';
 
 
@@ -39,7 +37,7 @@ class Posteriores extends StatelessWidget {
               
             child: Container(
               width: 500,
-              height: 200,
+              height: 250,
               decoration:  BoxDecoration(
                 color: Colors.deepOrange,
                 borderRadius: BorderRadius.circular(15),
@@ -48,10 +46,20 @@ class Posteriores extends StatelessWidget {
                   width: 5
                 ),               
               ),
-             child: const Text('Texto de ejemplo',style: TextStyle(
-              color: Colors.black,
-              fontWeight: FontWeight.bold
-             ),),
+             child: FutureBuilder<Widget>(
+                                        future: AggGif('Videos/posterior.gif').getGifWidget(),
+                                        builder: (context, snapshot) 
+                                        {
+                                            if (snapshot.connectionState == ConnectionState.waiting) 
+                                            {
+                                                return const Center(child: CircularProgressIndicator());
+                                            }  
+                                            else 
+                                            {
+                                                return snapshot.data!;
+                                            }
+                                        },
+                                    ),
             ),           
             ),
            const  SizedBox(height: 25,),
