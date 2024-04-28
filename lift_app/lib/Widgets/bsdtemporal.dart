@@ -2,10 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Temporal {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-
-  // Método para agregar datos a Firestore con validación
+  
   Future<void> bsdTemporal(String user, String exercise) async {
-    // Definir la colección 'RutinaTemporal'
+    
     final collection = _firestore.collection('RutinaTemporal');
 
     try {
