@@ -8,7 +8,11 @@ class MenuTorso extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-        final  user = ModalRoute.of(context)!.settings.arguments as String;
+      
+      final arguments = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+      
+        final user = arguments['user'];
+        final name = arguments['name'];
 
     return  Scaffold(
     appBar: AppBar(
@@ -23,7 +27,10 @@ class MenuTorso extends StatelessWidget {
           ),
           backgroundColor: Colors.redAccent,
           actions: [IconButton(onPressed: () {
-            Navigator.pushReplacementNamed(context, MyRoutes.crear_rutinas.name,arguments:user);
+           Navigator.pushReplacementNamed(context, MyRoutes.crear_rutinas.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
           },
           icon: const Icon(Icons.logout),
           )],
@@ -38,7 +45,10 @@ class MenuTorso extends StatelessWidget {
             Board(
               titulo: "Triceps",
                ontap: (){
-                Navigator.pushReplacementNamed(context, MyRoutes.menu_superior.name,arguments: user);
+                  Navigator.pushReplacementNamed(context, MyRoutes.menu_superior.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
                },
                imagen: Image.asset('Assets/Triceps.png'),
                ),
@@ -48,7 +58,10 @@ class MenuTorso extends StatelessWidget {
             Board(
                titulo: "Pecho",
                 ontap: (){
-                  Navigator.pushReplacementNamed(context, MyRoutes.menu_pecho.name , arguments: user);
+                     Navigator.pushReplacementNamed(context, MyRoutes.menu_pecho.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
                 },
                 imagen: Image.asset('Assets/Superior.png'),
                ),
@@ -57,7 +70,10 @@ class MenuTorso extends StatelessWidget {
             Board(
             titulo: "Biceps",
             ontap: (){
-            Navigator.pushReplacementNamed(context, MyRoutes.menu_biceps.name , arguments: user);
+                Navigator.pushReplacementNamed(context, MyRoutes.menu_biceps.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
             },
             imagen: Image.asset('Assets/Biceps.png'),
             ),
@@ -66,7 +82,10 @@ class MenuTorso extends StatelessWidget {
             Board(
               titulo: "Hombro",
               ontap: (){
-              Navigator.pushReplacementNamed(context, MyRoutes.menu_hombros.name , arguments: user);
+                 Navigator.pushReplacementNamed(context, MyRoutes.menu_hombros.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
               },
               imagen: Image.asset('Assets/Hombros.png'),
               ),           

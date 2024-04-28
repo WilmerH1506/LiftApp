@@ -8,7 +8,10 @@ class TrenSuperior extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-        final  user = ModalRoute.of(context)!.settings.arguments as String;
+        final arguments = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+      
+        final user = arguments['user'];
+        final name = arguments['name'];
 
     return  Scaffold(
     appBar: AppBar(
@@ -23,7 +26,10 @@ class TrenSuperior extends StatelessWidget {
           ),
           backgroundColor: Colors.redAccent,
           actions: [IconButton(onPressed: () {
-            Navigator.pushReplacementNamed(context, MyRoutes.menu_torso.name,arguments: user);
+               Navigator.pushReplacementNamed(context, MyRoutes.menu_torso.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
           },
           icon: const Icon(Icons.logout),
           )],
@@ -38,7 +44,10 @@ class TrenSuperior extends StatelessWidget {
             Board(
               titulo: "Fondos",
                ontap: (){
-                Navigator.pushReplacementNamed(context, MyRoutes.fondos.name,arguments: user);
+                 Navigator.pushReplacementNamed(context, MyRoutes.fondos.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
                },
                imagen: Image.asset('Assets/Fondos.png'),
                ),
@@ -48,7 +57,10 @@ class TrenSuperior extends StatelessWidget {
             Board(
                titulo: "Extension con Polea",
                 ontap: (){
-                  Navigator.pushReplacementNamed(context, MyRoutes.extension_polea.name , arguments: user);
+                  Navigator.pushReplacementNamed(context, MyRoutes.extension_polea.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
                 },
                 imagen: Image.asset('Assets/Polea.png'),
                ),
@@ -57,7 +69,10 @@ class TrenSuperior extends StatelessWidget {
             Board(
             titulo: "Extension con Barra",
             ontap: (){
-            Navigator.pushReplacementNamed(context, MyRoutes.extension_barra.name , arguments: user);
+             Navigator.pushReplacementNamed(context, MyRoutes.extension_barra.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
             },
             imagen: Image.asset('Assets/Barra.png'),
             ),
@@ -66,7 +81,10 @@ class TrenSuperior extends StatelessWidget {
             Board(
               titulo: "Press Frances",
               ontap: (){
-              Navigator.pushReplacementNamed(context, MyRoutes.press_frances.name , arguments: user);
+                Navigator.pushReplacementNamed(context, MyRoutes.press_frances.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
               },
               imagen: Image.asset('Assets/Frances.png'),
               ),
@@ -75,7 +93,10 @@ class TrenSuperior extends StatelessWidget {
             Board(
               titulo: "Extension Sobre Cabeza",
               ontap: (){
-              Navigator.pushReplacementNamed(context, MyRoutes.sobrecabeza.name , arguments: user);
+                Navigator.pushReplacementNamed(context, MyRoutes.sobrecabeza.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
               },
               imagen: Image.asset('Assets/SobreC.png'),
               ),

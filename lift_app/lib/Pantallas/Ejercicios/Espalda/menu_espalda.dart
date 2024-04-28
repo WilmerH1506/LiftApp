@@ -8,7 +8,10 @@ class MenuEspalda extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-        final  user = ModalRoute.of(context)!.settings.arguments as String;
+        final arguments = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+      
+        final user = arguments['user'];
+        final name = arguments['name'];
 
     return  Scaffold(
     appBar: AppBar(
@@ -23,7 +26,10 @@ class MenuEspalda extends StatelessWidget {
           ),
           backgroundColor: Colors.redAccent,
           actions: [IconButton(onPressed: () {
-            Navigator.pushReplacementNamed(context, MyRoutes.crear_rutinas.name,arguments: user);
+               Navigator.pushReplacementNamed(context, MyRoutes.crear_rutinas.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
           },
           icon: const Icon(Icons.logout),
           )],
@@ -38,7 +44,10 @@ class MenuEspalda extends StatelessWidget {
             Board(
               titulo: "Jalon Al Pecho",
                ontap: (){
-                Navigator.pushReplacementNamed(context, MyRoutes.jalon_pecho.name, arguments: user );
+                Navigator.pushReplacementNamed(context, MyRoutes.jalon_pecho.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
                },
                imagen: Image.asset('Assets/JalonEsp.png'),
                ),
@@ -48,7 +57,10 @@ class MenuEspalda extends StatelessWidget {
             Board(
                titulo: "Remos Con Barra",
                 ontap: (){
-                  Navigator.pushReplacementNamed(context, MyRoutes.remos.name , arguments: user);
+                 Navigator.pushReplacementNamed(context, MyRoutes.remos.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
                 },
                 imagen: Image.asset('Assets/Remos.png'),
                ),
@@ -57,7 +69,10 @@ class MenuEspalda extends StatelessWidget {
             Board(
             titulo: "Pull-Ups (Dominadas)",
             ontap: (){
-            Navigator.pushReplacementNamed(context, MyRoutes.pullups.name , arguments: user);
+            Navigator.pushReplacementNamed(context, MyRoutes.pullups.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
             },
             imagen: Image.asset('Assets/Pullups.png'),
             ),
@@ -66,7 +81,10 @@ class MenuEspalda extends StatelessWidget {
             Board(
               titulo: "Face-Pulls",
               ontap: (){
-              Navigator.pushReplacementNamed(context, MyRoutes.face_pulls.name , arguments: user);
+              Navigator.pushReplacementNamed(context, MyRoutes.face_pulls.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
               },
               imagen: Image.asset('Assets/Jalones.png'),
               ),
@@ -75,7 +93,10 @@ class MenuEspalda extends StatelessWidget {
             Board(
               titulo: "Remos Con Mancuerna",
               ontap: (){
-              Navigator.pushReplacementNamed(context, MyRoutes.remos_mancuerna.name , arguments: user);
+             Navigator.pushReplacementNamed(context, MyRoutes.remos_mancuerna.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
               },
               imagen: Image.asset('Assets/Remos2.png'),
               )

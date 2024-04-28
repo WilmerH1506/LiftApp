@@ -1,18 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:lift_app/Routes/my_routes.dart';
 import 'package:lift_app/Widgets/bsdborrar.dart';
 import 'package:lift_app/Widgets/bsdFinal.dart';
 import 'package:lift_app/Widgets/bsdborrarejer.dart';
 
-class Bottom extends StatelessWidget {
-    final List<String> data; 
+class Bottom extends StatefulWidget {
+    final List<String> data;
     final String user;
-    final VoidCallback onReload; 
-    late String name;
+    final VoidCallback onReload;
+    final ValueNotifier<String> nameNotifier;
 
-     Bottom({super.key, required this.data, required this.user, required this.onReload, required this.name});
+    Bottom({
+        super.key,
+        required this.data,
+        required this.user,
+        required this.onReload,
+        required this.nameNotifier
+    });
 
+    @override
+    _BottomState createState() => _BottomState();
+}
+
+class _BottomState extends State<Bottom> {
     @override
     Widget build(BuildContext context) {
         return SingleChildScrollView(
@@ -24,15 +34,28 @@ class Bottom extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                                 const Text(
-                                    'Rutina actual',
+                                    'Rutina actual:',
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 18,
                                         fontWeight: FontWeight.bold,
                                     ),
                                 ),
+                                ValueListenableBuilder<String>(
+                                    valueListenable: widget.nameNotifier,
+                                    builder: (context, name, child) {
+                                        return Text(
+                                            name,
+                                            style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold,
+                                            ),
+                                        );
+                                    },
+                                ),
                                 IconButton(
-                                    onPressed: onReload, 
+                                    onPressed: widget.onReload,
                                     icon: const Icon(
                                         Icons.refresh,
                                         color: Colors.white,
@@ -41,17 +64,16 @@ class Bottom extends StatelessWidget {
                             ],
                         ),
                     ),
-                    ...data.map((exercise) {
+                    ...widget.data.map((exercise) {
                         return Padding(
                             padding: const EdgeInsets.symmetric(vertical: 5),
                             child: BottomSheetDummyUI(
-                                exercise: exercise, 
-                                user: user,
+                                exercise: exercise,
+                                user: widget.user,
                                 onDelete: () async {
                                     final borrarEjer = BorrarEjer();
-                                    await borrarEjer.borrar(user, exercise);
-
-                                    onReload();
+                                    await borrarEjer.borrar(widget.user, exercise);
+                                    widget.onReload();
                                 },
                             ),
                         );
@@ -59,40 +81,42 @@ class Bottom extends StatelessWidget {
                     Padding(
                         padding: const EdgeInsets.all(10),
                         child: Column(
-                          children: [
-                            ElevatedButton(
-                                onPressed: () {
-                                  name=  rutineName(context);
-                                  print(name);
-                                },
-                                style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.redAccent,
-                                    minimumSize: const Size(double.infinity, 50),
+                            children: [
+                                ElevatedButton(
+                                    onPressed: () async {
+                                        final newName = await rutineName(context);
+                                        if (newName != null && newName.isNotEmpty) {
+                                            widget.nameNotifier.value = newName;
+                                        }
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.redAccent,
+                                        minimumSize: const Size(double.infinity, 50),
+                                    ),
+                                    child: const Text(
+                                        'Asignar nombre a la rutina',
+                                        style: TextStyle(color: Colors.white),
+                                    ),
                                 ),
-                                child: const Text(
-                                    'Asignar nombre a la rutina',
-                                    style: TextStyle(color: Colors.white),
+                                const SizedBox(height: 10),
+                                ElevatedButton(
+                                    onPressed: () async {
+                                        final subirFinal = Final();
+                                        await subirFinal.subirRutina(context, widget.user, widget.data, widget.nameNotifier.value);
+                                        final borrarTemporal = Borrar();
+                                        borrarTemporal.BorrarEjers(widget.user);
+                                        Navigator.pushReplacementNamed(context, MyRoutes.inicio.name, arguments: widget.user);
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.redAccent,
+                                        minimumSize: const Size(double.infinity, 50),
+                                    ),
+                                    child: const Text(
+                                        'Guardar rutina',
+                                        style: TextStyle(color: Colors.white),
+                                    ),
                                 ),
-                            ),
-                            const SizedBox(height: 10),
-                            ElevatedButton(
-                                onPressed: () async {
-                                    final subirFinal = Final();
-                                    await subirFinal.subirRutina(context,user, data,name);
-                                    final borrarTemporal = Borrar();
-                                    borrarTemporal.BorrarEjers(user);
-                                    Navigator.pushReplacementNamed(context, MyRoutes.inicio.name, arguments: user);
-                                },
-                                style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.redAccent,
-                                    minimumSize: const Size(double.infinity, 50),
-                                ),
-                                child: const Text(
-                                    'Guardar rutina',
-                                    style: TextStyle(color: Colors.white),
-                                ),
-                            ),
-                          ],
+                            ],
                         ),
                     ),
                 ],
@@ -101,94 +125,89 @@ class Bottom extends StatelessWidget {
     }
 }
 
-
 class BottomSheetDummyUI extends StatelessWidget {
-  final String exercise; 
-  final String user;
-  final VoidCallback onDelete;
+    final String exercise;
+    final String user;
+    final VoidCallback onDelete;
 
-  const BottomSheetDummyUI({super.key, required this.exercise, required this.onDelete, required this.user});
+    const BottomSheetDummyUI({super.key, required this.exercise, required this.onDelete, required this.user});
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-        padding: const EdgeInsets.all(10),
-        child: Row(
-            children: [
-                ClipRRect(
-                    borderRadius: BorderRadius.circular(15.0),
-                    child: Container(
-                        color: Colors.redAccent,
-                        height: 100,
-                        width: 100,
+    @override
+    Widget build(BuildContext context) {
+        return Padding(
+            padding: const EdgeInsets.all(10),
+            child: Row(
+                children: [
+                    ClipRRect(
+                        borderRadius: BorderRadius.circular(15.0),
+                        child: Container(
+                            color: Colors.redAccent,
+                            height: 100,
+                            width: 100,
+                        ),
                     ),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                            Text(
-                                exercise,
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
+                    const SizedBox(width: 10),
+                    Expanded(
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                                Text(
+                                    exercise,
+                                    style: const TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                    ),
                                 ),
-                            ),
-                            const SizedBox(height: 5),
-                        ],
+                                const SizedBox(height: 5),
+                            ],
+                        ),
                     ),
-                ),
-                IconButton(
-                    onPressed: () async {
-                        onDelete();
-                    },
-                    icon: const Icon(
-                        Icons.delete,
-                        color: Colors.white,
+                    IconButton(
+                        onPressed: onDelete,
+                        icon: const Icon(
+                            Icons.delete,
+                            color: Colors.white,
+                        ),
                     ),
-                ),
-            ],
-        ),
-    );
-  }
+                ],
+            ),
+        );
+    }
 }
 
-String rutineName(context) {
-   TextEditingController controllername = TextEditingController();
-   String name = '';
-   
-    showDialog(
-      context: context,
-     builder: (context) {
-       return AlertDialog(
-         title: const Text('Nombre de la rutina'),
-         content: TextField(
-           controller: controllername,
-           decoration: const InputDecoration(
-             hintText: 'Nombre de la rutina',
-           ),
-           onChanged: (value) {
-           },
-         ),
-         actions: [
-           TextButton(
-             onPressed: () {
-               Navigator.of(context).pop();
-             },
-             child: const Text('Cancelar'),
-           ),
-           TextButton(
-             onPressed: () {
-              name=controllername.text;
-              print(name);
-               Navigator.of(context).pop();
-             },
-             child: const Text('Aceptar'),
-           ),
-         ],
-       );
-     },
-     );
+Future<String?> rutineName(BuildContext context) async {
+    TextEditingController controllername = TextEditingController();
+    String? name;
+
+    await showDialog<String>(
+        context: context,
+        builder: (context) {
+            return AlertDialog(
+                title: const Text('Nombre de la rutina'),
+                content: TextField(
+                    controller: controllername,
+                    decoration: const InputDecoration(
+                        hintText: 'Nombre de la rutina',
+                    ),
+                ),
+                actions: [
+                    TextButton(
+                        onPressed: () {
+                            Navigator.of(context).pop(null);
+                        },
+                        child: const Text('Cancelar'),
+                    ),
+                    TextButton(
+                        onPressed: () {
+                            name = controllername.text;
+                            Navigator.of(context).pop(name);
+                        },
+                        child: const Text('Aceptar'),
+                    ),
+                ],
+            );
+        },
+    );
+
     return name;
 }

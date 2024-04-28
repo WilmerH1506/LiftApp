@@ -14,30 +14,34 @@ class CrearRutinasPage extends StatefulWidget {
 
 class _CrearRutinasPageState extends State<CrearRutinasPage> {
     final DraggableScrollableController _controller = DraggableScrollableController();
-    final ValueNotifier<List<String>> exercisesNotifier = ValueNotifier<List<String>>([]); 
+    final ValueNotifier<List<String>> exercisesNotifier = ValueNotifier<List<String>>([]);
+    final ValueNotifier<String> nameNotifier = ValueNotifier<String>('');
     late String user;
-    final String name="";
+    late String name;
 
     @override
     void didChangeDependencies() {
         super.didChangeDependencies();
 
-        user = ModalRoute.of(context)!.settings.arguments as String;
+        final args = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+        user = args['user'];
+        name = args.containsKey('name') ? args['name'] : '';  // Inicializa `name` con el valor del argumento, si existe
+
+        nameNotifier.value = name;
 
         recargarEjercicios();
     }
 
-   void recargarEjercicios() {
-    final descargar = Descargar();
-    descargar.bsdescargar(user).then((exercisesList) {
-        if (exercisesList.isNotEmpty) 
-        {
-            exercisesNotifier.value = exercisesList;
-        } 
-    }).catchError((error) {
-        print('Error al descargar ejercicios: $error');
-    });
-}
+    void recargarEjercicios() {
+        final descargar = Descargar();
+        descargar.bsdescargar(user).then((exercisesList) {
+            if (exercisesList.isNotEmpty) {
+                exercisesNotifier.value = exercisesList;
+            }
+        }).catchError((error) {
+            print('Error al descargar ejercicios: $error');
+        });
+    }
 
     @override
     Widget build(BuildContext context) {
@@ -104,7 +108,10 @@ class _CrearRutinasPageState extends State<CrearRutinasPage> {
                                     Board(
                                         titulo: "Tren Superior",
                                         ontap: () {
-                                            Navigator.pushReplacementNamed(context, MyRoutes.menu_torso.name, arguments: user);
+                                            Navigator.pushReplacementNamed(context, MyRoutes.menu_torso.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
                                         },
                                         imagen: Image.asset('Assets/Superior.png'),
                                     ),
@@ -112,7 +119,10 @@ class _CrearRutinasPageState extends State<CrearRutinasPage> {
                                     Board(
                                         titulo: "Abdominales",
                                         ontap: () {
-                                            Navigator.pushReplacementNamed(context, MyRoutes.abdominales.name, arguments: user);
+                                            Navigator.pushReplacementNamed(context, MyRoutes.abdominales.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
                                         },
                                         imagen: Image.asset('Assets/Abs.png'),
                                     ),
@@ -120,7 +130,10 @@ class _CrearRutinasPageState extends State<CrearRutinasPage> {
                                     Board(
                                         titulo: "Tren Inferior",
                                         ontap: () {
-                                            Navigator.pushReplacementNamed(context, MyRoutes.menu_inferior.name, arguments: user);
+                                            Navigator.pushReplacementNamed(context, MyRoutes.menu_inferior.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
                                         },
                                         imagen: Image.asset('Assets/Inferior.png'),
                                     ),
@@ -128,7 +141,10 @@ class _CrearRutinasPageState extends State<CrearRutinasPage> {
                                     Board(
                                         titulo: "Espalda",
                                         ontap: () {
-                                            Navigator.pushReplacementNamed(context, MyRoutes.menu_espalda.name, arguments: user);
+                                            Navigator.pushReplacementNamed(context, MyRoutes.menu_espalda.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
                                         },
                                         imagen: Image.asset('Assets/Espalda.png'),
                                     ),
@@ -138,8 +154,7 @@ class _CrearRutinasPageState extends State<CrearRutinasPage> {
                     ),
                     ValueListenableBuilder<List<String>>(
                         valueListenable: exercisesNotifier,
-                        builder: (context, exercises, child) 
-                        {
+                        builder: (context, exercises, child) {
                             return DraggableScrollableSheet(
                                 initialChildSize: 0.4,
                                 minChildSize: 0.4,
@@ -148,12 +163,20 @@ class _CrearRutinasPageState extends State<CrearRutinasPage> {
                                 builder: (context, scrollController) {
                                     return Bottom(
                                         data: exercises,
-                                        name: name,
+                                        nameNotifier: nameNotifier,
                                         user: user,
-                                        onReload: recargarEjercicios, 
+                                        onReload: recargarEjercicios,
                                     );
                                 },
                             );
+                        },
+                    ),
+                    // Usa un ValueListenableBuilder para mantener `name` sincronizado con `nameNotifier`
+                    ValueListenableBuilder<String>(
+                        valueListenable: nameNotifier,
+                        builder: (context, currentName, child) {
+                            name = currentName;  // Actualiza `name` cuando `nameNotifier` cambia
+                            return Container();  // Este `ValueListenableBuilder` es solo para actualizar `name`
                         },
                     ),
                 ],

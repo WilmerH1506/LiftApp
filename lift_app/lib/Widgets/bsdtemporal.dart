@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Temporal {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   
-  Future<void> bsdTemporal(String user, String exercise) async {
+  Future<void> bsdTemporal(String user, String exercise, String name) async {
     
     final collection = _firestore.collection('RutinaTemporal');
 
@@ -18,6 +18,7 @@ class Temporal {
         Map<String, dynamic> dataToAdd = {
           'Usuario': user,
           'Ejercicio': exercise,
+          'Nombre' : name,
         };
 
         await collection.add(dataToAdd);

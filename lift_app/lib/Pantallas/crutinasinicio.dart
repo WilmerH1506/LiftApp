@@ -11,6 +11,7 @@ class CreateRoutine extends StatelessWidget {
         
         final screenHeight = MediaQuery.of(context).size.height;
         final welcomeHeight = screenHeight / 4;
+        String name = '';
 
         return Scaffold(
             backgroundColor: Colors.black,
@@ -67,9 +68,7 @@ class CreateRoutine extends StatelessWidget {
                         ),
                     ElevatedButton(
                         onPressed: () {
-                            Navigator.pushReplacementNamed(context, MyRoutes.crear_rutinas.name,
-                              arguments: user,
-                           );
+                           Navigator.pushReplacementNamed(context, MyRoutes.crear_rutinas.name, arguments: {'user': user, 'name': name});
                         },
                         style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.symmetric(

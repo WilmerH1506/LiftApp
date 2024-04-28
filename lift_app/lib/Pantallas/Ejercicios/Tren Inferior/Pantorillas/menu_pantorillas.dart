@@ -8,7 +8,10 @@ class MenuPantorillas extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-        final  user = ModalRoute.of(context)!.settings.arguments as String;
+        final arguments = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+      
+        final user = arguments['user'];
+        final name = arguments['name'];
 
     return  Scaffold(
     appBar: AppBar(
@@ -23,7 +26,10 @@ class MenuPantorillas extends StatelessWidget {
           ),
           backgroundColor: Colors.redAccent,
           actions: [IconButton(onPressed: () {
-            Navigator.pushReplacementNamed(context, MyRoutes.menu_inferior.name,arguments: user);
+             Navigator.pushReplacementNamed(context, MyRoutes.menu_inferior.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
           },
           icon: const Icon(Icons.logout),
           )],
@@ -38,7 +44,10 @@ class MenuPantorillas extends StatelessWidget {
             Board(
               titulo: "Elevaciones De Pie",
                ontap: (){
-                Navigator.pushReplacementNamed(context, MyRoutes.elevaciones_parado.name,arguments: user);
+                Navigator.pushReplacementNamed(context, MyRoutes.elevaciones_parado.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
                },
                imagen: Image.asset('Assets/Parado.png'),
                ),
@@ -48,7 +57,10 @@ class MenuPantorillas extends StatelessWidget {
             Board(
                titulo: "Elevaciones Sentado",
                 ontap: (){
-                  Navigator.pushReplacementNamed(context, MyRoutes.elevaciones_sentado.name , arguments: user);
+                   Navigator.pushReplacementNamed(context, MyRoutes.elevaciones_sentado.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
                 },
                 imagen: Image.asset('Assets/Sentado.png'),
                ),            

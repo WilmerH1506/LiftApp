@@ -8,7 +8,10 @@ class MenuHombro extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-        final  user = ModalRoute.of(context)!.settings.arguments as String;
+        final arguments = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+      
+        final user = arguments['user'];
+        final name = arguments['name'];
 
     return  Scaffold(
     appBar: AppBar(
@@ -23,7 +26,10 @@ class MenuHombro extends StatelessWidget {
           ),
           backgroundColor: Colors.redAccent,
           actions: [IconButton(onPressed: () {
-            Navigator.pushReplacementNamed(context, MyRoutes.menu_torso.name,arguments: user);
+              Navigator.pushReplacementNamed(context, MyRoutes.menu_torso.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
           },
           icon: const Icon(Icons.logout),
           )],
@@ -38,7 +44,10 @@ class MenuHombro extends StatelessWidget {
             Board(
               titulo: "Press Militar",
                ontap: (){
-                Navigator.pushReplacementNamed(context, MyRoutes.press_militar.name,arguments: user);
+                   Navigator.pushReplacementNamed(context, MyRoutes.press_militar.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
                },
                imagen: Image.asset('Assets/Militar.png'),
                ),
@@ -48,7 +57,10 @@ class MenuHombro extends StatelessWidget {
             Board(
                titulo: "Vuelos Laterales",
                 ontap: (){
-                  Navigator.pushReplacementNamed(context, MyRoutes.laterales.name , arguments: user);
+                    Navigator.pushReplacementNamed(context, MyRoutes.laterales.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
                 },
                 imagen: Image.asset('Assets/VuelosL.png'),
                ),
@@ -57,7 +69,10 @@ class MenuHombro extends StatelessWidget {
             Board(
             titulo: "Vuelos Posteriores",
             ontap: (){
-            Navigator.pushReplacementNamed(context, MyRoutes.vuelos_posteriores.name , arguments: user);
+               Navigator.pushReplacementNamed(context, MyRoutes.vuelos_posteriores.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
             },
             imagen: Image.asset('Assets/Posteriores.png'),
             ),

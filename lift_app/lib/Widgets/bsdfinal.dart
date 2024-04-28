@@ -5,7 +5,7 @@ class Final {
     final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
     Future<void> subirRutina(BuildContext context, String usuario, List<String> ejercicios,String name) async {
-        if (usuario.isEmpty || ejercicios.isEmpty ) {
+        if (usuario.isEmpty || ejercicios.isEmpty || name.isEmpty ) {
             showDialog(
                 context: context,
                 builder: (context) {
@@ -15,7 +15,7 @@ class Final {
                         actions: [
                             TextButton(
                                 onPressed: () {
-                                    Navigator.of(context).pop();
+                                    
                                 },
                                 child: const Text('Aceptar'),
                             ),

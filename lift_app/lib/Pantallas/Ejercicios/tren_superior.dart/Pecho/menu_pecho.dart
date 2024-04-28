@@ -8,7 +8,10 @@ class MenuPecho extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-        final  user = ModalRoute.of(context)!.settings.arguments as String;
+        final arguments = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+      
+        final user = arguments['user'];
+        final name = arguments['name'];
 
     return  Scaffold(
     appBar: AppBar(
@@ -23,7 +26,10 @@ class MenuPecho extends StatelessWidget {
           ),
           backgroundColor: Colors.redAccent,
           actions: [IconButton(onPressed: () {
-            Navigator.pushReplacementNamed(context, MyRoutes.menu_torso.name,arguments: user);
+               Navigator.pushReplacementNamed(context, MyRoutes.menu_torso.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
           },
           icon: const Icon(Icons.logout),
           )],
@@ -38,7 +44,10 @@ class MenuPecho extends StatelessWidget {
             Board(
               titulo: "Press Inclinado",
                ontap: (){
-                Navigator.pushReplacementNamed(context, MyRoutes.pecho_superior.name,arguments: user);
+                   Navigator.pushReplacementNamed(context, MyRoutes.pecho_superior.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
                },
                imagen: Image.asset('Assets/Inclinado.png'),
                ),
@@ -48,7 +57,10 @@ class MenuPecho extends StatelessWidget {
             Board(
                titulo: "Press Plano",
                 ontap: (){
-                  Navigator.pushReplacementNamed(context, MyRoutes.pecho_plano.name , arguments: user);
+                     Navigator.pushReplacementNamed(context, MyRoutes.pecho_plano.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
                 },
                 imagen: Image.asset('Assets/Plano.png'),
                ),
@@ -57,7 +69,11 @@ class MenuPecho extends StatelessWidget {
             Board(
             titulo: "Press Declinado",
             ontap: (){
-            Navigator.pushReplacementNamed(context, MyRoutes.pecho_inferior.name , arguments: user);
+            
+               Navigator.pushReplacementNamed(context, MyRoutes.pecho_inferior.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
             },
             imagen: Image.asset('Assets/Declinado.png'),
             ),

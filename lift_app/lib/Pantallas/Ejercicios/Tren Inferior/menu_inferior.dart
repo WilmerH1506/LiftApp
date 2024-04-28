@@ -8,7 +8,10 @@ class MenuPierna extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-        final  user = ModalRoute.of(context)!.settings.arguments as String;
+        final arguments = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+      
+        final user = arguments['user'];
+        final name = arguments['name'];
 
     return  Scaffold(
     appBar: AppBar(
@@ -23,7 +26,10 @@ class MenuPierna extends StatelessWidget {
           ),
           backgroundColor: Colors.redAccent,
           actions: [IconButton(onPressed: () {
-            Navigator.pushReplacementNamed(context, MyRoutes.crear_rutinas.name,arguments: user);
+               Navigator.pushReplacementNamed(context, MyRoutes.crear_rutinas.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
           },
           icon: const Icon(Icons.logout),
           )],
@@ -38,7 +44,10 @@ class MenuPierna extends StatelessWidget {
             Board(
               titulo: "Cuadriceps",
                ontap: (){
-                Navigator.pushReplacementNamed(context, MyRoutes.menu_cuadriceps.name,arguments: user);
+                 Navigator.pushReplacementNamed(context, MyRoutes.menu_cuadriceps.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
                },
                imagen: Image.asset('Assets/Cuadriceps.png'),
                ),
@@ -48,7 +57,10 @@ class MenuPierna extends StatelessWidget {
             Board(
                titulo: "Femorales",
                 ontap: (){
-                  Navigator.pushReplacementNamed(context, MyRoutes.menu_femoral.name , arguments: user);
+                  Navigator.pushReplacementNamed(context, MyRoutes.menu_femoral.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
                 },
                 imagen: Image.asset('Assets/Femorales.png'),
                ),
@@ -57,7 +69,10 @@ class MenuPierna extends StatelessWidget {
             Board(
             titulo: "Abductores",
             ontap: (){
-            Navigator.pushReplacementNamed(context, MyRoutes.abductores.name , arguments: user);
+            Navigator.pushReplacementNamed(context, MyRoutes.abductores.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
             },
             imagen: Image.asset('Assets/Abductores.png'),
             ),
@@ -66,7 +81,10 @@ class MenuPierna extends StatelessWidget {
             Board(
               titulo: "Gluteos",
               ontap: (){
-              Navigator.pushReplacementNamed(context, MyRoutes.menu_gluteo.name , arguments: user);
+              Navigator.pushReplacementNamed(context, MyRoutes.menu_gluteo.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
               },
               imagen: Image.asset('Assets/Gluteos.png'),
               ),
@@ -75,7 +93,10 @@ class MenuPierna extends StatelessWidget {
             Board(
               titulo: "Pantorillas",
               ontap: (){
-              Navigator.pushReplacementNamed(context, MyRoutes.menu_pantorillas.name , arguments: user);
+               Navigator.pushReplacementNamed(context, MyRoutes.menu_pantorillas.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
               },
               imagen: Image.asset('Assets/Pantorillas.png'),
               ),          

@@ -8,7 +8,10 @@ class Remos extends StatelessWidget {
    
   @override
   Widget build(BuildContext context) {
-        final  user = ModalRoute.of(context)!.settings.arguments as String;
+        final arguments = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+      
+        final user = arguments['user'];
+        final name = arguments['name'];
 
     return MaterialApp(
       home: Scaffold( backgroundColor: Colors.black,
@@ -24,7 +27,10 @@ class Remos extends StatelessWidget {
           ),
           backgroundColor: Colors.redAccent,
           actions: [IconButton(onPressed: () {
-            Navigator.pushReplacementNamed(context, MyRoutes.menu_espalda.name,arguments: user);
+             Navigator.pushReplacementNamed(context, MyRoutes.menu_espalda.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
           },
           icon: const Icon(Icons.logout),
           )],
@@ -178,12 +184,11 @@ class Remos extends StatelessWidget {
                 ElevatedButton(
                             onPressed: () {
                               final subir = Temporal();
-                              subir.bsdTemporal(user, 'Remos con Barra');
-                              Navigator.pushReplacementNamed(
-                                context,
-                                MyRoutes.crear_rutinas.name,
-                                arguments: user,
-                              );
+                              subir.bsdTemporal(user, 'Remos con Barra', name);
+                                 Navigator.pushReplacementNamed(context, MyRoutes.crear_rutinas.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
                             },
                       style: ElevatedButton.styleFrom(
                                         backgroundColor: Colors.blue,

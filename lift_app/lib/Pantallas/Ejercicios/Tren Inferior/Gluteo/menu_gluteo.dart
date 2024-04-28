@@ -8,7 +8,10 @@ class MenuGluteo extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-        final  user = ModalRoute.of(context)!.settings.arguments as String;
+       final arguments = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+      
+        final user = arguments['user'];
+        final name = arguments['name'];
 
     return  Scaffold(
     appBar: AppBar(
@@ -23,7 +26,10 @@ class MenuGluteo extends StatelessWidget {
           ),
           backgroundColor: Colors.redAccent,
           actions: [IconButton(onPressed: () {
-            Navigator.pushReplacementNamed(context, MyRoutes.menu_inferior.name,arguments: user);
+            Navigator.pushReplacementNamed(context, MyRoutes.menu_inferior.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
           },
           icon: const Icon(Icons.logout),
           )],
@@ -38,7 +44,10 @@ class MenuGluteo extends StatelessWidget {
             Board(
               titulo: "Sentadilla Sumo",
                ontap: (){
-                Navigator.pushReplacementNamed(context, MyRoutes.sumo.name,arguments: user);
+                 Navigator.pushReplacementNamed(context, MyRoutes.sumo.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
                },
                imagen: Image.asset('Assets/Sumo.png'),
                ),
@@ -48,7 +57,10 @@ class MenuGluteo extends StatelessWidget {
             Board(
                titulo: "Patada De Gluteo",
                 ontap: (){
-                  Navigator.pushReplacementNamed(context, MyRoutes.patada.name , arguments: user);
+                   Navigator.pushReplacementNamed(context, MyRoutes.patada.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
                 },
                 imagen: Image.asset('Assets/Patada.png'),
                ),
@@ -57,7 +69,10 @@ class MenuGluteo extends StatelessWidget {
             Board(
             titulo: "Hip Thrust",
             ontap: (){
-            Navigator.pushReplacementNamed(context, MyRoutes.hip_thrust.name , arguments: user);
+            Navigator.pushReplacementNamed(context, MyRoutes.hip_thrust.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
             },
             imagen: Image.asset('Assets/HipTrust.png'),
             ),

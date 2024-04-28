@@ -8,7 +8,10 @@ class MenuCuadriceps extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-        final  user = ModalRoute.of(context)!.settings.arguments as String;
+      final arguments = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+      
+        final user = arguments['user'];
+        final name = arguments['name'];
 
     return  Scaffold(
     appBar: AppBar(
@@ -23,7 +26,10 @@ class MenuCuadriceps extends StatelessWidget {
           ),
           backgroundColor: Colors.redAccent,
           actions: [IconButton(onPressed: () {
-            Navigator.pushReplacementNamed(context, MyRoutes.menu_inferior.name,arguments: user);
+             Navigator.pushReplacementNamed(context, MyRoutes.menu_inferior.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
           },
           icon: const Icon(Icons.logout),
           )],
@@ -38,7 +44,10 @@ class MenuCuadriceps extends StatelessWidget {
             Board(
               titulo: "Sentadilla",
                ontap: (){
-                Navigator.pushReplacementNamed(context, MyRoutes.sentadilla.name,arguments: user);
+                 Navigator.pushReplacementNamed(context, MyRoutes.sentadilla.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
                },
                imagen: Image.asset('Assets/Sentadilla.png'),
                ),
@@ -48,7 +57,10 @@ class MenuCuadriceps extends StatelessWidget {
             Board(
                titulo: "Extensiones",
                 ontap: (){
-                  Navigator.pushReplacementNamed(context, MyRoutes.extensiones.name , arguments: user);
+                  Navigator.pushReplacementNamed(context, MyRoutes.extensiones.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
                 },
                 imagen: Image.asset('Assets/Extensiones.png'),
                ),
@@ -57,7 +69,10 @@ class MenuCuadriceps extends StatelessWidget {
             Board(
             titulo: "Prensa",
             ontap: (){
-            Navigator.pushReplacementNamed(context, MyRoutes.prensa.name , arguments: user);
+            Navigator.pushReplacementNamed(context, MyRoutes.prensa.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
             },
             imagen: Image.asset('Assets/Prensa.png'),
             ),
@@ -66,7 +81,10 @@ class MenuCuadriceps extends StatelessWidget {
             Board(
             titulo: "Bulgaras",
             ontap: (){
-            Navigator.pushReplacementNamed(context, MyRoutes.bulgaras.name , arguments: user);
+             Navigator.pushReplacementNamed(context, MyRoutes.bulgaras.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
             },
             imagen: Image.asset('Assets/Bulgaras.png'),
             ),
@@ -75,7 +93,10 @@ class MenuCuadriceps extends StatelessWidget {
             Board(
             titulo: "Zancadas",
             ontap: (){
-            Navigator.pushReplacementNamed(context, MyRoutes.zancadas.name , arguments: user);
+            Navigator.pushReplacementNamed(context, MyRoutes.zancadas.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
             },
             imagen: Image.asset('Assets/Zancadas.png'),
             ),

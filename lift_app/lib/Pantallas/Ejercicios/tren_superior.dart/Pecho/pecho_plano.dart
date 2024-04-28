@@ -9,7 +9,10 @@ class PressPlano extends StatelessWidget {
    
   @override
   Widget build(BuildContext context) {
-        final  user = ModalRoute.of(context)!.settings.arguments as String;
+        final arguments = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+      
+        final user = arguments['user'];
+        final name = arguments['name'];
 
     return MaterialApp(
       home: Scaffold( backgroundColor: Colors.black,
@@ -25,7 +28,10 @@ class PressPlano extends StatelessWidget {
           ),
           backgroundColor: Colors.redAccent,
           actions: [IconButton(onPressed: () {
-            Navigator.pushReplacementNamed(context, MyRoutes.menu_pecho.name,arguments: user);
+            Navigator.pushReplacementNamed(context, MyRoutes.menu_pecho.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
           },
           icon: const Icon(Icons.logout),
           )],
@@ -179,12 +185,11 @@ class PressPlano extends StatelessWidget {
                  ElevatedButton(
                             onPressed: () {
                               final subir = Temporal();
-                              subir.bsdTemporal(user, 'Pecho Plano');
-                              Navigator.pushReplacementNamed(
-                                context,
-                                MyRoutes.crear_rutinas.name,
-                                arguments: user,
-                              );
+                              subir.bsdTemporal(user, 'Pecho Plano', name);
+                                Navigator.pushReplacementNamed(context, MyRoutes.crear_rutinas.name, arguments: {
+                                                'user': user,
+                                                'name': name,
+                                            });
                             },
                       style: ElevatedButton.styleFrom(
                                         backgroundColor: Colors.blue,
