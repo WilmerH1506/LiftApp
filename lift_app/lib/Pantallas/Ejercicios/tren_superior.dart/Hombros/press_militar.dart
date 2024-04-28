@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lift_app/Widgets/agregargif.dart';
 import 'package:lift_app/Routes/my_routes.dart';
+import 'package:lift_app/Widgets/bsdtemporal.dart';
 
 
 class PressMilitar extends StatelessWidget {
@@ -175,15 +176,25 @@ class PressMilitar extends StatelessWidget {
                   ],)
                 ],),
                const  SizedBox(height: 40,),
-                ElevatedButton(onPressed: () {
-                Navigator.pushReplacementNamed(context, MyRoutes.inicio.name,arguments: user);
-
-                },style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue,
-                  minimumSize: const Size(250, 50)
-                ),child:  const Text('Agregar Rutina',style: TextStyle(
-                  color: Colors.white
-                ),),)
+                 ElevatedButton(
+                            onPressed: () {
+                              final subir = Temporal();
+                              subir.bsdTemporal(user, 'Press Militar');
+                              Navigator.pushReplacementNamed(
+                                context,
+                                MyRoutes.crear_rutinas.name,
+                                arguments: user,
+                              );
+                            },
+                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.blue,
+                                        minimumSize: const Size(250, 50),
+                                      ),
+                              child: const Text(
+                                        'Agregar Rutina',
+                                        style: TextStyle(color: Colors.white),
+                                    ),
+                                  )
                
           ],),       
         ),        

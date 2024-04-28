@@ -23,7 +23,7 @@ class MenuPierna extends StatelessWidget {
           ),
           backgroundColor: Colors.redAccent,
           actions: [IconButton(onPressed: () {
-            Navigator.pushReplacementNamed(context, MyRoutes.inicio.name,arguments: user);
+            Navigator.pushReplacementNamed(context, MyRoutes.crear_rutinas.name,arguments: user);
           },
           icon: const Icon(Icons.logout),
           )],

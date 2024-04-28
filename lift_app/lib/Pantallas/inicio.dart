@@ -1,23 +1,25 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:lift_app/Pantallas/crear_rutinas.dart';
+import 'package:lift_app/Pantallas/crutinasinicio.dart';
 import 'package:lift_app/Pantallas/perfil.dart';
 import 'package:lift_app/Pantallas/rutinas.dart';
+import 'package:lift_app/Pantallas/login.dart';
 
 class Inicio extends StatefulWidget {
   Inicio({Key? key, this.currentIndex = 0}) : super(key: key);
-
+  
   int currentIndex;
   @override
   State<Inicio> createState() => _InicioState();
 }
 
 class _InicioState extends State<Inicio> {
-  final PageController pageController = PageController();
-FirebaseFirestore firestore = FirebaseFirestore.instance;
+  final PageController pageController = PageController(); 
+  FirebaseFirestore firestore = FirebaseFirestore.instance; 
 
   @override
   Widget build(BuildContext context) {
+    final user = ModalRoute.of(context)!.settings.arguments as String;
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -29,10 +31,10 @@ FirebaseFirestore firestore = FirebaseFirestore.instance;
             widget.currentIndex = value;
           });
         },
-        children:   [
-         const CrearRutinasPage(),
-         const RutinasPage(),
-          PerfilPage(),
+        children:  [
+          const RutinasPage(),
+          CreateRoutine(user: user,),
+          const PerfilPage(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
@@ -50,12 +52,12 @@ FirebaseFirestore firestore = FirebaseFirestore.instance;
         },
         items: [
              BottomNavigationBarItem(
-            icon: Image.asset('Assets/mas.png', width: 32, height: 32),
-            label: 'Crear Rutinas',
+           icon: Image.asset('Assets/pesa.png', width: 33, height: 33),
+            label: '  Mis rutinas',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset('Assets/pesa.png', width: 33, height: 33),
-            label: '  Mis rutinas',
+             icon: Image.asset('Assets/mas.png', width: 32, height: 32),
+            label: 'Crear Rutinas',
           ),
           BottomNavigationBarItem(
             icon: Image.asset('Assets/usuario.png', width: 31, height: 31),

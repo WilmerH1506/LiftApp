@@ -13,7 +13,6 @@ import 'package:lift_app/Widgets/adddatebar.dart';
 import 'package:lift_app/Widgets/addrutinesbar.dart';
 
 
-
 class PerfilPage extends StatefulWidget {
  const PerfilPage({Key? key}) : super(key: key);
 
