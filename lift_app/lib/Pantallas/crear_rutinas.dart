@@ -16,6 +16,7 @@ class _CrearRutinasPageState extends State<CrearRutinasPage> {
     final DraggableScrollableController _controller = DraggableScrollableController();
     final ValueNotifier<List<String>> exercisesNotifier = ValueNotifier<List<String>>([]); 
     late String user;
+    final String name="";
 
     @override
     void didChangeDependencies() {
@@ -147,6 +148,7 @@ class _CrearRutinasPageState extends State<CrearRutinasPage> {
                                 builder: (context, scrollController) {
                                     return Bottom(
                                         data: exercises,
+                                        name: name,
                                         user: user,
                                         onReload: recargarEjercicios, 
                                     );

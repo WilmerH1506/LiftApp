@@ -4,9 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class Final {
     final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-    Future<void> subirRutina(BuildContext context, String usuario, List<String> ejercicios) async {
-
-        if (usuario.isEmpty || ejercicios.isEmpty) {
+    Future<void> subirRutina(BuildContext context, String usuario, List<String> ejercicios,String name) async {
+        if (usuario.isEmpty || ejercicios.isEmpty ) {
             showDialog(
                 context: context,
                 builder: (context) {
@@ -30,6 +29,7 @@ class Final {
         Map<String, dynamic> datos = {
             'usuario': usuario,
             'ejercicios': ejercicios,
+            'name': name,
         };
 
         await _firestore.collection('Rutina Final').add(datos);

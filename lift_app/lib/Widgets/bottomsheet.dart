@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:lift_app/Routes/my_routes.dart';
 import 'package:lift_app/Widgets/bsdborrar.dart';
 import 'package:lift_app/Widgets/bsdFinal.dart';
@@ -8,8 +9,9 @@ class Bottom extends StatelessWidget {
     final List<String> data; 
     final String user;
     final VoidCallback onReload; 
+    late String name;
 
-    const Bottom({super.key, required this.data, required this.user, required this.onReload});
+     Bottom({super.key, required this.data, required this.user, required this.onReload, required this.name});
 
     @override
     Widget build(BuildContext context) {
@@ -56,22 +58,41 @@ class Bottom extends StatelessWidget {
                     }).toList(),
                     Padding(
                         padding: const EdgeInsets.all(10),
-                        child: ElevatedButton(
-                            onPressed: () async {
-                                final subirFinal = Final();
-                                await subirFinal.subirRutina(context,user, data);
-                                final borrarTemporal = Borrar();
-                                borrarTemporal.BorrarEjers(user);
-                                Navigator.pushReplacementNamed(context, MyRoutes.inicio.name, arguments: user);
-                            },
-                            style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.redAccent,
-                                minimumSize: const Size(double.infinity, 50),
+                        child: Column(
+                          children: [
+                            ElevatedButton(
+                                onPressed: () {
+                                  name=  rutineName(context);
+                                  print(name);
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.redAccent,
+                                    minimumSize: const Size(double.infinity, 50),
+                                ),
+                                child: const Text(
+                                    'Asignar nombre a la rutina',
+                                    style: TextStyle(color: Colors.white),
+                                ),
                             ),
-                            child: const Text(
-                                'Guardar rutina',
-                                style: TextStyle(color: Colors.white),
+                            const SizedBox(height: 10),
+                            ElevatedButton(
+                                onPressed: () async {
+                                    final subirFinal = Final();
+                                    await subirFinal.subirRutina(context,user, data,name);
+                                    final borrarTemporal = Borrar();
+                                    borrarTemporal.BorrarEjers(user);
+                                    Navigator.pushReplacementNamed(context, MyRoutes.inicio.name, arguments: user);
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: Colors.redAccent,
+                                    minimumSize: const Size(double.infinity, 50),
+                                ),
+                                child: const Text(
+                                    'Guardar rutina',
+                                    style: TextStyle(color: Colors.white),
+                                ),
                             ),
+                          ],
                         ),
                     ),
                 ],
@@ -131,4 +152,43 @@ class BottomSheetDummyUI extends StatelessWidget {
         ),
     );
   }
+}
+
+String rutineName(context) {
+   TextEditingController controllername = TextEditingController();
+   String name = '';
+   
+    showDialog(
+      context: context,
+     builder: (context) {
+       return AlertDialog(
+         title: const Text('Nombre de la rutina'),
+         content: TextField(
+           controller: controllername,
+           decoration: const InputDecoration(
+             hintText: 'Nombre de la rutina',
+           ),
+           onChanged: (value) {
+           },
+         ),
+         actions: [
+           TextButton(
+             onPressed: () {
+               Navigator.of(context).pop();
+             },
+             child: const Text('Cancelar'),
+           ),
+           TextButton(
+             onPressed: () {
+              name=controllername.text;
+              print(name);
+               Navigator.of(context).pop();
+             },
+             child: const Text('Aceptar'),
+           ),
+         ],
+       );
+     },
+     );
+    return name;
 }
