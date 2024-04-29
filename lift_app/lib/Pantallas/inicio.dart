@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:lift_app/Pantallas/crutinasinicio.dart';
+import 'package:lift_app/Pantallas/misrutinasinicio.dart';
 import 'package:lift_app/Pantallas/perfil.dart';
 import 'package:lift_app/Pantallas/rutinas.dart';
 import 'package:lift_app/Pantallas/login.dart';
@@ -14,12 +15,18 @@ class Inicio extends StatefulWidget {
 }
 
 class _InicioState extends State<Inicio> {
+  
   final PageController pageController = PageController(); 
   FirebaseFirestore firestore = FirebaseFirestore.instance; 
 
   @override
   Widget build(BuildContext context) {
-    final user = ModalRoute.of(context)!.settings.arguments as String;
+      final arguments = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+      
+        final user = arguments['user'];
+        final name = arguments['name'];
+
+    //final user = ModalRoute.of(context)!.settings.arguments as String;
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -32,8 +39,8 @@ class _InicioState extends State<Inicio> {
           });
         },
         children:  [
-          const RutinasPage(),
-          CreateRoutine(user: user,),
+           MisRutinas(user: user),
+          CreateRoutine(user: user,),          
           const PerfilPage(),
         ],
       ),
