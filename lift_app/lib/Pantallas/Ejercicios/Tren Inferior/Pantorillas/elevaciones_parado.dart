@@ -39,7 +39,7 @@ class ElevacionesParado extends StatelessWidget {
                                     'name': name,
                                 });
                             } else {
-                                Navigator.pushReplacementNamed(context, MyRoutes.menu_inferior.name, arguments: {
+                                Navigator.pushReplacementNamed(context, MyRoutes.menu_pantorillas.name, arguments: {
                                     'user': user,
                                     'name': name,
                                 });

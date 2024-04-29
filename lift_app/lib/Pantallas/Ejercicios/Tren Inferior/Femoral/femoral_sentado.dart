@@ -16,7 +16,7 @@ class FemoralSentado extends StatelessWidget {
         return Scaffold(
             backgroundColor: Colors.black,
             appBar: AppBar(
-                title: Row(
+                title: const Row(
                     children: [
                         Text(
                             'Femoral Sentado',
@@ -39,13 +39,13 @@ class FemoralSentado extends StatelessWidget {
                                     'name': name,
                                 });
                             } else {
-                                Navigator.pushReplacementNamed(context, MyRoutes.menu_inferior.name, arguments: {
+                                Navigator.pushReplacementNamed(context, MyRoutes.menu_femoral.name, arguments: {
                                     'user': user,
                                     'name': name,
                                 });
                             }
                         },
-                        icon: Icon(Icons.logout),
+                        icon: const Icon(Icons.logout),
                     ),
                 ],
             ),

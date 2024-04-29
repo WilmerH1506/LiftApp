@@ -39,7 +39,7 @@ class FemoralAcostado extends StatelessWidget {
                                     'name': name,
                                 });
                             } else {
-                                Navigator.pushReplacementNamed(context, MyRoutes.menu_inferior.name, arguments: {
+                                Navigator.pushReplacementNamed(context, MyRoutes.menu_femoral.name, arguments: {
                                     'user': user,
                                     'name': name,
                                 });
