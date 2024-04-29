@@ -1,11 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:intl/intl.dart';
-import 'package:lift_app/Variables_Globales/var_seleddate.dart';
 import 'package:lift_app/Widgets/custom_add.dart';
-//importar glovaldate
 
 class AddRuntineCalendar extends StatefulWidget {
   const AddRuntineCalendar({super.key});
@@ -86,8 +82,8 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
                 value: selectedRemind,
                 items: remindList
                     .map((e) => DropdownMenuItem(
-                          child: Text("$e minutos antes"),
                           value: e,
+                          child: Text("$e minutos antes"),
                         ))
                     .toList(),
                 onChanged: (value) {
@@ -156,8 +152,6 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
     } else {
       return;
     }
-    confirmTextdate = "Confirmar";
-    print(confirmTextdate);
   }
 
   void showPickerStart() {
@@ -184,8 +178,6 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
           ));
         }
       }
-       confirmTextstartTime = "Confirmar";
-       print(confirmTextstartTime);
     });
   }
 
@@ -217,7 +209,5 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
         }
       }
     });
-     confirmTextendTime = "Confirmar";
-     print(confirmTextendTime);
   }
 }

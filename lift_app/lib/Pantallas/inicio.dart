@@ -1,10 +1,10 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:lift_app/Pantallas/crutinasinicio.dart';
 import 'package:lift_app/Pantallas/misrutinasinicio.dart';
 import 'package:lift_app/Pantallas/perfil.dart';
-import 'package:lift_app/Pantallas/rutinas.dart';
-import 'package:lift_app/Pantallas/login.dart';
 
 class Inicio extends StatefulWidget {
   Inicio({Key? key, this.currentIndex = 0}) : super(key: key);

@@ -79,14 +79,6 @@ class _LoginState extends State<Login> {
                                   bordes: const OutlineInputBorder(),
                                 ),
                                 const SizedBox(height: 10),
-                                Row(
-                                  children: [
-                                    TextButton(
-                                      onPressed: () {},
-                                      child: const Text('Olvidaste tu contraseña?'),
-                                    ),
-                                  ],
-                                ),
                                 ElevatedButton(
                                   onPressed: _isLoading ? null : () async {
                                     setState(() {

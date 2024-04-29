@@ -6,7 +6,6 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:intl/intl.dart';
 import 'package:lift_app/Routes/my_routes.dart';
 import 'package:lift_app/Variables_Globales/var_seleddate.dart';
 import 'package:lift_app/Widgets/adddatebar.dart';

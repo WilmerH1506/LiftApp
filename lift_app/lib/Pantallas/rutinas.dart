@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:lift_app/Routes/my_routes.dart';
@@ -12,8 +14,8 @@ class RutinasPage extends StatelessWidget {
   Widget build(BuildContext context) {
       final arguments = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;    
         final user = arguments['user'];
-        final name = arguments['name'];
         final workouts = firestore.collection('Rutina Final').where('usuario', isEqualTo: user).snapshots();
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -51,10 +53,7 @@ class RutinasPage extends StatelessWidget {
               itemCount: workoutlist.length,
               itemBuilder: (context, index) {
                 final wk = workoutlist[index];
-             // final List<dynamic> ejercicios = wk['ejercicios'];
-               
-               
-
+            
                 return Dismissible(
                   key: Key(wk.id),
                   direction: DismissDirection.endToStart,
@@ -77,10 +76,8 @@ class RutinasPage extends StatelessWidget {
                     trailing: GestureDetector(
                       onTap: () { 
 
-                        print(wk['ejercicios']);
             Navigator.pushReplacementNamed(context, MyRoutes.ejercicios.name, arguments: {'user': user, 'name': wk['name']});
 
-                      
                       },
                       child:const Column(
                         children: [

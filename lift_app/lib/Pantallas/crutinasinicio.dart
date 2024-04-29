@@ -4,13 +4,11 @@ import 'package:lift_app/Routes/my_routes.dart';
 class CreateRoutine extends StatelessWidget {
     final String user;
     
-    CreateRoutine({Key? key, required this.user}) : super(key: key);
+    const CreateRoutine({Key? key, required this.user}) : super(key: key);
 
     @override
     Widget build(BuildContext context) {
-        
-        final screenHeight = MediaQuery.of(context).size.height;
-        final welcomeHeight = screenHeight / 4;
+  
         String name = '';
 
         return Scaffold(

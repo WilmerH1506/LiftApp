@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable, use_build_context_synchronously
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:lift_app/Routes/my_routes.dart';
@@ -61,9 +63,70 @@ class Editar extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      onTap: () {
-                        // Implementa la lógica cuando se hace clic en una rutina
-                      },
+                      onTap: () async {
+                                  bool? confirm = await showDialog(
+                                      context: context,
+                                      builder: (context) => AlertDialog(
+                                          title: const Text('Confirmar acción'),
+                                          content: const Text('¿Estás seguro de que deseas agregar este ejercicio?'),
+                                          actions: [
+                                              TextButton(
+                                                  onPressed: () {
+                                                      Navigator.of(context).pop(false);  
+                                                  },
+                                                  child: const Text('Cancelar'),
+                                              ),
+                                              TextButton(
+                                                  onPressed: () {
+                                                      Navigator.of(context).pop(true);  
+                                                  },
+                                                  child: const Text('Agregar'),
+                                              ),
+                                          ],
+                                      ),
+                                  );
+
+                                  if (confirm == true) {
+                                      final ejercicioSeleccionado = rutina.toString();
+
+                                      final rutinasCollection = firestore.collection('Rutina Final').where('name', isEqualTo: name);
+
+                                      try {
+                                          final querySnapshot = await rutinasCollection.get();
+
+                                          if (querySnapshot.docs.isNotEmpty) {
+                                              final workoutDocRef = querySnapshot.docs.first.reference;
+
+                                              await workoutDocRef.update({
+                                                  'ejercicios': FieldValue.arrayUnion([ejercicioSeleccionado]),
+                                              });
+
+                                              showDialog(
+                                                  context: context,
+                                                  builder: (context) => AlertDialog(
+                                                      title: const Text('Éxito'),
+                                                      content: const Text('El ejercicio se ha agregado a la rutina.'),
+                                                      actions: [
+                                                          TextButton(
+                                                              onPressed: () {
+                                                                  Navigator.of(context).pop();  
+                                                              },
+                                                              child: const Text('Aceptar'),
+                                                          ),
+                                                      ],
+                                                  ),
+                                              );
+
+                                              Navigator.pushReplacementNamed(context, MyRoutes.ejercicios.name, arguments: {'user': user, 'name': name});
+                                          }
+                                      } catch (error) {
+                                          ScaffoldMessenger.of(context).showSnackBar(
+                                              SnackBar(content: Text('Error al agregar ejercicio: $error')),
+                                          );
+                                      }
+                                  }
+                              },
+
                       trailing: const Icon(Icons.add_circle_outline_sharp, color: Colors.redAccent),
                     );
                   }).toList(),
