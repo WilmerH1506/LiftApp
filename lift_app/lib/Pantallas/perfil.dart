@@ -138,7 +138,7 @@ addDatebar(){
                         padding: const EdgeInsets.all(10),
                         margin: const EdgeInsets.only(top: 20,left: 20,right: 20),
                         decoration: BoxDecoration(
-                          color: Colors.white,
+                          color: Colors.white ,
                           borderRadius: BorderRadius.circular(10),
                         ),
                     
@@ -185,7 +185,7 @@ addDatebar(){
                      ,)
                      )
                       );
-           }
+           } 
             else{
               return Container();
               }
