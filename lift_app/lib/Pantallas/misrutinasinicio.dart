@@ -13,7 +13,7 @@ class MisRutinas extends StatelessWidget {
         return Scaffold(
             backgroundColor: Colors.black,
             appBar: AppBar(
-                title: const Text('Crear Rutinas', style: TextStyle(fontWeight:FontWeight.bold),),
+                title: const Text('Mis Rutinas', style: TextStyle(fontWeight:FontWeight.bold),),
                 backgroundColor: Colors.redAccent,
             ),
             body: SingleChildScrollView(

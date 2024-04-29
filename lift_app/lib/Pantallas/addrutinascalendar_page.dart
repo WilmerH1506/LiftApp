@@ -24,7 +24,9 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
  
   @override
   Widget build(BuildContext context) {
-    
+    final arguments = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
+    final user = arguments['user'];
+    final name = arguments['name'];
 
 
 
@@ -33,6 +35,11 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
       appBar: AppBar(
         title: const Text('Agregar rutina al calendario'),
         backgroundColor: Colors.redAccent,
+        actions: [
+          IconButton(onPressed: () {
+    Navigator.pushReplacementNamed(context, MyRoutes.rutinas.name, arguments: {'user': user, 'name': name});
+          },icon: const Icon(Icons.logout),)
+        ],
         
       ),
       body: Column(

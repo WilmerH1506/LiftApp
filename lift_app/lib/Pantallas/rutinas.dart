@@ -15,6 +15,7 @@ class RutinasPage extends StatefulWidget {
 
 class _RutinasPageState extends State<RutinasPage> {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
+  
 
   @override
   Widget build(BuildContext context) {
