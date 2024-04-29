@@ -16,17 +16,15 @@ class Inicio extends StatefulWidget {
 
 class _InicioState extends State<Inicio> {
   
+  
   final PageController pageController = PageController(); 
   FirebaseFirestore firestore = FirebaseFirestore.instance; 
 
   @override
   Widget build(BuildContext context) {
-      final arguments = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
       
-        final user = arguments['user'];
-        final name = arguments['name'];
 
-    //final user = ModalRoute.of(context)!.settings.arguments as String;
+    final user = ModalRoute.of(context)!.settings.arguments as String;
 
     return Scaffold(
       backgroundColor: Colors.black,

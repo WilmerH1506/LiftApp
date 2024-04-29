@@ -41,6 +41,7 @@ final TextEditingController usuarioController = TextEditingController();
     
        if (queryUser.docs.isNotEmpty && queryPass.docs.isNotEmpty)
        {
+        
            Navigator.pushReplacementNamed(context, MyRoutes.inicio.name,arguments: usuario);
            usuarioController.clear();
            passwordController.clear();

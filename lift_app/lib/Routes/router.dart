@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:lift_app/Pantallas/Ejercicios/Espalda/face_pulls.dart';
 import 'package:lift_app/Pantallas/Ejercicios/Espalda/jalon_pecho.dart';
@@ -45,6 +46,7 @@ import 'package:lift_app/Pantallas/Ejercicios/tren_superior.dart/Triceps/press_f
 import 'package:lift_app/Pantallas/Ejercicios/tren_superior.dart/Triceps/sobrecabeza.dart';
 import 'package:lift_app/Pantallas/Ejercicios/abdominales.dart';
 import 'package:lift_app/Pantallas/Ejercicios/tren_superior.dart/menu_torso.dart';
+import 'package:lift_app/Pantallas/Menu%20MisRutinas/menumisrutinas.dart';
 import 'package:lift_app/Pantallas/addrutinascalendar_page.dart';
 import 'package:lift_app/Pantallas/crear_rutinas.dart';
 import 'package:lift_app/Pantallas/registro.dart';
@@ -107,4 +109,5 @@ final Map<String, Widget Function(BuildContext)> routes = {
   MyRoutes.elevaciones_parado.name: (context) => ElevacionesParado(),
   MyRoutes.elevaciones_sentado.name: (context) =>  ElevacionesSentado(),
   MyRoutes.addrutineCalendar.name: (context) => AddRuntineCalendar(),
+  MyRoutes.ejercicios.name: (context) => Ejercicios()
 };

@@ -15,7 +15,7 @@ class Final {
                         actions: [
                             TextButton(
                                 onPressed: () {
-                                    
+                                    Navigator.pop(context);
                                 },
                                 child: const Text('Aceptar'),
                             ),

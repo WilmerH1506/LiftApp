@@ -50,5 +50,6 @@ enum MyRoutes {
  menu_pantorillas,
  elevaciones_parado,
  elevaciones_sentado,
- addrutineCalendar
+ addrutineCalendar,
+ ejercicios
 }

@@ -9,6 +9,10 @@ class MisRutinas extends StatelessWidget {
     @override
     Widget build(BuildContext context) {
         
+
+     
+       
+
         final screenHeight = MediaQuery.of(context).size.height;
         final welcomeHeight = screenHeight / 4;
         String name = '';
@@ -58,9 +62,9 @@ class MisRutinas extends StatelessWidget {
                         color: Colors.black, 
                             child: Column(
                               children: [
-                                Image.asset('Assets/si.png',
-                                width: 400,
-                                height: 200,
+                                Image.asset('Assets/Panda.png',
+                                width: 500,
+                                height: 250,
                                 fit: BoxFit.fill,
                                 )
                               ],
@@ -68,7 +72,7 @@ class MisRutinas extends StatelessWidget {
                         ),
                     ElevatedButton(
                         onPressed: () {
-                           Navigator.pushReplacementNamed(context, MyRoutes.rutinas.name, arguments: {'user': user, 'name': name});
+            Navigator.pushReplacementNamed(context, MyRoutes.rutinas.name, arguments: {'user': user, 'name': name});
                         },
                         style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.symmetric(
