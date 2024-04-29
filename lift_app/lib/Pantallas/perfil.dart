@@ -236,7 +236,8 @@ addDatebar(user){
                const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  
+                  instance.collection('Agenda').doc(agenda.id).delete();
+                  Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red[300],
