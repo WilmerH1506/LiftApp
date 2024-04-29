@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:lift_app/Widgets/agregargif.dart';
 import 'package:lift_app/Routes/my_routes.dart';
+import 'package:lift_app/Widgets/agregargif.dart';
 import 'package:lift_app/Widgets/bsdtemporal.dart';
 
 class Sentadilla extends StatelessWidget {
     const Sentadilla({Key? key}) : super(key: key);
-   
+
     @override
     Widget build(BuildContext context) {
         final arguments = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
@@ -32,6 +32,7 @@ class Sentadilla extends StatelessWidget {
                 actions: [
                     IconButton(
                         onPressed: () {
+                            // Redirigir según el valor de showAddButton
                             if (showAddButton) {
                                 Navigator.pushReplacementNamed(context, MyRoutes.ejercicios.name, arguments: {
                                     'user': user,
@@ -94,7 +95,7 @@ class Sentadilla extends StatelessWidget {
                             children: [
                                 SizedBox(width: 10),
                                 Text(
-                                    'Primario: Cuadriceps',
+                                    'Primario: Cuadríceps',
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
@@ -293,7 +294,7 @@ class Sentadilla extends StatelessWidget {
                                 ),
                             ],
                         ),
-                        if (showAddButton)
+                        if (!arguments.containsKey('showAddButton') || !arguments['showAddButton'])
                             ElevatedButton(
                                 onPressed: () {
                                     final subir = Temporal();

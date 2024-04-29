@@ -32,13 +32,14 @@ class ElevacionesSentado extends StatelessWidget {
                 actions: [
                     IconButton(
                         onPressed: () {
+                            // Redirigir según el valor de showAddButton
                             if (showAddButton) {
                                 Navigator.pushReplacementNamed(context, MyRoutes.ejercicios.name, arguments: {
                                     'user': user,
                                     'name': name,
                                 });
                             } else {
-                                Navigator.pushReplacementNamed(context, MyRoutes.menu_pantorillas.name, arguments: {
+                                Navigator.pushReplacementNamed(context, MyRoutes.menu_inferior.name, arguments: {
                                     'user': user,
                                     'name': name,
                                 });
@@ -65,7 +66,7 @@ class ElevacionesSentado extends StatelessWidget {
                                     ),
                                 ),
                                 child: FutureBuilder<Widget>(
-                                    future: AggGif('Videos/pantorilla_sentado.gif').getGifWidget(),
+                                    future: AggGif('Videos/descarga.gif').getGifWidget(),
                                     builder: (context, snapshot) {
                                         if (snapshot.connectionState == ConnectionState.waiting) {
                                             return const Center(child: CircularProgressIndicator());
@@ -288,11 +289,12 @@ class ElevacionesSentado extends StatelessWidget {
                                 ),
                             ],
                         ),
-                        if (showAddButton)
+                        // Mostrar el botón de agregar rutina si showAddButton es falso
+                        if (!showAddButton)
                             ElevatedButton(
                                 onPressed: () {
                                     final subir = Temporal();
-                                    subir.bsdTemporal(user, 'Pantorrillas Sentado', name);
+                                    subir.bsdTemporal(user, 'Pantorillas Sentado', name);
                                     Navigator.pushReplacementNamed(context, MyRoutes.crear_rutinas.name, arguments: {
                                         'user': user,
                                         'name': name,

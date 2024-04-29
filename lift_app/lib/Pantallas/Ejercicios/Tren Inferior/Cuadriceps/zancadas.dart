@@ -32,6 +32,7 @@ class Zancadas extends StatelessWidget {
                 actions: [
                     IconButton(
                         onPressed: () {
+                            // Redirigir según el valor de showAddButton
                             if (showAddButton) {
                                 Navigator.pushReplacementNamed(context, MyRoutes.ejercicios.name, arguments: {
                                     'user': user,
@@ -94,7 +95,7 @@ class Zancadas extends StatelessWidget {
                             children: [
                                 SizedBox(width: 10),
                                 Text(
-                                    'Primario: Cuadriceps',
+                                    'Primario: Cuadríceps',
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
@@ -293,7 +294,8 @@ class Zancadas extends StatelessWidget {
                                 ),
                             ],
                         ),
-                        if (showAddButton)
+                        // Agrega la condición para mostrar el botón de agregar rutina
+                        if (!showAddButton)  // Verifica si showAddButton es falso
                             ElevatedButton(
                                 onPressed: () {
                                     final subir = Temporal();

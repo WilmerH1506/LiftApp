@@ -32,13 +32,14 @@ class FemoralAcostado extends StatelessWidget {
                 actions: [
                     IconButton(
                         onPressed: () {
+                            // Redirigir según el valor de showAddButton
                             if (showAddButton) {
                                 Navigator.pushReplacementNamed(context, MyRoutes.ejercicios.name, arguments: {
                                     'user': user,
                                     'name': name,
                                 });
                             } else {
-                                Navigator.pushReplacementNamed(context, MyRoutes.menu_femoral.name, arguments: {
+                                Navigator.pushReplacementNamed(context, MyRoutes.menu_inferior.name, arguments: {
                                     'user': user,
                                     'name': name,
                                 });
@@ -65,7 +66,7 @@ class FemoralAcostado extends StatelessWidget {
                                     ),
                                 ),
                                 child: FutureBuilder<Widget>(
-                                    future: AggGif('Videos/femoral_acostado.gif').getGifWidget(),
+                                    future: AggGif('Videos/femoral acostado.gif').getGifWidget(),
                                     builder: (context, snapshot) {
                                         if (snapshot.connectionState == ConnectionState.waiting) {
                                             return const Center(child: CircularProgressIndicator());
@@ -293,7 +294,8 @@ class FemoralAcostado extends StatelessWidget {
                                 ),
                             ],
                         ),
-                        if (showAddButton)
+                        // Agregar un botón para agregar rutina
+                        if (!showAddButton) // Si showAddButton es falso, mostrar el botón de agregar rutina
                             ElevatedButton(
                                 onPressed: () {
                                     final subir = Temporal();

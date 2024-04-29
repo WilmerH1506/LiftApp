@@ -5,7 +5,7 @@ import 'package:lift_app/Widgets/bsdtemporal.dart';
 
 class Extensiones extends StatelessWidget {
     const Extensiones({Key? key}) : super(key: key);
-   
+
     @override
     Widget build(BuildContext context) {
         final arguments = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
@@ -293,7 +293,7 @@ class Extensiones extends StatelessWidget {
                                 ),
                             ],
                         ),
-                        if (showAddButton)
+                        if (!arguments.containsKey('showAddButton') || !arguments['showAddButton'])
                             ElevatedButton(
                                 onPressed: () {
                                     final subir = Temporal();

@@ -5,7 +5,7 @@ import 'package:lift_app/Widgets/bsdtemporal.dart';
 
 class Prensa extends StatelessWidget {
     const Prensa({Key? key}) : super(key: key);
-   
+
     @override
     Widget build(BuildContext context) {
         final arguments = ModalRoute.of(context)!.settings.arguments as Map<String, dynamic>;
@@ -94,7 +94,7 @@ class Prensa extends StatelessWidget {
                             children: [
                                 SizedBox(width: 10),
                                 Text(
-                                    'Primario: Cuadriceps',
+                                    'Primario: Cuadríceps',
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontWeight: FontWeight.bold,
@@ -293,7 +293,7 @@ class Prensa extends StatelessWidget {
                                 ),
                             ],
                         ),
-                        if (showAddButton)
+                        if (!arguments.containsKey('showAddButton') || !arguments['showAddButton'])
                             ElevatedButton(
                                 onPressed: () {
                                     final subir = Temporal();

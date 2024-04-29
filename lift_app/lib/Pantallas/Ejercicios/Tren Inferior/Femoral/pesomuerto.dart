@@ -32,13 +32,14 @@ class PesoMuerto extends StatelessWidget {
                 actions: [
                     IconButton(
                         onPressed: () {
+                            // Redirigir según el valor de showAddButton
                             if (showAddButton) {
                                 Navigator.pushReplacementNamed(context, MyRoutes.ejercicios.name, arguments: {
                                     'user': user,
                                     'name': name,
                                 });
                             } else {
-                                Navigator.pushReplacementNamed(context, MyRoutes.menu_femoral.name, arguments: {
+                                Navigator.pushReplacementNamed(context, MyRoutes.menu_inferior.name, arguments: {
                                     'user': user,
                                     'name': name,
                                 });
@@ -65,7 +66,7 @@ class PesoMuerto extends StatelessWidget {
                                     ),
                                 ),
                                 child: FutureBuilder<Widget>(
-                                    future: AggGif('Videos/Peso_Muerto.gif').getGifWidget(),
+                                    future: AggGif('Videos/Peso Muerto.gif').getGifWidget(),
                                     builder: (context, snapshot) {
                                         if (snapshot.connectionState == ConnectionState.waiting) {
                                             return const Center(child: CircularProgressIndicator());
@@ -74,7 +75,7 @@ class PesoMuerto extends StatelessWidget {
                                         }
                                     },
                                 ),
-                           ),
+                            ),
                         ),
                         const SizedBox(height: 25),
                         const Row(
@@ -288,7 +289,8 @@ class PesoMuerto extends StatelessWidget {
                                 ),
                             ],
                         ),
-                        if (showAddButton)
+                        // Mostrar el botón de agregar rutina si showAddButton es falso
+                        if (!showAddButton)
                             ElevatedButton(
                                 onPressed: () {
                                     final subir = Temporal();

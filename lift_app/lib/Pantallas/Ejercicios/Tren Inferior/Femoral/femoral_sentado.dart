@@ -16,7 +16,7 @@ class FemoralSentado extends StatelessWidget {
         return Scaffold(
             backgroundColor: Colors.black,
             appBar: AppBar(
-                title: const Row(
+                title: Row(
                     children: [
                         Text(
                             'Femoral Sentado',
@@ -32,19 +32,20 @@ class FemoralSentado extends StatelessWidget {
                 actions: [
                     IconButton(
                         onPressed: () {
+                            // Redirigir según el valor de showAddButton
                             if (showAddButton) {
                                 Navigator.pushReplacementNamed(context, MyRoutes.ejercicios.name, arguments: {
                                     'user': user,
                                     'name': name,
                                 });
                             } else {
-                                Navigator.pushReplacementNamed(context, MyRoutes.menu_femoral.name, arguments: {
+                                Navigator.pushReplacementNamed(context, MyRoutes.menu_inferior.name, arguments: {
                                     'user': user,
                                     'name': name,
                                 });
                             }
                         },
-                        icon: const Icon(Icons.logout),
+                        icon: Icon(Icons.logout),
                     ),
                 ],
             ),
@@ -65,7 +66,7 @@ class FemoralSentado extends StatelessWidget {
                                     ),
                                 ),
                                 child: FutureBuilder<Widget>(
-                                    future: AggGif('Videos/femoral_sentado.gif').getGifWidget(),
+                                    future: AggGif('Videos/Femoral sentado.gif').getGifWidget(),
                                     builder: (context, snapshot) {
                                         if (snapshot.connectionState == ConnectionState.waiting) {
                                             return const Center(child: CircularProgressIndicator());
@@ -120,7 +121,6 @@ class FemoralSentado extends StatelessWidget {
                         const SizedBox(height: 28),
                         const Row(
                             children: [
-                                SizedBox(width: 1),
                                 Text(
                                     'Principiante',
                                     style: TextStyle(
@@ -206,6 +206,7 @@ class FemoralSentado extends StatelessWidget {
                                                 fontSize: 15,
                                             ),
                                         ),
+                                        SizedBox(height: 5),
                                         Text(
                                             '8 - 12',
                                             style: TextStyle(
@@ -288,7 +289,8 @@ class FemoralSentado extends StatelessWidget {
                                 ),
                             ],
                         ),
-                        if (showAddButton)
+                        // Si showAddButton es falso, muestra el botón de agregar rutina
+                        if (!showAddButton)
                             ElevatedButton(
                                 onPressed: () {
                                     final subir = Temporal();

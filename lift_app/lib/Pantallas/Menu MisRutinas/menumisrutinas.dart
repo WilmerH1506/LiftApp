@@ -230,7 +230,7 @@ class Ejercicios extends StatelessWidget {
                                       Navigator.pushReplacementNamed(context, MyRoutes.hip_thrust.name,arguments: {'user': user, 'name': name, 'showAddButton': true} );
                                     }
 
-                                    else if (ejercicio.toString() == 'Patada con Pelea')
+                                    else if (ejercicio.toString() == 'Patada con Polea')
                                     {
                                       Navigator.pushReplacementNamed(context, MyRoutes.patada.name,arguments: {'user': user, 'name': name, 'showAddButton': true} );
                                     }
@@ -240,12 +240,12 @@ class Ejercicios extends StatelessWidget {
                                       Navigator.pushReplacementNamed(context, MyRoutes.sumo.name,arguments: {'user': user, 'name': name, 'showAddButton': true} );
                                     }
 
-                                    else if (ejercicio.toString() == 'Pantorillas Parado')
+                                    else if (ejercicio.toString() == 'Pantorrillas Parado')
                                     {
                                       Navigator.pushReplacementNamed(context, MyRoutes.elevaciones_parado.name,arguments: {'user': user, 'name': name, 'showAddButton': true} );
                                     }
 
-                                    else if (ejercicio.toString() == 'Pantorillas Sentado')
+                                    else if (ejercicio.toString() == 'Pantorrillas Sentado')
                                     {
                                       Navigator.pushReplacementNamed(context, MyRoutes.elevaciones_sentado.name,arguments: {'user': user, 'name': name, 'showAddButton': true} );
                                     }

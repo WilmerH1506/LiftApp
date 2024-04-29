@@ -32,6 +32,7 @@ class Sumo extends StatelessWidget {
                 actions: [
                     IconButton(
                         onPressed: () {
+                            // Redirigir según el valor de showAddButton
                             if (showAddButton) {
                                 Navigator.pushReplacementNamed(context, MyRoutes.ejercicios.name, arguments: {
                                     'user': user,
@@ -288,7 +289,8 @@ class Sumo extends StatelessWidget {
                                 ),
                             ],
                         ),
-                        if (showAddButton)
+                        // Mostrar el botón de agregar rutina si showAddButton es falso
+                        if (!showAddButton)
                             ElevatedButton(
                                 onPressed: () {
                                     final subir = Temporal();

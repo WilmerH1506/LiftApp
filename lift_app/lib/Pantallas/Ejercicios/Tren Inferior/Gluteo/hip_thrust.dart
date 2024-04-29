@@ -32,6 +32,7 @@ class HipThrust extends StatelessWidget {
                 actions: [
                     IconButton(
                         onPressed: () {
+                            // Redirigir según el valor de showAddButton
                             if (showAddButton) {
                                 Navigator.pushReplacementNamed(context, MyRoutes.ejercicios.name, arguments: {
                                     'user': user,
@@ -65,7 +66,7 @@ class HipThrust extends StatelessWidget {
                                     ),
                                 ),
                                 child: FutureBuilder<Widget>(
-                                    future: AggGif('Videos/Hip_Thrust.gif').getGifWidget(),
+                                    future: AggGif('Videos/Hip Thrust.gif').getGifWidget(),
                                     builder: (context, snapshot) {
                                         if (snapshot.connectionState == ConnectionState.waiting) {
                                             return const Center(child: CircularProgressIndicator());
@@ -288,11 +289,12 @@ class HipThrust extends StatelessWidget {
                                 ),
                             ],
                         ),
-                        if (showAddButton)
+                        // Mostrar el botón de agregar rutina si showAddButton es falso
+                        if (!showAddButton)
                             ElevatedButton(
                                 onPressed: () {
                                     final subir = Temporal();
-                                    subir.bsdTemporal(user, 'Hip thrust', name);
+                                    subir.bsdTemporal(user, 'Hip Thrust', name);
                                     Navigator.pushReplacementNamed(context, MyRoutes.crear_rutinas.name, arguments: {
                                         'user': user,
                                         'name': name,
