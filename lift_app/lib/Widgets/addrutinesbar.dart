@@ -20,12 +20,6 @@ addRutinebar(BuildContext context) {
                         Text('Hoy', style: tituloStyle),
                     ],
                 ),
-                Mybutton(
-                    label: 'Agregar rutina al calendario',
-                    onTap: () {
-                        Navigator.pushNamed(context, MyRoutes.addrutineCalendar.name);
-                    },
-                ),
             ],
         ),
     );

@@ -1,14 +1,16 @@
 
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:lift_app/Routes/my_routes.dart';
 import 'package:lift_app/Variables_Globales/var_seleddate.dart';
-import 'package:lift_app/Widgets/adddatebar.dart';
 import 'package:lift_app/Widgets/addrutinesbar.dart';
 
 
@@ -58,6 +60,53 @@ class _PerfilPageState extends State<PerfilPage> {
       );
   }
 
+addDatebar(){
+  DateTime selectedDate = DateTime.now();
+  final micontroller = Get.put(MiController());
+  DatePickerController? controllerDate;
+  return Container(
+            margin: const EdgeInsets.only(top: 20,left: 20),
+            child: DatePicker(
+              controller: controllerDate,
+              DateTime.now(),
+              height: 100,
+              width: 80,
+              initialSelectedDate: DateTime.now(),
+              selectionColor: Colors.redAccent,
+              selectedTextColor: Colors.white,
+              dateTextStyle: GoogleFonts.lato(
+                textStyle: const TextStyle(
+                color: Colors.grey,
+                fontSize: 20,
+                fontWeight: FontWeight.w600
+              )
+              ),
+              dayTextStyle: GoogleFonts.lato(
+                textStyle: const TextStyle(
+                color: Colors.grey,
+                fontSize: 16,
+                fontWeight: FontWeight.w600
+              )
+              ),
+              monthTextStyle: GoogleFonts.lato(
+                textStyle: const TextStyle(
+                color: Colors.grey,
+                fontSize: 14,
+                fontWeight: FontWeight.w600
+              )
+              ),
+              onDateChange: (date) {
+                micontroller.selectedDate1 = DateFormat.yMd().format(date);
+                print(micontroller.selectedDate1 );
+                setState(() {
+                  showAgenda();
+                  selectedDate = date;
+                }); 
+              },
+            ),
+    );
+}
+
   showAgenda(){
      final agenda = instance.collection('Agenda').snapshots();
     return StreamBuilder(
@@ -73,8 +122,7 @@ class _PerfilPageState extends State<PerfilPage> {
             itemBuilder: (BuildContext context, int index) {
               final agenda = agenlist[index];
               final fecha = micontroller.selectedDate1;
-              print(fecha);
-            if(agenda['date'] == micontroller.selectedDate1){
+            if(agenda['date'] == fecha){
               return AnimationConfiguration.staggeredList(
                 position: index,
                 duration: const Duration(milliseconds: 375),
@@ -95,18 +143,41 @@ class _PerfilPageState extends State<PerfilPage> {
                         ),
                     
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(agenda['date'],style: const TextStyle(
+                            Text(agenda['name'],style: const TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
                               fontSize: 20
                             ),),
                             const SizedBox(height: 10),
-                            Text(agenda['startTime'],style: const TextStyle(
+                            Row(
+                              children: [
+                                Text(agenda['startTime'],style: const TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20
+                                ), 
+                                ),
+                                const Text(' - ',style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20
+                                ),),
+                                Text(agenda['endTime'],style: const TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20
+                                ),),
+                              ],
+                            ), 
+                            const SizedBox(height: 10),
+                            Text(agenda['date'],style: const TextStyle(
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
                               fontSize: 20
-                            ),), 
+                            ),
+                            ),
                           ],
                       ),
                     ) 
@@ -114,7 +185,7 @@ class _PerfilPageState extends State<PerfilPage> {
                      ,)
                      )
                       );
-            }
+           }
             else{
               return Container();
               }
