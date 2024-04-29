@@ -39,7 +39,7 @@ class _InicioState extends State<Inicio> {
         children:  [
            MisRutinas(user: user),
           CreateRoutine(user: user,),          
-          const PerfilPage(),
+           PerfilPage(user:user),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

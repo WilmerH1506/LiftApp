@@ -4,9 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/get_instance.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:lift_app/Routes/my_routes.dart';
@@ -15,7 +13,8 @@ import 'package:lift_app/Widgets/addrutinesbar.dart';
 
 
 class PerfilPage extends StatefulWidget {
- const PerfilPage({Key? key}) : super(key: key);
+final String user;
+ const PerfilPage({Key? key, required this.user}) : super(key: key);
 
   @override
   State<PerfilPage> createState() => _PerfilPageState();
@@ -51,8 +50,8 @@ class _PerfilPageState extends State<PerfilPage> {
        Column(
         children: [
           addRutinebar(context),
-          addDatebar(),
-          showAgenda(),
+          addDatebar(user),
+          showAgenda(user),
         ],
         )
         
@@ -60,7 +59,7 @@ class _PerfilPageState extends State<PerfilPage> {
       );
   }
 
-addDatebar(){
+addDatebar(user){
   DateTime selectedDate = DateTime.now();
   final micontroller = Get.put(MiController());
   DatePickerController? controllerDate;
@@ -99,7 +98,7 @@ addDatebar(){
                 micontroller.selectedDate1 = DateFormat.yMd().format(date);
                 print(micontroller.selectedDate1 );
                 setState(() {
-                  showAgenda();
+                  showAgenda(user);
                   selectedDate = date;
                 }); 
               },
@@ -107,8 +106,10 @@ addDatebar(){
     );
 }
 
-  showAgenda(){
-     final agenda = instance.collection('Agenda').snapshots();
+  showAgenda(user){
+    print(user);
+    final agenda = instance.collection('Agenda').where('user', isEqualTo: user) .snapshots();
+
     return StreamBuilder(
       stream: agenda,
       builder: (BuildContext context, AsyncSnapshot snapshot) {
