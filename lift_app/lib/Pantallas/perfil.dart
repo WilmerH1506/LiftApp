@@ -139,7 +139,7 @@ addDatebar(user){
                         padding: const EdgeInsets.all(10),
                         margin: const EdgeInsets.only(top: 20,left: 20,right: 20),
                         decoration: BoxDecoration(
-                          color: Colors.white ,
+                          color: agenda['status'] == 'Completa' ? Colors.green[300] : Colors.white,
                           borderRadius: BorderRadius.circular(10),
                         ),
                     
@@ -225,7 +225,9 @@ addDatebar(user){
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: () {
-                  
+                  setState(() {
+                    instance.collection('Agenda').doc(agenda.id).update({'status': 'Completa'});
+                  });
                 }, 
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.purple[300],

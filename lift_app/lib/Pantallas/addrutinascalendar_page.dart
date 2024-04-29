@@ -121,6 +121,7 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
                   "endTime": endTime,
                   "name": name,
                   "user": user,
+                  "status": "pendiente",
                 };
 
                 if(confirmTextdate !="Confirmar"|| confirmTextstartTime !="Confirmar" || confirmTextendTime !="Confirmar"){
