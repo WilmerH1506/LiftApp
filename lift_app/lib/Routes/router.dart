@@ -1,6 +1,8 @@
 
 
 
+
+
 import 'package:flutter/material.dart';
 import 'package:lift_app/Pantallas/Ejercicios/Espalda/face_pulls.dart';
 import 'package:lift_app/Pantallas/Ejercicios/Espalda/jalon_pecho.dart';
@@ -48,6 +50,8 @@ import 'package:lift_app/Pantallas/Ejercicios/tren_superior.dart/Triceps/press_f
 import 'package:lift_app/Pantallas/Ejercicios/tren_superior.dart/Triceps/sobrecabeza.dart';
 import 'package:lift_app/Pantallas/Ejercicios/abdominales.dart';
 import 'package:lift_app/Pantallas/Ejercicios/tren_superior.dart/menu_torso.dart';
+import 'package:lift_app/Pantallas/IMC/imcstats.dart';
+import 'package:lift_app/Pantallas/IMC/infoimc.dart';
 import 'package:lift_app/Pantallas/Menu%20MisRutinas/menumisrutinas.dart';
 import 'package:lift_app/Pantallas/addrutinascalendar_page.dart';
 import 'package:lift_app/Pantallas/crear_rutinas.dart';
@@ -113,5 +117,7 @@ final Map<String, Widget Function(BuildContext)> routes = {
   MyRoutes.elevaciones_sentado.name: (context) =>  const ElevacionesSentado(),
   MyRoutes.addrutineCalendar.name: (context) => const AddRuntineCalendar(),
   MyRoutes.ejercicios.name: (context) => Ejercicios(),
-  MyRoutes.editar.name: (context) => Editar()
+  MyRoutes.editar.name: (context) => Editar(),
+  MyRoutes.imc.name: (context) => IMCinfo(),
+  MyRoutes.stats.name: (context) => Estadisticas()
 };

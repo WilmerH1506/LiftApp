@@ -36,13 +36,29 @@ class _PerfilPageState extends State<PerfilPage> {
             color: Colors.black,
             fontWeight: FontWeight.bold
           ),),
-          actions: [IconButton(
+          actions: [
+          IconButton(
             onPressed: () {
-            Navigator.pushReplacementNamed(context,MyRoutes.login.name);
+      Navigator.pushReplacementNamed(context, MyRoutes.stats.name, arguments: {'user': user});
+
             },
-            icon: const Icon(Icons.logout),
+            icon: const Icon(Icons.query_stats,color: Colors.white,),
             
-          )],
+          ),
+            IconButton(
+            onPressed: () {
+      Navigator.pushReplacementNamed(context, MyRoutes.imc.name, arguments: {'user': user});
+
+            },
+            icon: const Icon(Icons.person_4,color: Colors.white,),
+            
+          ),
+          IconButton(onPressed: () {
+          Navigator.pushReplacementNamed(context,MyRoutes.login.name);
+
+          },icon: const Icon(Icons.logout,color: Colors.white,),)],
+          
+          
        backgroundColor: Colors.redAccent,
       ),
     
