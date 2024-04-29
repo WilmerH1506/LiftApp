@@ -13,7 +13,6 @@ class PullUps extends StatelessWidget {
       
         final user = arguments['user'];
         final name = arguments['name'];
-        bool siono = arguments['siono'];
     return MaterialApp(
       home: Scaffold( backgroundColor: Colors.black,
         appBar: AppBar(

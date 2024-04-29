@@ -74,9 +74,9 @@ class Ejercicios extends StatelessWidget {
                         ),
                         onTap: () {
                           // Aquí puedes implementar la lógica cuando se hace clic en un ejercicio
-                          print(ejercicio);
+                          print(wk['ejercicios']);
                         },
-                        trailing: const Icon(Icons.add_circle_outline_sharp, color: Colors.redAccent),
+                        trailing: const Icon(Icons.account_tree, color: Colors.redAccent),
                       ),
                     );
                   }).toList(),
@@ -98,7 +98,7 @@ class Ejercicios extends StatelessWidget {
       child: 
        ElevatedButton(
                             onPressed: () {   
-               Navigator.pushReplacementNamed(context, MyRoutes.pullups.name, arguments: {
+               Navigator.pushReplacementNamed(context, MyRoutes.editar.name, arguments: {
                                                 'user': user,
                                                 'name': name,
                                             });                                          
@@ -108,7 +108,7 @@ class Ejercicios extends StatelessWidget {
                                         minimumSize: const Size(250, 50),
                                       ),
                               child: const Text(
-                                        'Agregar Rutina',
+                                        'Agreagr Rutina',
                                         style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
                                     ),
                                   )
