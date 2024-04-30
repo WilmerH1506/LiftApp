@@ -180,7 +180,7 @@ addDatebar(user){
                         padding: const EdgeInsets.all(10),
                         margin: const EdgeInsets.only(top: 20,left: 20,right: 20),
                         decoration: BoxDecoration(
-                          color: agenda['status'] == 'Completa' ? Colors.green[300] : Colors.white,
+                          color: agenda['status'] == 'Completa' ? Colors.purple[400] : Colors.white,
                           borderRadius: BorderRadius.circular(10),
                         ),
                     
@@ -252,7 +252,7 @@ addDatebar(user){
         return Container(
           height: MediaQuery.of(context).size.height * 0.24,
           width: double.infinity,
-          color: Colors.white,
+          color: Colors.black,
           child: Column(
             children: [
               Container(
@@ -271,9 +271,12 @@ addDatebar(user){
                   });
                 }, 
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.purple[300],
+                  backgroundColor: Colors.purple,
                 ),
-                child: const Text('     Rutina Completa     '),
+                child: const Text('     Rutina Completa     ',style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold
+                ),),
                
               ),
                const SizedBox(height: 20),
@@ -283,9 +286,12 @@ addDatebar(user){
                   Navigator.pop(context);
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red[300],
+                  backgroundColor: Colors.red,
                 ),
-                child: const Text('      Eliminar Rutina      '),
+                child: const Text('      Eliminar Rutina      ',style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold
+                ),),
               ),
             ],
           ),

@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lift_app/Pantallas/crutinasinicio.dart';
 import 'package:lift_app/Pantallas/misrutinasinicio.dart';
 import 'package:lift_app/Pantallas/perfil.dart';
@@ -55,17 +56,17 @@ class _InicioState extends State<Inicio> {
             curve: Curves.ease,
           );
         },
-        items: [
+        items: const [
              BottomNavigationBarItem(
-           icon: Image.asset('Assets/pesa.png', width: 33, height: 33),
+          icon: Icon(FontAwesomeIcons.dumbbell, color: Colors.redAccent, size: 25),
             label: '  Mis rutinas',
           ),
-          BottomNavigationBarItem(
-             icon: Image.asset('Assets/mas.png', width: 32, height: 32),
+           BottomNavigationBarItem(
+             icon: Icon(FontAwesomeIcons.fileCirclePlus, color: Colors.redAccent, size: 25),
             label: 'Crear Rutinas',
           ),
           BottomNavigationBarItem(
-            icon: Image.asset('Assets/usuario.png', width: 31, height: 31),
+            icon: Icon(FontAwesomeIcons.userClock, color: Colors.redAccent, size: 25),
             label: 'Perfil',
           ),
         ],

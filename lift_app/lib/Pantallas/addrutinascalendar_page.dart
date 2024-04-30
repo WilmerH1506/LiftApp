@@ -34,7 +34,7 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
-        title: const Text('Agregar rutina al calendario'),
+        title: const Text('Agregar rutina a la agenda'),
         backgroundColor: Colors.redAccent,
         actions: [
           IconButton(onPressed: () {
@@ -67,6 +67,7 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
         child: Column(
           children: [
             Customadd(
+              title: "Fecha",
               hint: DateFormat.yMd().format(selectedDate),
               widget: IconButton(
                 onPressed: () {
@@ -75,14 +76,16 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
                 icon: const Icon(Icons.calendar_today_outlined,
                   color: Colors.white,),
               ),
-              bordes: const OutlineInputBorder(),
+            ),
+            const SizedBox(
+              height: 10,
             ),
             Row(
               children: [
                 Expanded(
                   child: Customadd(
+                    title: "Inicio",
                       hint: startTime,
-                      bordes: const OutlineInputBorder(),
                       widget: IconButton(
                         onPressed: () {
                           showPickerStart();
@@ -96,8 +99,8 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
                 ),
                 Expanded(
                   child: Customadd(
+                    title: "Fin",
                       hint: endTime,
-                      bordes: const OutlineInputBorder(),
                       widget: IconButton(
                         onPressed: () {
                           showPickerend();
@@ -112,7 +115,7 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
               ],
             ),
             const SizedBox(
-              height: 10,
+              height: 18,
             ),
             ElevatedButton(
               onPressed: () async{
@@ -144,15 +147,20 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text("Rutina agregada al calendario"),
-                  backgroundColor: Colors.greenAccent,
+                  backgroundColor: Colors.green,
                 ),
               );
                 Navigator.pushReplacementNamed(context, MyRoutes.rutinas.name, arguments: {'user': user, 'name': name});
 
               },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.redAccent,
+                minimumSize: const Size(double.infinity, 50),
+              ),
               child: const Text("Agregar a agenda",
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                
+                style: TextStyle(
+                  color: Colors.white,
+                )
               ),
             ),
             const SizedBox(
@@ -162,7 +170,15 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
               onPressed: () {
               Navigator.pushReplacementNamed(context, MyRoutes.rutinas.name, arguments: {'user': user, 'name': name});
             }, 
-            child: const Text("Cancelar")),
+            style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.redAccent,
+                minimumSize: const Size(double.infinity, 50),
+              ),
+            child: const Text("Cancelar",
+              style: TextStyle(
+                color: Colors.white,
+            )),
+            ),
           ],
         ),
       ),
