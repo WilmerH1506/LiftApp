@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, empty_catches
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Borrar {
@@ -16,7 +18,7 @@ class Borrar {
       }
 
     } catch (e) {
-      print('Error al eliminar registros para el usuario $user: $e');
+      
     }
   }
 }

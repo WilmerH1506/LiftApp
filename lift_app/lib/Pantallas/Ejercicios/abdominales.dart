@@ -182,7 +182,7 @@ class Myabs extends StatelessWidget {
             ),
             
             // Sets y repeticiones
-            const SizedBox(height: 36),
+            const SizedBox(height: 16),
             const Row(
                 children: [
                     Column(

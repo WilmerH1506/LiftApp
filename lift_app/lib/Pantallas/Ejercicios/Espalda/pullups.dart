@@ -163,7 +163,7 @@ class PullUps extends StatelessWidget {
                                 Icon(Icons.star, color: Colors.yellow),
                             ],
                         ),
-                        const SizedBox(height: 36),
+                        const SizedBox(height: 16),
                         const Row(
                             children: [
                                 Column(
@@ -184,7 +184,7 @@ class PullUps extends StatelessWidget {
                                         ),
                                     ],
                                 ),
-                                SizedBox(width: 5),
+                                SizedBox(width: 35),
                                 Column(
                                     children: [
                                         Text(

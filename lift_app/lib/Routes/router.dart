@@ -69,7 +69,7 @@ final Map<String, Widget Function(BuildContext)> routes = {
   MyRoutes.inicio.name:(context) => Inicio(),
   MyRoutes.abdominales.name:(context) => const Myabs(),
   MyRoutes.crear_rutinas.name:(context) => const CrearRutinasPage(),
-  MyRoutes.rutinas.name:(context) => RutinasPage(),
+  MyRoutes.rutinas.name:(context) => const RutinasPage(),
   MyRoutes.menu_espalda.name:(context) =>const MenuEspalda(),
   MyRoutes.jalon_pecho.name:(context) => const JalonPecho(),
   MyRoutes.remos.name: (context) => const Remos(),
@@ -118,6 +118,6 @@ final Map<String, Widget Function(BuildContext)> routes = {
   MyRoutes.addrutineCalendar.name: (context) => const AddRuntineCalendar(),
   MyRoutes.ejercicios.name: (context) => Ejercicios(),
   MyRoutes.editar.name: (context) => Editar(),
-  MyRoutes.imc.name: (context) => IMCinfo(),
-  MyRoutes.stats.name: (context) => Estadisticas()
+  MyRoutes.imc.name: (context) => const IMCinfo(),
+  MyRoutes.stats.name: (context) => const Estadisticas()
 };

@@ -181,7 +181,7 @@ class Laterales extends StatelessWidget {
                             ],
                         ),
                         
-                        const SizedBox(height: 36),
+                        const SizedBox(height: 16),
                         const Row(
                             children: [
                                 Column(
@@ -202,7 +202,7 @@ class Laterales extends StatelessWidget {
                                         ),
                                     ],
                                 ),
-                                SizedBox(width: 5),
+                                SizedBox(width: 35),
                                 Column(
                                     children: [
                                         Text(

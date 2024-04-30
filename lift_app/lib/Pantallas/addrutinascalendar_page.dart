@@ -1,6 +1,7 @@
+// ignore_for_file: unused_local_variable, use_build_context_synchronously
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:lift_app/Routes/my_routes.dart';
 import 'package:lift_app/Widgets/custom_add.dart';
@@ -139,8 +140,6 @@ class _AddRuntineCalendarState extends State<AddRuntineCalendar> {
                confirmTextdate = "";
                confirmTextstartTime = "";
                confirmTextendTime = "";
-
-              print(respuesta);
 
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(

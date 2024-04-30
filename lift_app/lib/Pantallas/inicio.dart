@@ -38,7 +38,7 @@ class _InicioState extends State<Inicio> {
         },
         children:  [
            MisRutinas(user: user),
-          CreateRoutine(user: user,),          
+           CreateRoutine(user: user,),          
            PerfilPage(user:user),
         ],
       ),

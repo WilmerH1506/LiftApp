@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:flutter/material.dart';
 
  getDateFromUser(BuildContext context) async {
@@ -17,7 +19,6 @@ import 'package:flutter/material.dart';
       return;
     }
     confirmTextdate = "Confirmar";
-    print(confirmTextdate);
   }
   
   void setState(Null Function() param0) {

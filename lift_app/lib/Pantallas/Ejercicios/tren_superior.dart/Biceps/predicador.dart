@@ -33,15 +33,15 @@ class Predicador extends StatelessWidget {
                 actions: [
                     IconButton(
                         onPressed: () {
-                            // Controlar el comportamiento del botón "Salir" según showAddButton
+                            
                             if (showAddButton) {
-                                // Redirige a la página de menú de bíceps
+                                
                                 Navigator.pushReplacementNamed(context, MyRoutes.ejercicios.name, arguments: {
                                     'user': user,
                                     'name': name,
                                 });
                             } else {
-                                // Redirige a la página de creación de rutinas
+                                
                                 Navigator.pushReplacementNamed(context, MyRoutes.menu_biceps.name, arguments: {
                                     'user': user,
                                     'name': name,
@@ -181,7 +181,7 @@ class Predicador extends StatelessWidget {
                             ],
                         ),
                         
-                        const SizedBox(height: 36),
+                        const SizedBox(height: 16),
                         const Row(
                             children: [
                                 Column(
@@ -202,7 +202,7 @@ class Predicador extends StatelessWidget {
                                         ),
                                     ],
                                 ),
-                                SizedBox(width: 5),
+                                SizedBox(width: 35),
                                 Column(
                                     children: [
                                         Text(
@@ -221,7 +221,7 @@ class Predicador extends StatelessWidget {
                                         ),
                                     ],
                                 ),
-                                SizedBox(width: 17),
+                                SizedBox(width: 27),
                                 Column(
                                     children: [
                                         Text(

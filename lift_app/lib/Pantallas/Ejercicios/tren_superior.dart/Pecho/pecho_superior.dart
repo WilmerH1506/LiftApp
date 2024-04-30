@@ -164,7 +164,7 @@ class PressInclinado extends StatelessWidget {
                             children: [
                                 SizedBox(width: 53),
                                 Icon(Icons.star, color: Colors.yellow),
-                                SizedBox(width: 83),
+                                SizedBox(width: 93),
                                 Icon(Icons.star, color: Colors.yellow),
                                 Icon(Icons.star, color: Colors.yellow),
                                 SizedBox(width: 56),
@@ -174,12 +174,13 @@ class PressInclinado extends StatelessWidget {
                             ],
                         ),
                         
-                        const SizedBox(height: 36),
+                        const SizedBox(height: 16),
                         
                         const Row(
                             children: [
                                 Column(
                                     children: [
+                                        
                                         Text(
                                             '4 Sets',
                                             style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500, fontSize: 15),
@@ -196,7 +197,7 @@ class PressInclinado extends StatelessWidget {
                                         ),
                                     ],
                                 ),
-                                SizedBox(width: 5),
+                                SizedBox(width: 35),
                                 Column(
                                     children: [
                                         Text(

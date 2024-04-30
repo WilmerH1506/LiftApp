@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:lift_app/Routes/my_routes.dart';
 import 'package:lift_app/Validaciones/validaciones_registro.dart';
@@ -16,7 +18,7 @@ class _RegistroState extends State<Registro> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 82, 71, 123),
+      backgroundColor: const Color.fromARGB(255, 45, 43, 53),
       appBar: AppBar(
         title: const Text(
           'Registro',
@@ -30,7 +32,7 @@ class _RegistroState extends State<Registro> {
           icon: const Icon(Icons.exit_to_app),
         ),
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 82, 71, 123),
+        backgroundColor: const Color.fromARGB(255, 45, 43, 53),
       ),
       body: Stack(
         children: [

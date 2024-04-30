@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, prefer_interpolation_to_compose_strings
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +7,7 @@ import 'package:lift_app/Routes/my_routes.dart';
 
 
 class Estadisticas extends StatefulWidget {
-  Estadisticas({Key? key}) : super(key: key);
+  const Estadisticas({Key? key}) : super(key: key);
 
   @override
   State<Estadisticas> createState() => _Estadisticas();

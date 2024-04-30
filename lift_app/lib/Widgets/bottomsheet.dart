@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:lift_app/Routes/my_routes.dart';
 import 'package:lift_app/Widgets/bsdborrar.dart';
@@ -10,7 +12,7 @@ class Bottom extends StatefulWidget {
     final VoidCallback onReload;
     final ValueNotifier<String> nameNotifier;
 
-    Bottom({
+    const Bottom({
         super.key,
         required this.data,
         required this.user,
@@ -189,6 +191,7 @@ Future<String?> rutineName(BuildContext context) async {
                     decoration: const InputDecoration(
                         hintText: 'Nombre de la rutina',
                     ),
+                    maxLength: 17, // Limita la longitud de entrada a 17 caracteres
                 ),
                 actions: [
                     TextButton(
@@ -199,8 +202,28 @@ Future<String?> rutineName(BuildContext context) async {
                     ),
                     TextButton(
                         onPressed: () {
-                            name = controllername.text;
-                            Navigator.of(context).pop(name);
+                            if (controllername.text.length <= 17) {
+                                name = controllername.text;
+                                Navigator.of(context).pop(name);
+                            } else {
+                                showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                          return AlertDialog(
+                                              title: const Text('Advertencia'),
+                                              content: const Text('El valor maximo como nombre de rutina no debe exceder los 17 caracteres'),
+                                              actions: [
+                                                  TextButton(
+                                                      onPressed: () {
+                                                          Navigator.pop(context);
+                                                      },
+                                                      child: const Text('Aceptar'),
+                                                  ),
+                                              ],
+                                          );
+                                      },
+                                  );
+                            }
                         },
                         child: const Text('Aceptar'),
                     ),
@@ -211,3 +234,4 @@ Future<String?> rutineName(BuildContext context) async {
 
     return name;
 }
+

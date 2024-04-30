@@ -1,5 +1,7 @@
 
 
+// ignore_for_file: unused_local_variable
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:date_picker_timeline/date_picker_widget.dart';
 import 'package:flutter/material.dart';
@@ -53,9 +55,34 @@ class _PerfilPageState extends State<PerfilPage> {
             icon: const Icon(Icons.person_4,color: Colors.white,),
             
           ),
-          IconButton(onPressed: () {
-          Navigator.pushReplacementNamed(context,MyRoutes.login.name);
-
+          IconButton(onPressed: () async {
+             bool? shouldLogout = await showDialog<bool>(
+                                context: context,
+                                builder: (context) {
+                                    return AlertDialog(
+                                        title: const Text('Confirmar cierre de sesión'),
+                                        content: const Text('¿Estás seguro de que deseas cerrar Sesion?'),
+                                        actions: [
+                                            TextButton(
+                                                onPressed: () {
+                                                    Navigator.of(context).pop(false);
+                                                },
+                                                child: const Text('Cancelar'),
+                                            ),
+                                            TextButton(
+                                                onPressed: () {
+                                                    Navigator.of(context).pop(true);
+                                                },
+                                                child: const Text('Confirmar'),
+                                            ),
+                                        ],
+                                    );
+                                },
+                            );
+                             if (shouldLogout == true) {
+                                // ignore: use_build_context_synchronously
+                                Navigator.pushReplacementNamed(context, MyRoutes.login.name, arguments: user);
+                            }
           },icon: const Icon(Icons.logout,color: Colors.white,),)],
           
           
@@ -112,7 +139,6 @@ addDatebar(user){
               ),
               onDateChange: (date) {
                 micontroller.selectedDate1 = DateFormat.yMd().format(date);
-                print(micontroller.selectedDate1 );
                 setState(() {
                   showAgenda(user);
                   selectedDate = date;
@@ -123,7 +149,6 @@ addDatebar(user){
 }
 
   showAgenda(user){
-    print(user);
     final agenda = instance.collection('Agenda').where('user', isEqualTo: user) .snapshots();
 
     return StreamBuilder(

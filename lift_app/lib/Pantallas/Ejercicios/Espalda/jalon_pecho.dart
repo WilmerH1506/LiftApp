@@ -174,7 +174,7 @@ class JalonPecho extends StatelessWidget {
                             ],
                         ),
 
-                        const SizedBox(height: 36),
+                        const SizedBox(height: 16),
 
                         const Row(
                             children: [
@@ -196,7 +196,7 @@ class JalonPecho extends StatelessWidget {
                                         ),
                                     ],
                                 ),
-                                 SizedBox(width: 5),
+                                 SizedBox(width: 35),
                                 Column(
                                     children: [
                                         Text(

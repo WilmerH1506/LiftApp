@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:lift_app/Routes/my_routes.dart';
 import 'package:lift_app/Temas/temas.dart';
-import 'package:lift_app/Widgets/mybutton.dart';
 
 addRutinebar(BuildContext context) {
     

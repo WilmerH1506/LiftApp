@@ -164,7 +164,7 @@ class PressFrances extends StatelessWidget {
                             children: [
                                  SizedBox(width: 53),
                                 Icon(Icons.star, color: Colors.yellow),
-                                 SizedBox(width: 83),
+                                 SizedBox(width: 93),
                                 Icon(Icons.star, color: Colors.yellow),
                                 Icon(Icons.star, color: Colors.yellow),
                                  SizedBox(width: 56),
@@ -196,7 +196,7 @@ class PressFrances extends StatelessWidget {
                                         ),
                                     ],
                                 ),
-                                 SizedBox(width: 5),
+                                 SizedBox(width: 35),
                                 Column(
                                     children: [
                                         Text(

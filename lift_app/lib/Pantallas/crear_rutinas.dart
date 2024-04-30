@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously, library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:lift_app/Routes/my_routes.dart';
 import 'package:lift_app/Widgets/board.dart';
@@ -39,7 +41,7 @@ class _CrearRutinasPageState extends State<CrearRutinasPage> {
                 exercisesNotifier.value = exercisesList;
             }
         }).catchError((error) {
-            print('Error al descargar ejercicios: $error');
+          
         });
     }
 
@@ -171,12 +173,12 @@ class _CrearRutinasPageState extends State<CrearRutinasPage> {
                             );
                         },
                     ),
-                    // Usa un ValueListenableBuilder para mantener `name` sincronizado con `nameNotifier`
+                    
                     ValueListenableBuilder<String>(
                         valueListenable: nameNotifier,
                         builder: (context, currentName, child) {
-                            name = currentName;  // Actualiza `name` cuando `nameNotifier` cambia
-                            return Container();  // Este `ValueListenableBuilder` es solo para actualizar `name`
+                            name = currentName;  
+                            return Container();  
                         },
                     ),
                 ],

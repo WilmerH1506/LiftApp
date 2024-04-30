@@ -7,7 +7,7 @@ import 'package:lift_app/Routes/my_routes.dart';
 
 
 class RutinasPage extends StatefulWidget {
-  RutinasPage({Key? key}) : super(key: key);
+  const RutinasPage({Key? key}) : super(key: key);
 
   @override
   State<RutinasPage> createState() => _RutinasPageState();
@@ -62,51 +62,50 @@ class _RutinasPageState extends State<RutinasPage> {
             final workoutlist = snapshot.data!.docs;
 
             return ListView.builder(
-              itemCount: workoutlist.length,
-              itemBuilder: (context, index) {
-                final wk = workoutlist[index];
-                return Dismissible(
-                  key: Key(wk.id),
-                  direction: DismissDirection.endToStart,
-                  background: Container(
-                    color: Colors.red,
-                    alignment: Alignment.centerRight,
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: const Icon(Icons.delete, color: Colors.white),
-                  ),
-                  onDismissed: (direction) {
-                    wk.reference.delete();
-                  },
-                  child: ListTile(
-                    title: GestureDetector(
-                      onTap: () {
+    itemCount: workoutlist.length,
+    itemBuilder: (context, index) {
+        final wk = workoutlist[index];
+        return Dismissible(
+            key: Key(wk.id),
+            direction: DismissDirection.endToStart,
+            background: Container(
+                color: Colors.red,
+                alignment: Alignment.centerRight,
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                child: const Icon(Icons.delete, color: Colors.white),
+            ),
+            onDismissed: (direction) {
+                wk.reference.delete();
+            },
+            child: ListTile(
+                title: GestureDetector(
+                    onTap: () {
                         Navigator.pushReplacementNamed(
                             context, MyRoutes.addrutineCalendar.name,
                             arguments: {'user': user, 'name': wk['name']});
-                      },
-                      child: Text(
+                    },
+                    child: Text(
                         wk['name'],
                         style: const TextStyle(
                             color: Colors.white, fontWeight: FontWeight.bold),
-                      ),
                     ),
-                    trailing: GestureDetector(
-                      onTap: () {
+                ),
+                trailing: GestureDetector(
+                    onTap: () {
                         Navigator.pushReplacementNamed(
                             context, MyRoutes.ejercicios.name,
                             arguments: {'user': user, 'name': wk['name']});
-                      },
-                      child: const Column(
-                        children: [
-                          Icon(Icons.arrow_upward_outlined,
-                              color: Colors.redAccent),
-                        ],
-                      ),
+                    },
+                    child: const Icon(
+                        Icons.arrow_forward,
+                        color: Colors.redAccent,
                     ),
-                  ),
-                );
-              },
-            );
+                ),
+            ),
+        );
+    },
+);
+
           } else {
             return const Center(
               child: CircularProgressIndicator(),

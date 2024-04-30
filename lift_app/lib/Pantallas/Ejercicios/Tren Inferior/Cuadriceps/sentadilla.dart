@@ -164,7 +164,7 @@ class Sentadilla extends StatelessWidget {
                                 Icon(Icons.star, color: Colors.yellow),
                             ],
                         ),
-                        const SizedBox(height: 36),
+                        const SizedBox(height: 16),
                         const Row(
                             children: [
                                 Column(
@@ -197,7 +197,7 @@ class Sentadilla extends StatelessWidget {
                                         ),
                                     ],
                                 ),
-                                SizedBox(width: 5),
+                                SizedBox(width: 35),
                                 Column(
                                     children: [
                                         Text(
@@ -294,6 +294,8 @@ class Sentadilla extends StatelessWidget {
                                 ),
                             ],
                         ),
+
+                         const SizedBox(height: 40),
                         if (!arguments.containsKey('showAddButton') || !arguments['showAddButton'])
                             ElevatedButton(
                                 onPressed: () {

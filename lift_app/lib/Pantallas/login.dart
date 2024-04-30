@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'package:lift_app/Routes/my_routes.dart';
 import 'package:lift_app/Validaciones/validaciones_login.dart';
@@ -16,14 +18,14 @@ class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 82, 71, 123),
+      backgroundColor: const Color.fromARGB(255, 45, 43, 53),
       appBar: AppBar(
         title: const Text(
           'Iniciar Sesión',
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
-        backgroundColor: const Color.fromARGB(255, 82, 71, 123),
+        backgroundColor: const Color.fromARGB(255, 45, 43, 53),
       ),
       body: Stack(
         children: [

@@ -164,7 +164,7 @@ class ExtensionPolea extends StatelessWidget {
                             children: [
                                 SizedBox(width: 53),
                                 Icon(Icons.star, color: Colors.yellow),
-                                SizedBox(width: 83),
+                                SizedBox(width: 93),
                                 Icon(Icons.star, color: Colors.yellow),
                                 Icon(Icons.star, color: Colors.yellow),
                                 SizedBox(width: 56),
@@ -196,7 +196,7 @@ class ExtensionPolea extends StatelessWidget {
                                         ),
                                     ],
                                 ),
-                                SizedBox(width: 5),
+                                SizedBox(width: 40),
                                 Column(
                                     children: [
                                         Text(

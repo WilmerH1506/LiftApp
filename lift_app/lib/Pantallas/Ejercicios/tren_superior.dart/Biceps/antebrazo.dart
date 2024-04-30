@@ -177,7 +177,7 @@ class Antebrazo extends StatelessWidget {
                             ],
                         ),
                         
-                        const SizedBox(height: 36),
+                        const SizedBox(height: 16),
                         const Row(
                             children: [
                                 Column(

@@ -164,7 +164,7 @@ class HipThrust extends StatelessWidget {
                                 Icon(Icons.star, color: Colors.yellow),
                             ],
                         ),
-                        const SizedBox(height: 36),
+                        const SizedBox(height: 16),
                         const Row(
                             children: [
                                 Column(
@@ -196,7 +196,7 @@ class HipThrust extends StatelessWidget {
                                         ),
                                     ],
                                 ),
-                                SizedBox(width: 5),
+                                SizedBox(width: 35),
                                 Column(
                                     children: [
                                         Text(
@@ -289,12 +289,13 @@ class HipThrust extends StatelessWidget {
                                 ),
                             ],
                         ),
-                        // Mostrar el botón de agregar rutina si showAddButton es falso
+                       
+                         const SizedBox(height: 40),
                         if (!showAddButton)
                             ElevatedButton(
                                 onPressed: () {
                                     final subir = Temporal();
-                                    subir.bsdTemporal(user, 'Hip Thrust', name);
+                                    subir.bsdTemporal(user, 'Hip thrust', name);
                                     Navigator.pushReplacementNamed(context, MyRoutes.crear_rutinas.name, arguments: {
                                         'user': user,
                                         'name': name,

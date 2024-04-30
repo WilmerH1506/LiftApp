@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Lift App',
       debugShowCheckedModeBanner: false,
+      title: 'Lift App',
       theme: ThemeData(
         useMaterial3: true,
       ),
@@ -41,6 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
       return MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Material app',
         initialRoute: MyRoutes.login.name,
         routes: routes,

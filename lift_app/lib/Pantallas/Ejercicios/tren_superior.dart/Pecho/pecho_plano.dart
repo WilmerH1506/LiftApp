@@ -165,7 +165,7 @@ class PressPlano extends StatelessWidget {
                             children: [
                                 SizedBox(width: 53),
                                 Icon(Icons.star, color: Colors.yellow),
-                                SizedBox(width: 83),
+                                SizedBox(width: 93),
                                 Icon(Icons.star, color: Colors.yellow),
                                 Icon(Icons.star, color: Colors.yellow),
                                 SizedBox(width: 56),
@@ -175,7 +175,7 @@ class PressPlano extends StatelessWidget {
                             ],
                         ),
                         
-                        const SizedBox(height: 36),
+                        const SizedBox(height: 16),
                         
                         const Row(
                             children: [
@@ -197,7 +197,7 @@ class PressPlano extends StatelessWidget {
                                         ),
                                     ],
                                 ),
-                                SizedBox(width: 5),
+                                SizedBox(width: 45),
                                 Column(
                                     children: [
                                         Text(

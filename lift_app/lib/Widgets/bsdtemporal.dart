@@ -1,3 +1,5 @@
+// ignore_for_file: empty_catches
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Temporal {
@@ -24,7 +26,6 @@ class Temporal {
         await collection.add(dataToAdd);
       } 
     } catch (e) {
-      print('Error al agregar datos a Firestore: $e');
     }
   }
 }

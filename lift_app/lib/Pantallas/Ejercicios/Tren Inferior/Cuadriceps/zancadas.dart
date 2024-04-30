@@ -164,7 +164,7 @@ class Zancadas extends StatelessWidget {
                                 Icon(Icons.star, color: Colors.yellow),
                             ],
                         ),
-                        const SizedBox(height: 36),
+                        const SizedBox(height: 16),
                         const Row(
                             children: [
                                 Column(
@@ -197,7 +197,7 @@ class Zancadas extends StatelessWidget {
                                         ),
                                     ],
                                 ),
-                                SizedBox(width: 5),
+                                SizedBox(width: 35),
                                 Column(
                                     children: [
                                         Text(
@@ -294,6 +294,7 @@ class Zancadas extends StatelessWidget {
                                 ),
                             ],
                         ),
+                         const SizedBox(height: 40),
                         // Agrega la condición para mostrar el botón de agregar rutina
                         if (!showAddButton)  // Verifica si showAddButton es falso
                             ElevatedButton(

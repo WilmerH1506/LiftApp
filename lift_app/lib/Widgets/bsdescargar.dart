@@ -24,7 +24,6 @@ class Descargar {
       return exercises;
 
     } catch (e) {
-      print('Error al recuperar ejercicios para el usuario $user: $e');
       return []; 
     }
   }

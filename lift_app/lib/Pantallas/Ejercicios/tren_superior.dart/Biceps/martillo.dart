@@ -165,7 +165,7 @@ class Martillo extends StatelessWidget {
                             ],
                         ),
                         
-                        const SizedBox(height: 5),
+                        const SizedBox(height: 15),
                         
                         // Iconos de nivel
                         const Row(
@@ -182,7 +182,7 @@ class Martillo extends StatelessWidget {
                             ],
                         ),
                         
-                        const SizedBox(height: 36),
+                        const SizedBox(height: 16),
                         const Row(
                             children: [
                                 Column(
@@ -203,7 +203,7 @@ class Martillo extends StatelessWidget {
                                         ),
                                     ],
                                 ),
-                                SizedBox(width: 35),
+                                SizedBox(width: 45),
                                 Column(
                                     children: [
                                         Text(

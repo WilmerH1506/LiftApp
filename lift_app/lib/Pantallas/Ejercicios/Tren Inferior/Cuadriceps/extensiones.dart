@@ -163,7 +163,7 @@ class Extensiones extends StatelessWidget {
                                 Icon(Icons.star, color: Colors.yellow),
                             ],
                         ),
-                        const SizedBox(height: 36),
+                        const SizedBox(height: 16),
                         const Row(
                             children: [
                                 Column(
@@ -196,7 +196,7 @@ class Extensiones extends StatelessWidget {
                                         ),
                                     ],
                                 ),
-                                SizedBox(width: 5),
+                                SizedBox(width: 35),
                                 Column(
                                     children: [
                                         Text(
@@ -293,6 +293,8 @@ class Extensiones extends StatelessWidget {
                                 ),
                             ],
                         ),
+
+                         const SizedBox(height: 40),
                         if (!arguments.containsKey('showAddButton') || !arguments['showAddButton'])
                             ElevatedButton(
                                 onPressed: () {
