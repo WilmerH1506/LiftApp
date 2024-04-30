@@ -1,5 +1,8 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'Routes/router.dart';
 import 'Routes/my_routes.dart';
@@ -41,6 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
       return MaterialApp(
+        theme: _BuildTheme(Brightness.light),
         debugShowCheckedModeBanner: false,
         title: 'Material app',
         initialRoute: MyRoutes.login.name,
@@ -52,6 +56,16 @@ class _MyHomePageState extends State<MyHomePage> {
       },
      );
     }
+}
+
+ThemeData _BuildTheme(Brightness)
+{
+
+  var baseTheme = ThemeData(brightness: Brightness);
+  return baseTheme.copyWith(
+    textTheme: GoogleFonts.latoTextTheme(baseTheme.textTheme)
+  );
+
 }
 
 
